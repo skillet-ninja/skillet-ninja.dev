@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('content')
-@extends('layouts.master')
+
 
 @section('content')
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
-			<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
+			<h2>Login</h2>
+			{{-- <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}"> --}}
 				{{ csrf_field() }}
 				<div class="form-group">
 			    	<label for="email">Email:</label>
@@ -17,10 +17,10 @@
 			    	<input type="password" class="form-control" name="password">
 			  	</div>
 			  	<button type="submit" class="btn btn-success">Login</button>
-			</form>
+			{{-- </form> --}}
 		</div>
 	</div>
-@stop
+
 
 	@if(count($errors))
 		<div class="alert alert-danger">
@@ -31,7 +31,8 @@
 	@endif
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
-			<form method="POST" action="{{ action('Auth\AuthController@postRegister') }}">
+			<h2>Register</h2>
+			{{-- <form method="POST" action="{{ action('Auth\AuthController@postRegister') }}"> --}}
 				{{ csrf_field() }}
 				<div class="form-group">
 			    	<label for="name">Name:</label>
@@ -50,7 +51,7 @@
 			    	<input type="password" class="form-control" name="password_confirmation">
 			  	</div>
 			  	<button type="submit" class="btn btn-success">Register</button>
-			</form>
+			{{-- </form> --}}
 		</div>
 	</div>
 
