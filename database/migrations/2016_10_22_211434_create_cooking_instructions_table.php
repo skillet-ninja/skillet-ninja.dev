@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagpivotTable extends Migration
+class CreateCookingInstructionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,16 @@ class CreateTagpivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_pivot', function (Blueprint $table){
+        Schema::create('cooking_instructions', function (Blueprint $table){
             $table->increments('id');
 
             $table->integer('recipe_id')->unsigned();
             $table->foreign('recipe_id')->references('id')->on('recipes');
 
-            $table->integer('tag_id')->unsigned();
-            $table->foreign('tag_id')->references('id')->on('tags');
-
-            $table->timestamps();
-        })
+            $table->longtext('step');
+            $table->string('video_url')->nullable();
+            $table->string('image_url')->nullable();
+            $table->integer('time');
     }
 
     /**
@@ -32,6 +31,6 @@ class CreateTagpivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tag_pivot');
+        Schema::drop('cooking_instructions');
     }
 }

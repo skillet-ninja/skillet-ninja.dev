@@ -14,16 +14,15 @@ class CreateRecipeTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->longtext('summary');
+            $table->longtext('summary')->nullable();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('servings');
+            $table->integer('servings')->nullable();
             $table->string('name');
-            $table->string('image_url');
-            $table->string('video_url');
-            $table->integer('overall_time');
+            $table->string('image_url')->nullable();
+            $table->integer('overall_time')->nullable();
             $table->timestamps();
         });
     }
