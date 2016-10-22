@@ -1,0 +1,19 @@
+Welcome page
+- be careful with single monochromatic because can look empty
+- need some sort of jumbotron
+- why logo so large?
+- capture what the site is going to show
+- full screen background video
+
+About
+- bios for each dev
+
+Recipes
+- hover can be tricky because you want to click something else under the modal
+- modal open on click and dismiss on click
+
+Recipe Show Page
+- convert to full page model
+-90%vh vw
+-slight box shadow with the recipe on it
+
