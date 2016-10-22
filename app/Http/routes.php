@@ -24,5 +24,5 @@ Route::get('/dross', function () {
 });
 
 Route::get('/carroll', function () {
-    return view('recipes.index');
+    return view('recipes.testing');
 });
