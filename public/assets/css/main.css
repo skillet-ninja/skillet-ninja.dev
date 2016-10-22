@@ -1,3 +1,17 @@
+.logout-header {
+	font-size: 8rem;
+}
+
+.logout-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 70vh;
+	width: 100%;
+}
+
+
 /*footer*/
 
 .footer {
@@ -15,4 +29,8 @@ a.footer-links {
 .footer-copyright {
 	font-size: .9em;
 }
+
+
+
+
 
