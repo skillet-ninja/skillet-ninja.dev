@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/justin', function () {
-    return view('users.logout');
+    return view('auth.logout');
 });
 
 Route::get('/dross', function () {
@@ -26,3 +26,4 @@ Route::get('/dross', function () {
 Route::get('/carroll', function () {
     return view('recipes.testing');
 });
+

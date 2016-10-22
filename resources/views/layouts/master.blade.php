@@ -26,8 +26,8 @@
                 </div>
             @endif
 
+                Test
             <div class="content">
-
                 @yield('content')
 
             </div>
