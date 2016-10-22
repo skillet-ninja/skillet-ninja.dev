@@ -22,6 +22,7 @@ class CreateRecipeTable extends Migration
             $table->integer('servings');
             $table->string('name');
             $table->string('image_url');
+            $table->string('video_url');
             $table->integer('overall_time');
             $table->timestamps();
         });
