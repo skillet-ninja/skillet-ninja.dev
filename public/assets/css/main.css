@@ -13,7 +13,25 @@
 	width: 100%;
 }
 
-/* About */
+
+/*footer*/
+
+.footer {
+	background-color: black;
+	padding: 20px;
+	text-align: center;
+	color: white;
+}
+
+a.footer-links {
+	font-size: 1.15em;
+	color: white !important;
+}
+
+.footer-copyright {
+	font-size: .9em;
+}
+
 
 
 
