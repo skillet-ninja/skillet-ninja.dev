@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/justin', function () {
+    return view('users.logout');
+});
+
+Route::get('/dross', function () {
+    return view('auth.login');
+});
+
+Route::get('/carroll', function () {
+    return view('recipes.index');
+});
