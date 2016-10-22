@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Skillet Ninja</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,7 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-right">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
