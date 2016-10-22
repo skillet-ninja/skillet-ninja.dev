@@ -19,10 +19,11 @@ Route::get('/justin', function () {
     return view('auth.logout');
 });
 
-// Route::get('/dross', function () {
-//     return view('auth.login');
-// });
+Route::get('/dross', function () {
+    return view('auth.login');
+});
 
-// Route::get('/carroll', function () {
-//     return view('recipes.index');
-// });
+Route::get('/carroll', function () {
+    return view('recipes.testing');
+});
+
