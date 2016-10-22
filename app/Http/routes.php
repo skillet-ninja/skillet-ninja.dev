@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/justin', function () {
-    return view('auth.logout');
+    return view('users.about');
 });
 
 Route::get('/dross', function () {
