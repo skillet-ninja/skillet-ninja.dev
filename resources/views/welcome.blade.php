@@ -5,11 +5,6 @@
         <h1 >Welcome to Skillet Ninja!</h1>
         <h2>A Virtual Cooking Assistant</h2>
     </div>
-
-    @if(Auth::check())
-                <li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
-
-    @endif
     <div class="row">
         <div class="col-md-offset-2 col-md-3">
             <img src="assets/img/logo.png" class="welcome-logo">
