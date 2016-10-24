@@ -32,7 +32,7 @@
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
 			<h2>Register</h2>
-			{{-- <form method="POST" action="{{ action('Auth\AuthController@postRegister') }}"> --}}
+			<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
 				{{ csrf_field() }}
 				<div class="form-group">
 			    	<label for="name">Name:</label>
@@ -51,7 +51,7 @@
 			    	<input type="password" class="form-control" name="password_confirmation">
 			  	</div>
 			  	<button type="submit" class="btn btn-success">Register</button>
-			{{-- </form> --}}
+			</form>
 		</div>
 	</div>
 
