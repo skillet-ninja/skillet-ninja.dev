@@ -31,6 +31,10 @@ Route::get('/carroll', function () {
     return view('users.show');
 });
 
+Route::get('auth/logoutView', function () {
+    return view('auth.logout');
+});
+
 
 Route::resource('recipes','RecipesController');
 
