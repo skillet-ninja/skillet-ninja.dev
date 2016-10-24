@@ -19,6 +19,14 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
+Route::get('/auth/users/about', function () {
+    return view('users.about');
+});
+
+Route::get('/users/about', function () {
+    return view('users.about');
+});
+
 Route::get('/justin', function () {
     return view('vca.vca');
 });
