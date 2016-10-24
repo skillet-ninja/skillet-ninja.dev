@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagpivotTable extends Migration
+class CreateTagPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreateTagpivotTable extends Migration
             $table->foreign('tag_id')->references('id')->on('tags');
 
             $table->timestamps();
-        })
+        });
     }
 
     /**

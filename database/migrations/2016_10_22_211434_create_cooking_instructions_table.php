@@ -22,6 +22,7 @@ class CreateCookingInstructionsTable extends Migration
             $table->string('video_url')->nullable();
             $table->string('image_url')->nullable();
             $table->integer('time');
+        });
     }
 
     /**
