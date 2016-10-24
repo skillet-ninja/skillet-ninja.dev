@@ -1,12 +1,16 @@
 @extends('layouts.master')
 
+<?php
 
+var_dump(Auth::user());
+
+?>
 
 @section('content')
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
 			<h2>Login</h2>
-			{{-- <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}"> --}}
+			<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
 				{{ csrf_field() }}
 				<div class="form-group">
 			    	<label for="email">Email:</label>
@@ -17,22 +21,24 @@
 			    	<input type="password" class="form-control" name="password">
 			  	</div>
 			  	<button type="submit" class="btn btn-success">Login</button>
-			{{-- </form> --}}
+			</form>
 		</div>
 	</div>
+
 
 
 	@if(count($errors))
 		<div class="alert alert-danger">
 		@foreach($errors->all() as $error)
 			<p>{{ $error }}</p>
+
 		@endforeach
 		</div>
 	@endif
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
 			<h2>Register</h2>
-			<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
+			<form method="POST" action="{{ action('Auth\AuthController@postRegister') }}">
 				{{ csrf_field() }}
 				<div class="form-group">
 			    	<label for="name">Name:</label>

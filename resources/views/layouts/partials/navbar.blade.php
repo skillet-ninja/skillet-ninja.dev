@@ -31,11 +31,11 @@
                 <li><a href="{{ action('RecipesController@create' , Auth::id()) }}">Create Recipe</a></li>
                 <li><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             @else
-{{-- REPLACE THESE PLACEHOLDERS WITH COMMENTED OUT LINES BELOW --}}
+REPLACE THESE PLACEHOLDERS WITH COMMENTED OUT LINES BELOW
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>   Login</a></li>
-                {{-- <li><a href="{{ action('Auth\AuthController@getRegister') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li> --}}
-                {{-- <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li> --}}
+                <li><a href="{{ action('Auth\AuthController@getRegister') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
+                <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
             @endif
             <li><a href="#">About</a></li> 
         </ul>
