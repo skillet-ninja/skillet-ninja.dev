@@ -1,11 +1,15 @@
 .line-clamp {
 	overflow : hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;  
 }
 
-.recipe-box {
+.recipe {
 	height: 520;
+}
+
+.recipe:nth-child(3n+1) {
+	clear:left;
 }
