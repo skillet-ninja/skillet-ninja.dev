@@ -20,7 +20,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/justin', function () {
-    return view('vca.vca');
+    return view('recipes.index');
 });
 
 Route::get('/dross', function () {
