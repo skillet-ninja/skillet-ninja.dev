@@ -7,16 +7,37 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class RecipeController extends Controller
+class RecipesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $recipesPerPage = 9;
+
+        if (isset($request->searchTerm))
+            {
+                $recipes = Recipe::search($request->searchTerm)->paginate($recipesPerPage);
+
+        } elseif ($request->sort == 'top') 
+        {
+            $posts = Recipe::orderBy('created_at', 'Asc')->paginate($recipesPerPage);
+
+        } else
+            {
+                $posts = Recipe::orderBy('created_at', 'Desc')->paginate($recipesPerPage);
+            }
+
+        $data = array (
+            'recipes'=>$recipes,
+            'searchTerm' => $request->searchTerm
+            );
+
+        return view ('recipes.index')->with($data);
+
     }
 
     /**
@@ -26,7 +47,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view ('recipes.create')
     }
 
     /**
@@ -37,7 +58,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
