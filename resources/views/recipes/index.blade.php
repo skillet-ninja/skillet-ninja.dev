@@ -1,5 +1,9 @@
 @extends ('layouts.master')
 
+@section('top-scripts')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+@stop
+
 @section ('title', 'Recipes')
 
 @section ('content')
@@ -37,6 +41,21 @@
 </div>  <!-- row -->
 
 {{-- {!! $recipes->appends(['searchTerm' => $searchTerm])->render() !!} --}}
+
+@stop
+
+@section('bottom-scripts')
+
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript">
+        
+        $('.rating input').change(function () {
+          var $radio = $(this);
+            $('.rating .selected').removeClass('selected');
+            $radio.closest('label').addClass('selected');
+        });
+
+    </script>
 
 @stop
  
