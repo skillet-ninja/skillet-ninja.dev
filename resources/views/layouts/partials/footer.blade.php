@@ -9,7 +9,7 @@
 	</div>
     <div class="row footer">
         <div class="col-lg-12 footer-copyright">
-            <p>Copyright &copy; Dan Carroll, Jason Reich, Dan Ross 2016</p>
+            <p>Copyright &copy; Dan Carroll, Justin Reich, Dan Ross 2016</p>
         </div>
     </div>
     <!-- /.row -->
