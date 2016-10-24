@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class IngredientRecipePivotSeeder extends Seeder
+class IngredientsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class IngredientRecipePivotSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\IngredientRecipePivot::class,1000)->create();
+        factory(App\Models\Ingredient::class, 1000)->create();
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RecipeSeeder extends Seeder
+class RecipesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class RecipeSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Recipe::class,1000)->create();
+        factory(App\Models\Recipe::class,100)->create();
     }
 }

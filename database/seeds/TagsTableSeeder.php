@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TagPivotSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TagPivotSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TagPivot::class,1000)->create();
+        factory(App\Models\Tag::class,100)->create();
     }
 }
