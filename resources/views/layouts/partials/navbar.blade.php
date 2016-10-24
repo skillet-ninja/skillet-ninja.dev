@@ -28,6 +28,7 @@
 
             @if(Auth::check())
                 <li><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
+                <li><a href="{{ action('UsersController@edit' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  Edit My Account</a></li>
                 <li><a href="{{ action('RecipesController@create' , Auth::id()) }}">Create Recipe</a></li>
                 <li><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <li><a href="{{ '/auth/users/about' }}"><span class="glyphicon glyphicon-log-in">About</a></li> 
