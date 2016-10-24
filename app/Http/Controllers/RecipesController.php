@@ -18,18 +18,7 @@ class RecipesController extends Controller
     {
         $recipesPerPage = 9;
 
-        if (isset($request->searchTerm))
-            {
-                $recipes = Recipe::search($request->searchTerm)->paginate($recipesPerPage);
-
-        } elseif ($request->sort == 'top') 
-        {
-            $posts = Recipe::orderBy('created_at', 'Asc')->paginate($recipesPerPage);
-
-        } else
-            {
-                $posts = Recipe::orderBy('created_at', 'Desc')->paginate($recipesPerPage);
-            }
+        $posts = Recipe::orderBy('created_at')->paginate($recipesPerPage);
 
         $data = array (
             'recipes'=>$recipes,
@@ -58,7 +47,24 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // $this->validate($request, Recipe::$rules);
+
+        $recipe = new Recipe();
+        $recipe->name = $request->name;
+        $recipe->servings = $request->servings;
+        $recipe->overall_time = $request->overall_time;
+        $recipe->summary = $request->summary;
+        $recipe->image_url = $request->image_url;
+        $recipe->user_id = Auth::id();
+        $recipe->save();
+
+
+        // Log::info('Inputs for create'.http_build_query($request->input()));
+
+        // $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
+
+
+        return redirect()->action('RecipesController@show', $recipe->id);
     }
 
     /**
