@@ -21,12 +21,12 @@
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
-                    data-target="#myModal">View Recipe</button>
+                   
+                    @include('layouts.partials.recipe-modal')
                     {{-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
                     data-target="{{ action('RecipesController@show', $recipe->id) }}">View Recipe</button> --}}
-                    <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" 
-                    data-target="#myModal">Start Cooking</button>
+                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" 
+                    data-target="#myModal">SKILLET!</button>
                     {{-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
                     data-target="{{ action('VcaController@cook', $recipe->id) }}">Start Cooking</button> --}}
                 </div> <!-- caption -->
