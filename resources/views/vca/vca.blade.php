@@ -61,10 +61,9 @@
         </a>
     </div>
 
-    <button class="btn btn-primary pull-right">View Recipe</button>
     <button class="btn btn-primary pull-right">View Video</button>
-    
 
+   @include('layouts.partials.recipe-modal')
     
 
 @stop
@@ -74,5 +73,14 @@
 @section('bottom-scripts')
 
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript">
+        
+        $('.rating input').change(function () {
+          var $radio = $(this);
+            $('.rating .selected').removeClass('selected');
+            $radio.closest('label').addClass('selected');
+        });
+
+    </script>
 
 @stop
