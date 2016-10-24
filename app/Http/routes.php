@@ -28,7 +28,7 @@ Route::get('/users/about', function () {
 });
 
 Route::get('/justin', function () {
-    return view('recipes.index');
+    return view('recipes.create');
 });
 
 Route::get('/dross', function () {
