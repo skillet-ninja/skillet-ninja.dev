@@ -15,7 +15,9 @@ class Models.Recipe extends Model
 	
 	public function instruction()
     {
-        return $this->hasMany('App\Models\Instruction', 'recipe_id');
+        return $this->hasMany('App\Models\Instruction', 'recipe_id')
+                    ->withPivot('amount')
+                    ->withTimeStamps();
     }
 
     public function ingredients()
