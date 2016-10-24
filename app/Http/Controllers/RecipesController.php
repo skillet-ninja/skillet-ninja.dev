@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class RecipeController extends Controller
+class RecipesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,11 +24,11 @@ class RecipeController extends Controller
 
         } elseif ($request->sort == 'top') 
         {
-            $posts = Recipe::with('user')->orderBy('created_at', 'Asc')->paginate($recipesPerPage);
+            $posts = Recipe::orderBy('created_at', 'Asc')->paginate($recipesPerPage);
 
         } else
             {
-                $posts = Recipe::with('user')->orderBy('created_at', 'Desc')->paginate($recipesPerPage);
+                $posts = Recipe::orderBy('created_at', 'Desc')->paginate($recipesPerPage);
             }
 
         $data = array (

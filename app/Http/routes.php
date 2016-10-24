@@ -27,3 +27,5 @@ Route::get('/carroll', function () {
     return view('users.show');
 });
 
+Route::resource('recipes','RecipesController');
+

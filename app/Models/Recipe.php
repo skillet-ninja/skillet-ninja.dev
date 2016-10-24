@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,11 +18,15 @@ class Models.Recipe extends Model
         return $this->hasMany('App\Models\Instruction', 'recipe_id');
     }
 
-    public function ingredient()
+    public function ingredients()
     {
-        return $this->hasMany('App\Models\Ingredient', 'recipe_id');
+        return $this->belongsToMany('App\Models\Ingredient');
     }
-
+	
+	public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag');
+    }
 
 
 
