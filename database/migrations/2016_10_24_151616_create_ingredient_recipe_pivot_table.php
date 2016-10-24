@@ -23,7 +23,7 @@ class CreateIngredientRecipePivotTable extends Migration
 
             $table->integer('amount');
             $table->timestamps();
-        })
+        });
     }
 
     /**
