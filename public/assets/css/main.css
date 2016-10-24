@@ -1,45 +1,102 @@
+/* General */
+
+body {
+    /*background-color: gold;*/
+}
+
+/* VCA */
+
+.narration-button {
+    display: inline;
+    position: relative;
+}
+
+.mic-button {
+    display: inline;
+    position: relative;
+}
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { 
+    border-radius: 20px; 
+}
+
+.toggle.ios .toggle-handle { 
+    border-radius: 20px; 
+}
+
+.vca-step-header {
+    font-size: 6rem;
+}
+
+.vca-step {
+    font-size: 3rem;
+}
+
+.carousel-inner {
+    min-height: 70vh;
+}
+
+
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+} 
+
+.carousel-inner>.item>a>img, 
+.carousel-inner>.item>img, 
+.img-responsive, 
+.thumbnail a>img, 
+.thumbnail>img, 
+.step-image {
+    opacity: 0;
+    height: auto;
+}
+
+
+
+
 /* Logout */
 
 .logout-header {
-	font-size: 8rem;
+    font-size: 8rem;
 }
 
 .logout-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 70vh;
-	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    width: 100%;
 }
 
 
 /* Welcome Page */
 
 .welcome-title {
-	text-align: center;
+    text-align: center;
 }
 
 .welcome-signiture {
-	padding-left: 4em;
+    padding-left: 4em;
 }
 
 /*footer*/
 
 .footer {
-	background-color: black;
-	padding: 20px;
-	text-align: center;
-	color: white;
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    color: white;
 }
 
 a.footer-links {
-	font-size: 1.15em;
-	color: white !important;
+    font-size: 1.15em;
+    color: white !important;
 }
 
 .footer-copyright {
-	font-size: .9em;
+    font-size: .9em;
 }
 
 

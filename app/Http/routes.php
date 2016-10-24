@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/justin', function () {
-    return view('users.about');
+    return view('vca.vca');
 });
 
 Route::get('/dross', function () {
