@@ -1,45 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+@section('content')
+    <div class="jumbotron welcome-title">
+        <h1 >Welcome to Skillet Ninja!</h1>
+        <h2>A Virtual Cooking Assistant</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-3">
+            <img src="assets/img/logo.png" class="welcome-logo">
         </div>
-    </body>
-</html>
+        <div class="col-md-6">
+            <h3>Feel free to browse the available recipes.</h3>
+            <h3>When you find a recipie you want to cook, please login or register then click Skillet!</h3>
+            <h3>After you login, click the create button to share your recipe with the world!</h3>
+            <h3>Happy cooking!</h3>
+            <h3 class="welcome-signiture">-Team Skillet Ninja</h3>
+        </div>
+    </div>
+
+    
+ 
+
+ 
+
+ 
+
+ 
+    
+
+
+@stop
