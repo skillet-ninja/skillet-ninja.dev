@@ -19,8 +19,10 @@ class RecipeTagTableSeeder extends Seeder
     		//randomly select 1 to 5 tags
     		for($index = 0; $index < mt_rand(1,5); $index++){
     			$pivots[]= [
-    				'recipe_id' = $recipeId,
-    				'tag_id' = App\Models\Tag::all()->random()->id,
+    				'recipe_id' => $recipeId,
+    				'tag_id' => App\Models\Tag::all()->random()->id,
+                    'created_at' => \Carbon\Carbon::now(),
+                    'updated_at' => \Carbon\Carbon::now(),
     			];
     		}
     	}

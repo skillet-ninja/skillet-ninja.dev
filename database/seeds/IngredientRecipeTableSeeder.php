@@ -19,9 +19,11 @@ class IngredientRecipeTableSeeder extends Seeder
     		//randomly select 2 to 12 ingredients
     		for($index = 0; $index < mt_rand(2,12); $index++){
     			$pivots[]= [
-    				'recipe_id' = $recipeId,
-    				'ingredient_id' = App\Models\Ingredient::all()->random()->id,
-    				'amount' = mt_rand(1,20)." unit",
+    				'recipe_id' => $recipeId,
+    				'ingredient_id' => App\Models\Ingredient::all()->random()->id,
+    				'amount' => mt_rand(1,20)." units",
+                    'created_at' => \Carbon\Carbon::now(),
+                    'updated_at' => \Carbon\Carbon::now(),
     			];
     		}
     	}
