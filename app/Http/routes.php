@@ -35,9 +35,6 @@ Route::get('/dross', function () {
     return view('auth.login');
 });
 
-Route::get('/carroll', function () {
-    return view('users.show');
-});
 
 Route::get('auth/logoutView', function () {
     return view('auth.logout');

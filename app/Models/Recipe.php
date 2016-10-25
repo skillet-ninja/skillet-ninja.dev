@@ -13,11 +13,9 @@ class Recipe extends Model
     	return $this->belongsTo('App\User', 'user_id', 'id');
     }
 	
-	public function instruction()
+	public function step()
     {
-        return $this->hasMany('App\Models\Instruction', 'recipe_id')
-                    ->withPivot('amount')
-                    ->withTimeStamps();
+        return $this->hasMany('App\Models\Step', 'recipe_id')->withPivot('amount')->withTimeStamps();
     }
 
     public function ingredients()
@@ -29,7 +27,4 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\Models\Tag');
     }
-
-
-
 }

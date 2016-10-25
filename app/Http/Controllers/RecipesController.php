@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use App\Models\Recipe;
 
 class RecipesController extends Controller
 {
@@ -18,11 +19,10 @@ class RecipesController extends Controller
     {
         $recipesPerPage = 9;
 
-        $posts = Recipe::orderBy('created_at')->paginate($recipesPerPage);
+        $recipes = Recipe::paginate($recipesPerPage);
 
         $data = array (
             'recipes'=>$recipes,
-            'searchTerm' => $request->searchTerm
             );
 
         return view ('recipes.index')->with($data);
@@ -36,7 +36,7 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        return view ('recipes.create')
+        return view ('recipes.create');
     }
 
     /**

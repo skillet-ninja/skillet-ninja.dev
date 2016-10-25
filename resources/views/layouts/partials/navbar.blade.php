@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Skillet Ninja</a>
+            <a class="navbar-brand" href="/">Skillet Ninja</a>
         </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +23,7 @@
         <ul class="nav navbar-nav navbar-right">
             
 {{-- REPLACE THESE PLACEHOLDERS WITH COMMENTED OUT LINES BELOW --}}
-            <li><a href="#"> <span class="glyphicon glyphicon-cutlery"></span>  Recipes</a></li>
+            <li><a href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span>  Recipes</a></li>
             {{-- <li><a href="{{ action('RecipesController@index' }}">Recipes</a></li> --}}
 
             @if(Auth::check())
@@ -35,7 +35,7 @@
             @else
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-                <li><a href="{{ '/users/about' }}"><span class="glyphicon glyphicon-log-in">About</a></li> 
+                <li><a href="{{ '/users/about' }}">About</a></li> 
             @endif
         </ul>
 
