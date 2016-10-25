@@ -75,7 +75,15 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipe = Recipe::findOrFail($id);
+        $modalName = "#recipeModal"
+
+        $data = [
+            'recipe' => $recipe,
+            'modalName' => $modalName,
+        ];
+        
+        return view ('partials.recipe-modal')->with($data);
     }
 
     /**
