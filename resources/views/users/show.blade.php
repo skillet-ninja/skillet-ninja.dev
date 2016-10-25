@@ -8,6 +8,13 @@
         <div class="col-lg-6 col-lg-offset-3">
             <h1>{{ $user->name }}</h1>
             <h3>{{ $user->email }}</h3>
+    <form action="{{action('UsersController@destroy', $user->id)}}" method="POST" >
+        {!! csrf_field() !!}
+        {!! method_field('DELETE')!!}
+        
+        <button type="submit" class="btn btn-danger pull-right" >Delete</button>
+    </form>
+
             <h3>My Recipes:</h3>
         </div>
     </div>
