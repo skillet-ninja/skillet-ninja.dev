@@ -43,10 +43,18 @@ Route::get('auth/logoutView', function () {
     return view('auth.logout');
 });
 
+Route::get('users/profile', function () {
+    return action('UsersController@show' , Auth::id());
+});
+
 
 Route::resource('recipes','RecipesController');
 
 Route::resource('users', 'UsersController', ['except' => ['create','store']]);
+
+get('/profile', function(){
+	return redirect()->action('UsersController@show', Auth::id());
+});
 
 
 // Authentication routes...
