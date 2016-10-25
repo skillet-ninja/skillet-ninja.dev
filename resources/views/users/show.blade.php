@@ -4,7 +4,7 @@
 
 @section ('content')
 <div class="page-header">
-	<h1><i class="fa fa-user fa-2x" aria-hidden="true"></i>  {{ $user->username }}</h1>
+	<h1><i class="fa fa-user fa-2x" aria-hidden="true"></i>  {{--{{ $user->username }}--}}</h1>
 </div>
 <div class="row">
     {{-- @foreach ($recipes as $recipe) --}}
