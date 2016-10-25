@@ -133,7 +133,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        return 'delete a specific user';
+        $user = User::find($id);
+        $user->delete();
+        return view('welcome');
     }
     
 }
