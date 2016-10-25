@@ -75,7 +75,7 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

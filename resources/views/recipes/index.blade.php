@@ -20,6 +20,7 @@
                     <p class="line-clamp">{{ $recipe->summary }}</p>
                                        
                     @include('layouts.partials.recipe-modal')
+                    
                     {{-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
                     data-target="{{ action('RecipesController@show', $recipe->id) }}">View Recipe</button> --}}
                     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" 
