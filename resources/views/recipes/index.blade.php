@@ -18,6 +18,8 @@
                 <div class="caption recipe-thumbnail">
                     <h3>{{ $recipe->name }}</h3>
                     <p class="line-clamp">{{ $recipe->summary }}</p>
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
                                        
                     @include('layouts.partials.recipe-modalB')
 
@@ -46,8 +48,12 @@
         });
 
         $('.btn-view-recipe').on('click', function(e){
-           $recipeId = e.target.getAttribute("data-recipe");
-            $('#myModal').modal('show');
+           var recipeId = e.target.getAttribute("data-recipe");
+           console.log(recipeId);
+        
+            $.get("/recipes/" + recipeId , function(){
+            });
+        $('#myModal').modal('show');
         });
 
     </script>
