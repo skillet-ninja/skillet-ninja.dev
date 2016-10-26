@@ -6,9 +6,9 @@
     @include('layouts.partials.recipe-entry')
 
 
-    {{-- @include('layouts.partials.ingredient-entry') --}}
+    @include('layouts.partials.ingredient-entry')
 
-    {{-- @include('layouts.partials.step-entry') --}}
+    @include('layouts.partials.step-entry')
 
 
 @stop
