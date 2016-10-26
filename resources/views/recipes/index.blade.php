@@ -17,7 +17,6 @@
                 <h4 class="modal-title" id="myModalLabel">Recipe</h4>
             </div>
             <div class="recipe-modal"></div>
-            {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
         </div>
     </div>
 </div>  <!-- End.Recipe Modal -->
@@ -62,7 +61,7 @@
 
         $('.btn-view-recipe').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
-            $.get("/recipes/" + recipeId , function(data){
+            $.get("/recipes/" + recipeId + "?continue=false", function(data){
             $(".recipe-modal").html(data);
             });
             $('#myModal').modal('show');
