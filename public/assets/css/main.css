@@ -4,6 +4,16 @@ body {
     background-color: gold;
 }
 
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
 /* VCA */
 
 .narration-button {

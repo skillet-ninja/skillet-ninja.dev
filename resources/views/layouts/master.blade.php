@@ -15,29 +15,26 @@
         @yield('head')
 
     </head>
-    <body>
+    <body class="site">
 
-        @include('layouts.partials.navbar')
+        <main class="site-content">
 
-        <div class="container">
+            @include('layouts.partials.navbar')
 
-            @if(session()->has('SUCCESS_MESSAGE'))
-                <div class="alert alert-success" role="alert">
-                    <p>{{ session('SUCCESS_MESSAGE') }}</p>
+            <div class="container">
+                @if(session()->has('SUCCESS_MESSAGE'))
+                    <div class="alert alert-success" role="alert">
+                        <p>{{ session('SUCCESS_MESSAGE') }}</p>
+                    </div>
+                @endif
+                <div class="content">
+                    @yield('content')
                 </div>
-            @endif
-            <div class="content">
-                @yield('content')
-
             </div>
+            
+        </main>
 
-
-            @include('layouts.partials.footer')
-        
-        </div>
-        <br>
-        <br>
-
+        @include('layouts.partials.footer')
 
         {{-- jQuery --}}
        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
