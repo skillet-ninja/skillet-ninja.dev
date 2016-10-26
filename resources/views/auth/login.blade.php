@@ -1,11 +1,5 @@
 @extends('layouts.master')
 
-<?php
-
-var_dump(Auth::user());
-
-?>
-
 @section('content')
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-3">
