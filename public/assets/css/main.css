@@ -30,14 +30,48 @@ body {
 
 .vca-step {
     font-size: 3rem;
+    max-width: 65vw;
+    text-align: left;
+}
+
+
+
+.carouselWrapper {
+    
 }
 
 .carousel-inner {
     min-height: 70vh;
+    min-width: 80vw;
     position: relative;
+    text-align: center;
 }
 
 
+/*#carouselImg {
+    opacity: 1;
+    width: 50vw;
+  
+}*/
+
+
+/*#myCarousel {
+  margin-top: 40px;
+}
+*/
+.carouselPagination {
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 70vh;
+    min-width: 80vw;
+}
 
 
 .carousel-control.left, .carousel-control.right {
@@ -45,15 +79,7 @@ body {
 } 
 
 
-#carouselImg {
-    opacity: 0;
-    height: auto;
-}
 
-
-#myCarousel {
-  margin-top: 40px;
-}
 
 .carousel-linked-nav,
 .item img {
@@ -64,7 +90,8 @@ body {
 .carousel-linked-nav a {
   display: block; 
   margin: 0 auto;
-  width: 30px;
+  width: 60px;
+  text-align: center;
 }
 
 /*.pagination>li>a, .pagination>li>span {
@@ -73,11 +100,11 @@ body {
 }*/
 
 
-.carousel-linked-nav {
+/*.carousel-linked-nav {
   width: 60vw;
   height: auto;
   margin-bottom: 20px;   
-}
+}*/
 
 
 /* Recipe Modal */
