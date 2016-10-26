@@ -55,7 +55,7 @@ class RecipesController extends Controller
         $recipe->overall_time = $request->overall_time;
         $recipe->summary = $request->summary;
         $recipe->image_url = $request->image_url;
-        $recipe->user_id = Auth::id();
+        $recipe->user_id = $request->user()->id;
         $recipe->save();
 
 
