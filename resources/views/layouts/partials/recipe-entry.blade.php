@@ -1,5 +1,6 @@
 {{-- Initial recipe creation --}}
-<form action="" method="" id="" name="recipeCreate">
+<form action="{{ action('RecipesController@store')}}" method="POST" id="" name="recipeCreate">
+    {!! csrf_field() !!}
     <label for="recipeName" >Recipe Name</label>
     <br>
     <input id="recipeName" type="text" name="recipeName" value="John">

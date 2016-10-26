@@ -47,11 +47,12 @@ get('/profile', function(){
 
 //recipe modal route...
 
-Route::get('/recipes/{recipe_id?}',function($recipe_id){
-    $recipe = Recipe::find($recipe_id);
+Route::get('/recipes/{recipe_id}', 'RecipesController@modal');
 
-    return Response::json($recipe);
-});
+// Route::get('/recipes/{recipe_id?}',function($recipe_id){
+//     $recipe = Recipe::find($recipe_id);
+//     return Response::json($recipe);
+// });
 
 
 // Authentication routes...

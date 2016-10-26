@@ -49,12 +49,11 @@
         });
 
         $('.btn-view-recipe').on('click', function(e){
-           var recipeId = e.target.getAttribute("data-recipe");
-           console.log(recipeId);
-        
+            var recipeId = e.target.getAttribute("data-recipe");
+            console.log(recipeId);
             $.get("/recipes/" + recipeId , function(){
             });
-        $('#myModal').modal('show');
+            // $('#myModal').modal('show');
         });
 
     </script>
