@@ -2,9 +2,9 @@
 <footer>
 	<div class="row footer">
 		<div class="col-sm-12">
-			<a href="#" class="footer-links">Home</a>   |
-			<a href="#" class="footer-links">Recipes</a>   |
-			<a href="#" class="footer-links">About</a>
+			<a href="/" class="footer-links">Home</a>   |
+			<a href="{{ action('RecipesController@index') }}" class="footer-links">Recipes</a>   |
+			<a href="{{ '/users/about' }}" class="footer-links">About</a>
 		</div>
 	</div>
     <div class="row footer">
