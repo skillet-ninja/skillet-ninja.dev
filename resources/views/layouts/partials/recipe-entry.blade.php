@@ -12,14 +12,14 @@
     <br>
 
     <label>Please select a level of difficulty</label>
-    <select class="form-control">
+    <select class="form-control" name="difficulty">
         <option value="beginner" selected>Beginner</option>
         <option value="intermediate">Intermediate</option>
         <option value="advanced">Advanced</option>
     </select>
 
     <label>Please select the approx. number of servings</label>
-    <select class="form-control">
+    <select class="form-control" name="servings">
         <option value="1">1</option>
         <option value="2" selected>2</option>
         <option value="3">3</option>
@@ -32,7 +32,7 @@
     </select>
 
     <label for="timeToPrep" >Minutes to prepare</label>
-    <input id="timeToPrep" type="text" name="#">
+    <input id="timeToPrep" type="text" name="overall_time">
     <br>
 
     <button class="btn btn-success" id="recipe-submit">Submit</button>

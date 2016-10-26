@@ -54,6 +54,7 @@ class RecipesController extends Controller
         $recipe->servings = $request->servings;
         $recipe->overall_time = $request->overall_time;
         $recipe->summary = $request->summary;
+        $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
         $recipe->user_id = $request->user()->id;
         $recipe->save();
