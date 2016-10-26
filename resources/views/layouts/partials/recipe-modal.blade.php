@@ -1,6 +1,9 @@
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
+
+<button type="button" class="btn btn-primary btn-primary pull-left" data-toggle="modal" data-target="#myModal">
+  View Recipe
+</button>
 
 <!-- Recipe Modal -->
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

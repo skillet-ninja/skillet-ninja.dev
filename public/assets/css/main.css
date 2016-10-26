@@ -55,6 +55,36 @@ body {
 }
 
 
+
+#myCarousel {
+  margin-top: 40px;
+}
+
+.carousel-linked-nav,
+.item img {
+  display: block; 
+  margin: 0 auto;
+}
+
+.carousel-linked-nav a {
+  display: block; 
+  margin: 0 auto;
+  width: 30px;
+}
+
+.pagination>li>a, .pagination>li>span {
+    padding: 0;
+    text-align: center;
+}
+
+
+.carousel-linked-nav {
+  width: 60vw;
+  height: auto;
+  margin-bottom: 20px;   
+}
+
+
 /* Recipe Modal */
 
 .modal-author {
