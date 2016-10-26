@@ -44,16 +44,11 @@ body {
     background-image: none;
 } 
 
-.carousel-inner>.item>a>img, 
-.carousel-inner>.item>img, 
-.img-responsive, 
-.thumbnail a>img, 
-.thumbnail>img, 
-.step-image {
+
+#carouselImg {
     opacity: 0;
     height: auto;
 }
-
 
 
 #myCarousel {
@@ -72,10 +67,10 @@ body {
   width: 30px;
 }
 
-.pagination>li>a, .pagination>li>span {
+/*.pagination>li>a, .pagination>li>span {
     padding: 0;
     text-align: center;
-}
+}*/
 
 
 .carousel-linked-nav {
