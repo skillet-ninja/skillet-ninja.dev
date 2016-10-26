@@ -47,7 +47,18 @@ class RecipesController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, Recipe::$rules);
+
+        $rules = array(
+        'name' => 'required|max:100',
+        'servings' => 'required',
+        'summary'=>'required',
+        'difficulty'=>'required',
+        'overall_time'=>'required',
+        );
+
+        $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
+        $this->validate($request, $rules);
+        $request->session()->forget('ERROR_MESSAGE');
 
         $recipe = new Recipe();
         $recipe->name = $request->name;
