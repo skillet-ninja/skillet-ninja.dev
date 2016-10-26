@@ -49,7 +49,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request);
 
         $rules = array(
         'name' => 'required|max:100',
