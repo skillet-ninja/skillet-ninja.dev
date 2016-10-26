@@ -76,7 +76,7 @@ class RecipesController extends Controller
         // $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
 
 
-        return redirect()->action('RecipesController@show', $recipe->id);
+        return view('recipes/create', ['recipe_id'=>$recipe->id]);
     }
 
     /**
