@@ -20,7 +20,7 @@
             {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
         </div>
     </div>
-</div>
+</div>  <!-- End.Recipe Modal -->
 
 
 <div class="row">

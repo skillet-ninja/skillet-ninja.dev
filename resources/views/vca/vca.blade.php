@@ -7,10 +7,21 @@
 
 @section('content')
 
-    <style>
-        
-    </style>
-    
+  <!-- Recipe Modal -->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Recipe</h4>
+                </div>
+                <div class="recipe-modal"></div>
+                {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
+            </div>
+        </div>
+    </div>  <!-- End.Recipe Modal -->
+
+
     <div class="mic-button">
         <label for="mic">Microphone</label>
         <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
@@ -21,7 +32,11 @@
         <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
     </div>
     
-    @include('layouts.partials.recipe-modal')
+    <div class="pull-right">
+    <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
+        View {{ $recipe->name}}</button>
+    </div>
+    
 
 
     {{-- CAROUSEL --}}
@@ -83,6 +98,15 @@
           var $radio = $(this);
             $('.rating .selected').removeClass('selected');
             $radio.closest('label').addClass('selected');
+        });
+
+        {{-- modal functionality --}}
+        $('.btn-view-recipe').on('click', function(e){
+            var recipeId = e.target.getAttribute("data-recipe");
+            $.get("/recipes/" + recipeId , function(data){
+            $(".recipe-modal").html(data);
+            });
+            $('#myModal').modal('show');
         });
 
     </script>
