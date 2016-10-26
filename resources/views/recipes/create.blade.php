@@ -1,5 +1,7 @@
 @extends ('layouts.master')
 
+@section ('title', 'Recipe Creator')
+
 @section ('content')
     <h1 class="h1 text-center">Recipe Creator</h1>
 
