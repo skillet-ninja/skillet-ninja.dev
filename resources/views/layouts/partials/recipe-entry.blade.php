@@ -1,14 +1,14 @@
 {{-- Initial recipe creation --}}
-<form action="{{ action('RecipesController@store')}}" method="POST" id="" name="recipeCreate">
+<form class="form" action="{{ action('RecipesController@store')}}" method="POST" id="recipeCreate" name="recipeCreate">
     {!! csrf_field() !!}
     <label for="recipeName" >Recipe Name</label>
     <br>
-    <input id="recipeName" type="text" name="recipeName" value="John">
+    <input class="form-control" id="name" type="text" name="name" placeholder="Name your creation" value="{{ old('name') }}">
     <br>
 
     <label for="summary" >Summary</label>
     <br>
-    <input id="summary" type="text" name="#">
+    <textarea class="form-control" id="summary" name="summary" rows="3">{{ old('summary') }}</textarea>
     <br>
 
     <label>Please select a level of difficulty</label>
