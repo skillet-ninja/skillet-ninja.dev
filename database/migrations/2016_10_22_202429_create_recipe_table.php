@@ -21,6 +21,7 @@ class CreateRecipeTable extends Migration
 
             $table->integer('servings')->nullable();
             $table->string('name');
+            $table->string('difficulty')->nullable();
             $table->string('image_url')->nullable();
             $table->integer('overall_time')->nullable();
             $table->timestamps();
