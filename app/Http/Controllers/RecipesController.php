@@ -89,14 +89,18 @@ class RecipesController extends Controller
     {
         if($request->ajax()){
             $recipe = Recipe::findOrFail($id);
-            $data = array ('recipe' => $recipe);
+            $data['recipe'] = $recipe;
+            $data['continue'] = $request->continue;
+            var_dump($request->continue);
             return view ('layouts.partials.recipe-modal')->with($data);
         }
 
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::findOrFail($id);
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
-        // dd($data);
+        $data['continue'] = $request->continue;
+
+
         return view('vca.vca')->with($data);
     }
 

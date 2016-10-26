@@ -16,7 +16,6 @@
                     <h4 class="modal-title" id="myModalLabel">Recipe</h4>
                 </div>
                 <div class="recipe-modal"></div>
-                {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
             </div>
         </div>
     </div>  <!-- End.Recipe Modal -->
@@ -46,7 +45,7 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     @foreach ($steps as $key => $step)
-                        <div  @if ($key === 0) class="item active" @else class="item"  @endif">
+                        <div  @if ($key === 0) class="item active" @else class="item"  @endif>
                             <div class="carouselWrapper recipe-card">
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
                                 <p class="vca-step text-center">{{ $step->step }}</p> 
@@ -103,7 +102,7 @@
         {{-- modal functionality --}}
         $('.btn-view-recipe').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
-            $.get("/recipes/" + recipeId , function(data){
+            $.get("/recipes/" + recipeId + "?continue=true", function(data){
             $(".recipe-modal").html(data);
             });
             $('#myModal').modal('show');

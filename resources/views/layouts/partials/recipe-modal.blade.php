@@ -33,9 +33,10 @@
         </div>            
     </div>
 </div>
-
 <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
-</div>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
+    @if ($continue == false)
+        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
+    @endif
+</div>
