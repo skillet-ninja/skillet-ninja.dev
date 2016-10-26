@@ -98,7 +98,7 @@ class RecipesController extends Controller
             'ingredients' => $ingredients,
             // 'steps' => $steps,
             );
-        return view ('posts.show')->with($data);
+        return view ('posts.layouts.partials.recipe-modalB')->with($data);
     }
 
     /**
