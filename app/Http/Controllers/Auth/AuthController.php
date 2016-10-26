@@ -83,15 +83,17 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
-        $users = User::onlyTrashed()
+        $user = User::onlyTrashed()
                 ->where('email', $request->email)
-                ->get();
+                ->first();
 
-        if ($users!=null) {
+
+        if (!empty($user)) {
             $users = User::onlyTrashed()
             ->where('email', $request->email)
             ->restore();
             return view('welcome');
+
         }else{
 
             $validator = $this->validator($request->all());
