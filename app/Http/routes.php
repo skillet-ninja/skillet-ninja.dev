@@ -40,6 +40,9 @@ Route::get('users/profile', function () {
 Route::resource('recipes','RecipesController');
 Route::resource('users', 'UsersController', ['except' => ['create','store']]);
 
+// Ingredient controller...
+Route::resource('ingredients','IngredientController');
+
 
 get('/profile', function(){
 	return redirect()->action('UsersController@show', Auth::id());

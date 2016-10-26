@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Ingredient;
+use App\Models\Recipe;
 
 class IngredientController extends Controller
 {
@@ -51,9 +52,23 @@ class IngredientController extends Controller
         // $request->session()->forget('ERROR_MESSAGE');
 
         $ingredient = new Ingredient();
-        $ingredient->ingredient = $request->name;
+        $ingredient->ingredient = $request->ingredient;
 
         $ingredient->save();
+
+        $recipeId = $request->recipe_id;
+
+        $amount = $request->amount;
+
+        $recipe = Recipe::find($recipeId);
+
+        $ingredientId = $ingredient->id;
+        
+        $recipe->ingredients()->attach($ingredientId, ['amount' => $amount]);
+
+        return view('recipes/create', ['recipe_id'=>$recipeId, 'ingredient_Id' => $ingredientId]);
+
+
     }
 
     /**
