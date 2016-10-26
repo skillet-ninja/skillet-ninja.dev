@@ -16,7 +16,7 @@
             <h1>Ingredients</h1>
             <ol>
                 @foreach ($recipe->ingredients as $ingredient)
-                <li><a href="#">{{$recipe->amount}}  {{ $ingredient->ingredient }}</a></li>
+                <li><a href="#">{{$ingredient->pivot->amount}} of {{ $ingredient->ingredient }}</a></li>
                 @endforeach
             </ol>
         </div>
@@ -33,6 +33,9 @@
         </div>            
     </div>
 </div>
-@section ('button')
-<a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
-@stop
+
+<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
+</div>
+

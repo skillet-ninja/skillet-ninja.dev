@@ -17,9 +17,7 @@
                 <h4 class="modal-title" id="myModalLabel">Recipe</h4>
             </div>
             <div class="recipe-modal"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
         </div>
     </div>
 </div>
@@ -38,9 +36,8 @@
                     <!-- Button trigger modal -->
                     
                     <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
-                                       
-                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
-
+                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!
+                    </a>
                 </div> <!-- caption -->
             </div> <!-- thumbnail -->
         </div> <!-- recipe -->
