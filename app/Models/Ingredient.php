@@ -11,6 +11,6 @@ class Ingredient extends Model
 
     public function recipes()
     {
-    	return $this->belongsToMany('App\Models\Recipe')->withPivot('amount');
+    	return $this->belongsToMany('App\Models\Recipe')->withPivot('amount')->withTimestamps();
     }
 }

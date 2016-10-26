@@ -18,7 +18,7 @@
         {!! $errors->first('overall_time', '<span class="help-block">:message</span>') !!}
     @endif
 
-    @if(!isset($recipe_id)&&!isset($ingredient_Id))
+    @if(!isset($recipe_id))
         <form class="form" action="{{ action('RecipesController@store')}}" method="POST" id="recipeCreate" name="recipeCreate">
             {!! csrf_field() !!}
             <label for="recipeName" >Recipe Name</label>
