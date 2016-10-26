@@ -27,4 +27,17 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\Models\Tag');
     }
+
+    public function getIngredients()
+    {
+        return Ingredient::where('recipe_id', $this->id);
+    }
+
+    public function getSteps()
+    {
+        return Step::where('recipe_id', $this->id);
+    }
+
+
+
 }
