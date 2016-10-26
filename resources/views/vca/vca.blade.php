@@ -32,7 +32,7 @@
 
             @foreach ($steps as $key => $step)
                 <div  @if ($key === 0) class="item active" @else class="item"  @endif">
-                    <img class="step-image" src="{{ '/assets/img/logo.png' }}" alt="...">
+                    <img class="step-image" id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
                     <div class="carousel-caption">
                         <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
                         <p class="vca-step">{{ $step->step }}</p> 
