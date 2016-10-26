@@ -27,14 +27,6 @@ Route::get('/users/about', function () {
     return view('users.about');
 });
 
-Route::get('/justin', function () {
-    return view('recipes.create');
-});
-
-Route::get('/dross', function () {
-    return view('auth.login');
-});
-
 
 Route::get('auth/logoutView', function () {
     return view('auth.logout');
@@ -44,15 +36,17 @@ Route::get('users/profile', function () {
     return action('UsersController@show' , Auth::id());
 });
 
-
+//Resource controllers....
 Route::resource('recipes','RecipesController');
-
 Route::resource('users', 'UsersController', ['except' => ['create','store']]);
+
 
 get('/profile', function(){
 	return redirect()->action('UsersController@show', Auth::id());
 });
 
+//recipe modal route...
+Route::get('/recipes/{id}', 'RecipesController@modal');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
