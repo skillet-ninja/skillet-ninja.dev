@@ -91,14 +91,11 @@ class RecipesController extends Controller
     public function modal($id)
     {
         $recipe = Recipe::findOrFail($id);
-        $ingredients = $recipe->getIngredients();
-        // $steps = $recipe->getSteps();
+        
         $data = array (
             'recipe' => $recipe,
-            'ingredients' => $ingredients,
-            // 'steps' => $steps,
             );
-        return view ('posts.show')->with($data);
+        return view ('posts.layouts.partials.recipe-modalB')->with($data);
     }
 
     /**

@@ -19,7 +19,8 @@
                     <h3>{{ $recipe->name }}</h3>
                     <p class="line-clamp">{{ $recipe->summary }}</p>
                     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
+                    
+                    <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
                                        
                     @include('layouts.partials.recipe-modalB')
 
