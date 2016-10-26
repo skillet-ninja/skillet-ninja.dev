@@ -45,15 +45,6 @@ get('/profile', function(){
 	return redirect()->action('UsersController@show', Auth::id());
 });
 
-//recipe modal route...
-
-Route::get('/recipes/{recipe_id}', 'RecipesController@modal');
-
-// Route::get('/recipes/{recipe_id?}',function($recipe_id){
-//     $recipe = Recipe::find($recipe_id);
-//     return Response::json($recipe);
-// });
-
 
 // Authentication routes...
 Route::get('auth/check', 'Auth\AuthController@authCheck');

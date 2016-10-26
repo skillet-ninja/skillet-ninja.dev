@@ -8,6 +8,23 @@
 
 @section ('content')
 
+<!-- Recipe Modal -->
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Recipe</h4>
+            </div>
+            <div class="recipe-modal"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
 
     @foreach ($recipes as $recipe)
@@ -22,8 +39,6 @@
                     
                     <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
                                        
-                    @include('layouts.partials.recipe-modalB')
-
                     <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
 
                 </div> <!-- caption -->
@@ -50,10 +65,10 @@
 
         $('.btn-view-recipe').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
-            console.log(recipeId);
-            $.get("/recipes/" + recipeId , function(){
+            $.get("/recipes/" + recipeId , function(data){
+            $(".recipe-modal").html(data);
             });
-            // $('#myModal').modal('show');
+            $('#myModal').modal('show');
         });
 
     </script>
