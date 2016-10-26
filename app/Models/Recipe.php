@@ -13,9 +13,9 @@ class Recipe extends Model
     	return $this->belongsTo('App\User', 'user_id', 'id');
     }
 	
-	public function step()
+	public function steps()
     {
-        return $this->hasMany('App\Models\Step', 'recipe_id')->withPivot('amount')->withTimeStamps();
+        return $this->hasMany('App\Models\Step', 'recipe_id');
     }
 
     public function ingredients()
@@ -30,14 +30,14 @@ class Recipe extends Model
 
     public function getIngredients()
     {
-        return Ingredient::where('recipe_id', $this->id);
+
+        return Ingredient::where('recipe_id', $this->id)->all();
     }
 
     public function getSteps()
     {
-        return Step::where('recipe_id', $this->id);
+
+        return Step::where('recipe_id', $this->id)->all();
     }
-
-
 
 }

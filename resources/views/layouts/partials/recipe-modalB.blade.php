@@ -8,7 +8,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Recipe Summary</h4>
+                <h4 class="modal-title" id="myModalLabel">Recipe</h4>
             </div>
             <div class="modal-body">
             
@@ -17,10 +17,10 @@
                 <h2 class="modal-name">{{ $recipe->name }}</h2>
             </div>
 
-            <h4 class="modal-author">Submitted by Creator</h4>
+            <h4 class="modal-author">Submitted by <strong>{{ $recipe->user->name}}</strong></h4>
 
             <dl>
-                <dt>Summary</dt>
+                <dt>Description</dt>
                 <dd>{{ $recipe->summary }}</dd>
             </dl>
 
@@ -28,11 +28,9 @@
                 <div class="col-md-3 rounded-list">
                     <h1>Ingredients</h1>
                     <ol>
-                        <li><a href="#">Milk</a></li>
-                        <li><a href="#">Bread</a></li>
-                        <li><a href="#">Eggs</a></li>
-                        <li><a href="#">Salt</a></li>
-                        <li><a href="#">Sugar</a></li>
+                        @foreach ($recipe->ingredients as $ingredient)
+                        <li><a href="#">{{ $ingredient->ingredient }}</a></li>
+                        @endforeach
                     </ol>
                 </div>
 
@@ -40,8 +38,8 @@
                 <div class="col-md-8 rounded-list">
                     <h1>Steps</h1>
                     <ol>
-                        @foreach ($steps as $step)
-                            <li><a href="#">{{ $step }}</a></li>
+                        @foreach ($recipe->steps as $step)
+                            <li><a href="#">{{ $step->step }}</a></li>
                         @endforeach
                     </ol>
         

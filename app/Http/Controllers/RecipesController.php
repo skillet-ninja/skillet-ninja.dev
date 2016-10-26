@@ -88,11 +88,11 @@ class RecipesController extends Controller
     {
         $recipe = Recipe::findOrFail($id);
         $ingredients = $recipe->getIngredients();
-        $steps = $recipe->getSteps();
+        // $steps = $recipe->getSteps();
         $data = array (
             'recipe' => $recipe,
             'ingredients' => $ingredients,
-            'steps' => $steps
+            // 'steps' => $steps,
             );
         return view ('posts.show')->with($data);
     }

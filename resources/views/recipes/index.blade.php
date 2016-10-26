@@ -49,10 +49,7 @@
 
         $('.btn-view-recipe').on('click', function(e){
            $recipeId = e.target.getAttribute("data-recipe");
-           console.log($recipeId);
-
             $('#myModal').modal('show');
-
         });
 
     </script>
