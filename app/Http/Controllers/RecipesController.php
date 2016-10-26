@@ -83,6 +83,25 @@ class RecipesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function modal($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $ingredients = $recipe->getIngredients();
+        // $steps = $recipe->getSteps();
+        $data = array (
+            'recipe' => $recipe,
+            'ingredients' => $ingredients,
+            // 'steps' => $steps,
+            );
+        return view ('posts.show')->with($data);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

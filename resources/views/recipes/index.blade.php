@@ -19,9 +19,10 @@
                     <h3>{{ $recipe->name }}</h3>
                     <p class="line-clamp">{{ $recipe->summary }}</p>
                                        
-                    @include('layouts.partials.recipe-modal')
-                    
+                    @include('layouts.partials.recipe-modalB')
+
                     <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
+
                 </div> <!-- caption -->
             </div> <!-- thumbnail -->
         </div> <!-- recipe -->
@@ -42,6 +43,11 @@
           var $radio = $(this);
             $('.rating .selected').removeClass('selected');
             $radio.closest('label').addClass('selected');
+        });
+
+        $('.btn-view-recipe').on('click', function(e){
+           $recipeId = e.target.getAttribute("data-recipe");
+            $('#myModal').modal('show');
         });
 
     </script>
