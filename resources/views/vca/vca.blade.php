@@ -21,52 +21,54 @@
         <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
     </div>
     
-    {{-- /assets/img/logo.png THIS WAS THE ORIGINAL IMAGE --}}
+    @include('layouts.partials.recipe-modal')
+
 
     {{-- CAROUSEL --}}
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-
-            @foreach ($steps as $key => $step)
-                <div  @if ($key === 0) class="item active" @else class="item"  @endif">
-                    <img class="step-image" id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
-                    <div class="carousel-caption">
-                        <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
-                        <p class="vca-step">{{ $step->step }}</p> 
-                    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    @foreach ($steps as $key => $step)
+                        <div  @if ($key === 0) class="item active" @else class="item"  @endif">
+                            <div class="carouselWrapper recipe-card">
+                                <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
+                                <p class="vca-step text-center">{{ $step->step }}</p> 
+                                <button class="btn btn-primary">View Step</button>
+                                <br><br>
+                                <img id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
-            
+            </div>
         </div>
 
-      <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
 
-        <!-- Indicators -->
-        <ol class="carousel-linked-nav pagination">
-
-            @foreach ($steps as $key => $step)
-                <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
-            @endforeach
-        </ol>
+    </div>
+    <div>
+        <div class="row">
+            <!-- Indicators -->
+            <div class="col-md-offset-2 col-md-8 carouselPagination">
+                <ol class="carousel-linked-nav pagination">
+                    @foreach ($steps as $key => $step)
+                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
+                    @endforeach
+                </ol>
+            </div>
+        </div>
     </div>
 
-    <br>
-
-   @include('layouts.partials.recipe-modal')
-    <button class="btn btn-primary pull-right">View Video</button>
-
-    
 
 @stop
 
@@ -87,11 +89,6 @@
 
     {{-- http://jsfiddle.net/juddlyon/Q2TYv/10/ --}}
     <script>
-        console.log("does this work");
-        // invoke the carousel
-        $('#myCarousel').carousel({
-          interval: 3000
-        });
 
         /* SLIDE ON CLICK */ 
 
