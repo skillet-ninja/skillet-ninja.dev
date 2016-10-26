@@ -13,3 +13,4 @@ class Step extends Model
     	return $this->belongsTo('App\Models\Recipe', 'recipe_id', 'id');
     }
 }
+

@@ -1,6 +1,6 @@
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-primary" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-primary pull-left" data-toggle="modal" data-target="#myModal">
   View Recipe
 </button>
 

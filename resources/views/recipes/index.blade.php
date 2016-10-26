@@ -21,12 +21,7 @@
                                        
                     @include('layouts.partials.recipe-modal')
                     
-                    {{-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
-                    data-target="{{ action('RecipesController@show', $recipe->id) }}">View Recipe</button> --}}
-                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" 
-                    data-target="#myModal">SKILLET!</button>
-                    {{-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" 
-                    data-target="{{ action('VcaController@cook', $recipe->id) }}">Start Cooking</button> --}}
+                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!</a>
                 </div> <!-- caption -->
             </div> <!-- thumbnail -->
         </div> <!-- recipe -->

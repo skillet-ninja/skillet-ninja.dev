@@ -75,7 +75,11 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        // 
+        $recipe = Recipe::find($id);
+        $data['recipe'] = $recipe;
+        $data['steps'] = $recipe->getSteps($id);
+        // dd($data);
+        return view('vca.vca')->with($data);
     }
 
     /**

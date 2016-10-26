@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+
 class Recipe extends Model
 {
     protected $table = 'recipes';
@@ -26,5 +28,10 @@ class Recipe extends Model
 	public function tags()
     {
         return $this->belongsToMany('App\Models\Tag');
+    }
+
+    public function getSteps($id) {
+        // return Step::where('recipe_id', $this->id);
+        return DB::table('steps')->where('recipe_id', $id)->orderBy('created_at', 'asc')->get();
     }
 }
