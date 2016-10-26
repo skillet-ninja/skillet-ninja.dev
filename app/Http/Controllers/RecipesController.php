@@ -73,8 +73,14 @@ class RecipesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+        if($request->ajax()){
+            $recipe = Recipe::findOrFail($id);
+            $data = array ('recipe' => $recipe);
+            return view ('layouts.partials.recipe-modal')->with($data);
+        }
+
         $recipe = Recipe::find($id);
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
@@ -82,21 +88,7 @@ class RecipesController extends Controller
         return view('vca.vca')->with($data);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function modal($id)
-    {
-        $recipe = Recipe::findOrFail($id);
-        
-        $data = array (
-            'recipe' => $recipe,
-            );
-        return view ('posts.layouts.partials.recipe-modalB')->with($data);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
