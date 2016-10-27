@@ -158,6 +158,14 @@
             });
 
 
+            $("body").keydown(function(e) {
+                if (e.keyCode == 37) { // left
+                    $("#prev").click(); 
+                } else if (e.keyCode == 39) { // right
+                    $("#next").click(); 
+                }    
+            });
+      
 
 
             // GREETING
