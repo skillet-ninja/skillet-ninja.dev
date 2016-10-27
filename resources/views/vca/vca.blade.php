@@ -48,7 +48,9 @@
                         <div  @if ($key === 0) class="item active" @else class="item"  @endif>
                             <div class="carouselWrapper recipe-card">
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
-                                <p class="vca-step text-center">{{ $step->step }}</p> 
+                                {{-- Voice --}}
+
+                                <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
                                 <button class="btn btn-primary">View Step</button>
                                 <br><br>
                                 <img id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
@@ -59,12 +61,13 @@
             </div>
         </div>
 
+
         <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" id="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" id="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -88,7 +91,89 @@
 
 
 
+
 @section('bottom-scripts')
+
+    {{-- Narration code using jQuery --}}
+    <script>
+        'use strict'
+        
+        $(document).ready(function() {
+
+            // Total recipe steps
+            var totalSteps = {{ count($steps) }};
+
+            // Current recipe step
+            var step = 1;
+            
+            // Filters step number to cycle up and down through total steps
+            function calculateStep(stepperValue) {
+                if (stepperValue == 0) {
+                    step = totalSteps;
+                } else {
+                    step = stepperValue % totalSteps; 
+                }
+                return step;
+            }
+
+            // Says input
+            function sayIt(input) {
+                if (document.getElementById('narration').checked) {
+                    var msg = new SpeechSynthesisUtterance(input);
+                    msg.rate = .9;
+                    window.speechSynthesis.speak(msg);
+                }
+            }
+            
+            // Click event for left carousel button click
+            $('#prev').click(function() {
+                step -= 1;
+                step = calculateStep(step);
+                // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step -1].innerHTML);
+            });
+
+            // Click event for right carousel button click
+            $('#next').click(function() {
+                step += 1;
+                step = calculateStep(step);
+                 // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step -1].innerHTML);
+            });
+
+
+
+
+            // GREETING
+            var welcome = new SpeechSynthesisUtterance('Welcome to Skillet Ninja.');
+            welcome.rate = .9;
+            window.speechSynthesis.speak(welcome);
+
+            // CURRENT STEP NUMBER
+            var msg = new SpeechSynthesisUtterance($('.vca-step-header')[0].innerHTML);
+            msg.rate = .9;
+            window.speechSynthesis.speak(msg);
+
+            // CURRENT STEP INSTRUCTION
+            var msg = new SpeechSynthesisUtterance($('.vca-step')[0].innerHTML);
+            msg.rate = .9;
+            window.speechSynthesis.speak(msg);
+
+
+            console.log();
+
+           
+            
+   
+
+    
+        });
+    </script>
+
 
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>

@@ -95,7 +95,7 @@ class RecipesController extends Controller
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
         $data['continue'] = $request->continue;
-
+        // dd(count($data['steps']));
 
         return view('vca.vca')->with($data);
     }
