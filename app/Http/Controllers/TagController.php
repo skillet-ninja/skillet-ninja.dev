@@ -40,19 +40,27 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = Tag::firstOrNew(['tag'=>$request->tag]);
-        $tag->tag = $request->tag;
-        $tag->save();
+        $tags = explode(',', $request->tag);
+        // dd($tags);
 
         $recipeId = $request->recipe_id;
 
+        foreach ($tags as $tagName) {
 
-        $recipe = Recipe::find($recipeId);
+            $tag = Tag::firstOrNew(['tag'=>$tagName]);
+            $tag->tag = $tagName;
+            $tag->save();
+
+            $recipe = Recipe::find($recipeId);
+            $tagId = $tag->id;
+            $recipe->tags()->attach($tagId);
+        }
 
 
-        $tagId = $tag->id;
-        
-        $recipe->tags()->attach($tagId);
+
+
+
+
 
         $ingredientsDisplayed = DB::table('ingredients')
         ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
