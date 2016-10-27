@@ -41,20 +41,19 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-        'ingredient' => 'required|max:100',
-        'amount' => 'required',
-        );
+        // $rules = array(
+        // 'ingredient' => 'required|max:100',
+        // 'amount' => 'required',
+        // );
 
-        $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
-        $this->validate($request, $rules);
-        $request->session()->forget('ERROR_MESSAGE');
+        // $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
+        // $this->validate($request, $rules);
+        // $request->session()->forget('ERROR_MESSAGE');
 
 
 
-        $ingredient = new Ingredient();
+        $ingredient = Ingredient::firstOrNew(['ingredient'=>$request->ingredient]);
         $ingredient->ingredient = $request->ingredient;
-
         $ingredient->save();
 
         $recipeId = $request->recipe_id;
