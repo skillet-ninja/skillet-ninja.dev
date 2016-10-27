@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Ingredient;
+use App\Models\Step;
 use App\Models\Recipe;
 use DB;
 
-class IngredientController extends Controller
+class StepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,44 +41,35 @@ class IngredientController extends Controller
     public function store(Request $request)
     {
         // $rules = array(
-        // 'ingredient' => 'required|max:100',
-        // 'amount' => 'required',
+        // 'title' => 'required|max:100',
+        // 'url'   => 'required|url',
+        // 'content'=>'required',
         // );
 
-        // $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
+        // $request->session()->flash('ERROR_MESSAGE', 'Post was not saved.');
         // $this->validate($request, $rules);
         // $request->session()->forget('ERROR_MESSAGE');
 
-
-
-        $ingredient = Ingredient::firstOrNew(['ingredient'=>$request->ingredient]);
-        $ingredient->ingredient = $request->ingredient;
-        $ingredient->save();
-
-        $recipeId = $request->recipe_id;
-
-        $amount = $request->amount;
-
-        $recipe = Recipe::find($recipeId);
-
-        $ingredientId = $ingredient->id;
-        
-        $recipe->ingredients()->attach($ingredientId, ['amount' => $amount]);
+        $step = new Step;
+        $step->recipe_id = $request->recipe_id;
+        $step->step = $request->step;
+        $step->image_url = $request->image_url;
+        $step->video_url = $request->video_url;
+        $step->video_url = $request->time;
+        $step->save();
 
         $ingredientsDisplayed = DB::table('ingredients')
         ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
-        ->where('recipe_id', $recipeId)
+        ->where('recipe_id', $request->recipe_id)
         ->get();
-
+        
         $stepsDisplayed = DB::table('steps')
         ->where('recipe_id', $request->recipe_id)
         ->get();
 
-        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed];
+        $data = ['recipe_id' => $request->recipe_id, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed];
 
         return view('recipes/create')->with($data);
-
-
     }
 
     /**
