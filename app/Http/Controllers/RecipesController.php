@@ -17,15 +17,29 @@ class RecipesController extends Controller
      */
     public function index(Request $request)
     {
-        $recipesPerPage = 9;
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+        }else {
+            $sort = 'created_at';
+        }
 
-        $recipes = Recipe::paginate($recipesPerPage);
+        if(isset($request->search_recipe)){
+            $searchTerm = $request->search_recipe;
+            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(10);
+        }else{
+            $recipes = Recipe::paginate(10);
+            $searchTerm = $request->search_recipe;
+        }
 
-        $data = array (
-            'recipes'=>$recipes,
-            );
+        $data['searchTerm'] = $searchTerm;
 
-        return view ('recipes.index')->with($data);
+
+        $data['recipes'] = $recipes;
+
+        
+        return view('recipes.index', $data);
 
     }
 
@@ -68,6 +82,7 @@ class RecipesController extends Controller
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
         $recipe->user_id = $request->user()->id;
+        $recipe->notes = $request->notes;
         $recipe->save();
 
         $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
@@ -95,7 +110,7 @@ class RecipesController extends Controller
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
         $data['continue'] = $request->continue;
-
+        // dd(count($data['steps']));
 
         return view('vca.vca')->with($data);
     }

@@ -32,8 +32,8 @@
     </div>
     
     <div class="pull-right">
-    <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
-        View {{ $recipe->name}}</button>
+    <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
+        View Details</button>
     </div>
     
 
@@ -48,8 +48,9 @@
                         <div  @if ($key === 0) class="item active" @else class="item"  @endif>
                             <div class="carouselWrapper recipe-card">
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
-                                <p class="vca-step text-center">{{ $step->step }}</p> 
-                                <button class="btn btn-primary">View Step</button>
+                                {{-- Voice --}}
+                                <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
+                                <button id="viewStep{{ $key + 1 }}" class="btn btn-primary">View Step</button>
                                 <br><br>
                                 <img id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
                             </div>
@@ -59,12 +60,13 @@
             </div>
         </div>
 
+
         <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" id="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" id="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -76,7 +78,7 @@
             <div class="col-md-offset-2 col-md-8 carouselPagination">
                 <ol class="carousel-linked-nav pagination">
                     @foreach ($steps as $key => $step)
-                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
+                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a class="stepPageButton" id="step{{ $key + 1 }}" href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
                     @endforeach
                 </ol>
             </div>
@@ -88,8 +90,156 @@
 
 
 
-@section('bottom-scripts')
 
+@section('bottom-scripts')
+    {{-- Annayang JS for voice control --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    
+    <script>
+        
+
+    </script>
+
+    {{-- Narration code using jQuery --}}
+    <script>
+        'use strict'
+        
+        $(document).ready(function() {
+
+            // Total recipe steps
+            var totalSteps = {{ count($steps) }};
+
+            // Current recipe step
+            var step = 1;
+            
+            // Filters step number to cycle up and down through total steps
+            function calculateStep(stepperValue) {
+                if (stepperValue == 0) {
+                    step = totalSteps;
+                } else {
+                    step = stepperValue % totalSteps;
+                }
+                return step;
+            }
+
+            // Says input
+            function sayIt(input) {
+                if (document.getElementById('narration').checked) {
+                    var msg = new SpeechSynthesisUtterance(input);
+                    msg.rate = .9;
+                    window.speechSynthesis.speak(msg);
+                }
+            }
+            
+            // Click event for left carousel button click
+            $('#prev').click(function() {
+                step -= 1;
+                step = calculateStep(step);
+                // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step -1].innerHTML);
+            });
+
+            // Click event for right carousel button click
+            $('#next').click(function() {
+                step += 1;
+                step = calculateStep(step);
+                 // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step - 1].innerHTML);
+            });
+
+            $('.stepPageButton').click(function() {
+                var thisId = ($(this).attr('id'));
+                step = Number(thisId.substring(4));
+                 // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step -1].innerHTML);
+            });
+
+            $("body").keydown(function(e) {
+                if (e.keyCode == 37) { // left
+                    $("#prev").click();
+                } else if (e.keyCode == 39) { // right
+                    $("#next").click();
+                }    
+            });
+
+            // GREETING
+            var welcome = new SpeechSynthesisUtterance('Welcome to Skillet Ninja.');
+            welcome.rate = .9;
+            window.speechSynthesis.speak(welcome);
+
+            // CURRENT STEP NUMBER
+            var msg = new SpeechSynthesisUtterance($('.vca-step-header')[0].innerHTML);
+            msg.rate = .9;
+            window.speechSynthesis.speak(msg);
+
+            // CURRENT STEP INSTRUCTION
+            var msg = new SpeechSynthesisUtterance($('.vca-step')[0].innerHTML);
+            msg.rate = .9;
+            window.speechSynthesis.speak(msg);
+
+
+            {{-- Voice command functionality --}}
+            if (document.getElementById('mic').checked) {
+                if (annyang) {
+                    // Let's define our first command. First the text we expect, and then the function it should call
+                    var commands = {
+                        'Next': function() {
+                            $("#next").click();
+                        },
+                        'Back': function() {
+                            $("#prev").click();
+                        },
+                        @foreach ($steps as $key => $step)
+                            'Step {{ $key + 1 }}': function() {
+                                $('#step{{ $key + 1}}').click();
+                            },
+                        @endforeach
+                        'Details': function() {
+                            $('#details').click();
+                        },
+                        'Close': function() {
+                            $('.close').click();
+                        },
+                        @foreach ($steps as $key => $step)
+                            'View Step {{ $key + 1 }}': function() {
+                                $('#viewStep{{ $key + 1}}').click();
+                            },
+                        @endforeach
+                        'Start': function() {
+                            $("#prev").click();
+                        },
+                        'Stop': function() {
+                        },
+                        'Repeat Step': function() {
+                            $("#step" + step).click();
+                        }
+                    };
+
+                    // Add our commands to annyang
+                    annyang.addCommands(commands);
+
+                    // Start listening. You can call this here, or attach this call to an event, button, etc.
+                    annyang.start();
+                }
+
+            }
+
+
+
+
+
+
+
+
+    
+        });
+    </script>
     <script>
         
         $('.rating input').change(function () {
