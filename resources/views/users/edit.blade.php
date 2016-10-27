@@ -26,4 +26,10 @@
         <br>
         <button class="btn btn-primary">Submit</button>
     </form>
+
+    <form action="{{action('UsersController@destroy', $user->id)}}" method="POST">
+                {!! csrf_field() !!}
+                {!! method_field('DELETE')!!}
+                <button type="submit" class="btn btn-danger" >Delete Account</button>
+            </form>
 @stop
