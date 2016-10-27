@@ -12,6 +12,7 @@ body {
 
 .site-content {
   flex: 1;
+  min-height: 83vh;
 }
 
 /* VCA */
