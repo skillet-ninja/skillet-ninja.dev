@@ -79,7 +79,7 @@
             <div class="col-md-offset-2 col-md-8 carouselPagination">
                 <ol class="carousel-linked-nav pagination">
                     @foreach ($steps as $key => $step)
-                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
+                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a class="stepPageButton" id="step{{ $key + 1 }}" href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
                     @endforeach
                 </ol>
             </div>
@@ -139,6 +139,18 @@
             $('#next').click(function() {
                 step += 1;
                 step = calculateStep(step);
+                 // Say step number
+                sayIt('Step' + step);
+                // Say step instruction
+                sayIt($('.vca-step')[step -1].innerHTML);
+            });
+
+
+
+
+            $('.stepPageButton').click(function() {
+                var thisId = ($(this).attr('id'));
+                step = thisId.substring(4);
                  // Say step number
                 sayIt('Step' + step);
                 // Say step instruction
