@@ -43,7 +43,7 @@
 
 </div>  <!-- row -->
 
-{!! $recipes->render() !!}
+{!! $recipes->appends(['searchTerm' => $searchTerm])->render() !!}
 
 @stop
 
