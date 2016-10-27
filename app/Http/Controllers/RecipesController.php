@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Recipe;
+use DB;
 
 class RecipesController extends Controller
 {
@@ -27,9 +28,9 @@ class RecipesController extends Controller
             $searchTerm = $request->search_recipe;
             $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
             ->orderBy($sort,'desc')
-            ->paginate(10);
+            ->paginate(9);
         }else{
-            $recipes = Recipe::paginate(10);
+            $recipes = Recipe::paginate(9);
             $searchTerm = $request->search_recipe;
         }
 
