@@ -46,6 +46,9 @@ Route::resource('ingredients','IngredientController');
 // Step Controller...
 Route::resource('steps', 'StepController');
 
+// Tag Controller...
+Route::resource('tags', 'TagController');
+
 
 get('/profile', function(){
 	return redirect()->action('UsersController@show', Auth::id());
