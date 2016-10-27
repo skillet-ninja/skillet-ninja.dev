@@ -68,6 +68,7 @@ class RecipesController extends Controller
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
         $recipe->user_id = $request->user()->id;
+        $recipe->notes = $request->notes;
         $recipe->save();
 
         $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
