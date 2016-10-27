@@ -58,16 +58,23 @@ class StepController extends Controller
         $step->video_url = $request->time;
         $step->save();
 
+        $recipeId = $request->recipe_id;
+
         $ingredientsDisplayed = DB::table('ingredients')
         ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
-        ->where('recipe_id', $request->recipe_id)
-        ->get();
-        
-        $stepsDisplayed = DB::table('steps')
-        ->where('recipe_id', $request->recipe_id)
+        ->where('recipe_id', $recipeId)
         ->get();
 
-        $data = ['recipe_id' => $request->recipe_id, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed];
+        $stepsDisplayed = DB::table('steps')
+        ->where('recipe_id', $recipeId)
+        ->get();
+
+        $tagsDisplayed = DB::table('tags')
+        ->join('recipe_tag', 'tags.id', '=', 'recipe_tag.tag_id')
+        ->where('recipe_id', $recipeId)
+        ->get();
+
+        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed, 'tagsDisplayed' => $tagsDisplayed];
 
         return view('recipes/create')->with($data);
     }

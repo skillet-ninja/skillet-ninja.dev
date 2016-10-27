@@ -30,18 +30,29 @@
         <input id="recipe-name" type="text" name="image_url">
 
         <button class="btn btn-primary">Add Step</button>
+
+    </form>
+
+    @if(isset($tagsDisplayed))
+        @foreach($tagsDisplayed as $tag)
+
+
+            <p>{{ $tag->tag }}<p>
+
+        @endforeach
+    @endif
+
+    <form class="form" action="{{ action('TagController@store')}}" method="POST" id="tagCreate" name="tagCreate">
+    {!! csrf_field() !!}
+        <input type="hidden" name="recipe_id" value="{{ $recipe_id }}">
         <br>
-        
         <label>Keywords</label>
         <br>
-        <textarea placeholder="Please enter any relevant keywords seperated by commas, e.g. 'vegan, savory, etc.' "></textarea>
+        <textarea placeholder="Please enter any relevant keywords seperated by commas, e.g. 'vegan, savory, etc.' " name="tag"></textarea>
         <br>
-
-        <label>Additional notes</label>
+        <button class="btn btn-primary">Add Tag</button>
         <br>
-        <textarea placeholder="Please enter any additional information."></textarea>
-        <br>
-    </form>
+    </form> 
 
     <a href="/home" class="btn btn-primary">Done</a>
 
