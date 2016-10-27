@@ -33,8 +33,8 @@
     <div class="col-md-4">
         <h3>My Recipes:</h3>
     </div>
-
 </div>  <!-- row -->
+
 <div class="row">
     @if (empty($user->recipes->items))
         <h1>Add some recipes to get started</h1>

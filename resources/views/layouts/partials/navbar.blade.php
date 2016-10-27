@@ -34,8 +34,8 @@
             @else
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-                <li><a href="{{ '/users/about' }}">About</a></li> 
             @endif
+            <li><a href="{{ '/users/about' }}">About</a></li> 
         </ul>
 
     </div><!-- /.navbar-collapse -->
