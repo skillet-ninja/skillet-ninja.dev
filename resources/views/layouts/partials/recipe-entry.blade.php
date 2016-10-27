@@ -55,6 +55,11 @@
             <input id="timeToPrep" type="text" name="overall_time">
             <br>
 
+                    <label>Additional notes</label>
+        <br>
+        <textarea placeholder="Please enter any additional information." name="notes"></textarea>
+        <br>
+
             <button class="btn btn-success" id="recipe-submit">Submit</button>
             <button class="btn btn-danger">Cancel</button>
         </form>

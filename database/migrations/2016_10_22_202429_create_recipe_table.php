@@ -15,6 +15,7 @@ class CreateRecipeTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
             $table->longtext('summary')->nullable();
+            $table->longtext('notes')->nullable();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
