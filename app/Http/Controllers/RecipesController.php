@@ -70,10 +70,7 @@ class RecipesController extends Controller
         $recipe->user_id = $request->user()->id;
         $recipe->save();
 
-
-        // Log::info('Inputs for create'.http_build_query($request->input()));
-
-        // $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
+        $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
 
 
         return view('recipes/create', ['recipe_id'=>$recipe->id]);
@@ -91,7 +88,6 @@ class RecipesController extends Controller
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
             $data['continue'] = $request->continue;
-            var_dump($request->continue);
             return view ('layouts.partials.recipe-modal')->with($data);
         }
 

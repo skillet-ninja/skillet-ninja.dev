@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 
+use DB;
+
 class IngredientController extends Controller
 {
     /**
@@ -40,20 +42,18 @@ class IngredientController extends Controller
     public function store(Request $request)
     {
         // $rules = array(
-        // 'name' => 'required|max:100',
-        // 'servings' => 'required',
-        // 'summary'=>'required',
-        // 'difficulty'=>'required',
-        // 'overall_time'=>'required',
+        // 'ingredient' => 'required|max:100',
+        // 'amount' => 'required',
         // );
 
         // $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
         // $this->validate($request, $rules);
         // $request->session()->forget('ERROR_MESSAGE');
 
-        $ingredient = new Ingredient();
-        $ingredient->ingredient = $request->ingredient;
 
+
+        $ingredient = Ingredient::firstOrNew(['ingredient'=>$request->ingredient]);
+        $ingredient->ingredient = $request->ingredient;
         $ingredient->save();
 
         $recipeId = $request->recipe_id;
@@ -66,7 +66,14 @@ class IngredientController extends Controller
         
         $recipe->ingredients()->attach($ingredientId, ['amount' => $amount]);
 
-        return view('recipes/create', ['recipe_id'=>$recipeId, 'ingredient_Id' => $ingredientId]);
+        $ingredientsDisplayed = DB::table('ingredients')
+        ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
+        ->where('recipe_id', $recipeId)
+        ->get();
+
+        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed];
+
+        return view('recipes/create')->with($data);
 
 
     }

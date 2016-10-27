@@ -1,5 +1,5 @@
 
-@if(isset($recipe_id)&&isset($ingredient_Id))
+@if(isset($recipe_id))
     <form method="" action="">
         {{-- New Step Partial --}}
         <h3>Steps</h3>
