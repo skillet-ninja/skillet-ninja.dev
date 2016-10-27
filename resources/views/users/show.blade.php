@@ -26,10 +26,9 @@
         </div>
         <div class="col-md-4">
             <i class="fa fa-user fa-5x pull-right" aria-hidden="true"></i>
-            <a href="{{ action('UsersController@update', $user->id) }}" class="btn btn-primary btn-success btn-edit-account pull-right"><i class="fa fa-pencil-square-o pull-right" aria-hidden="true"></i>  Edit Profile</a>
+            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account pull-right"><i class="fa fa-pencil-square-o pull-right" aria-hidden="true"></i>  Edit Profile</a>
         </div><br>
     </div>
-</div>
 <div class="row">
     <div class="col-md-4">
         <h3>My Recipes:</h3>
@@ -61,6 +60,7 @@
         </div> <!-- recipe -->
     @endforeach
 </div>  <!-- row -->
+</div>
 
 @stop
 
