@@ -36,9 +36,9 @@ class RecipesController extends Controller
             $searchDifficulty = null;
         }
 
-
         if ($searchParameter == 'tag' && $searchDifficulty == null) {
-            $searchTerm = $request->search_recipe;
+
+            $searchTerm = $request->searchTerm;
             $sort = 'recipes.created_at';
             $recipes = DB::table('recipes')
             ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
@@ -47,7 +47,7 @@ class RecipesController extends Controller
             ->orderBy($sort,'desc')
             ->paginate(9);
         }elseif ($searchParameter == 'tag' && $searchDifficulty != null) {
-            $searchTerm = $request->search_recipe;
+            $searchTerm = $request->searchTerm;
             $sort = 'recipes.created_at';
             $recipes = DB::table('recipes')
             ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
@@ -57,19 +57,19 @@ class RecipesController extends Controller
             ->orderBy($sort,'desc')
             ->paginate(9);
         }else if($searchParameter=='name' && $searchDifficulty == null){
-            $searchTerm = $request->search_recipe;
+            $searchTerm = $request->searchTerm;
             $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
             ->orderBy($sort,'desc')
             ->paginate(9);
         }elseif ($searchParameter=='name' && $searchDifficulty != null) {
-            $searchTerm = $request->search_recipe;
+            $searchTerm = $request->searchTerm;
             $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
             ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
             ->orderBy($sort,'desc')
             ->paginate(9);
         }else{
             $recipes = Recipe::paginate(9);
-            $searchTerm = $request->search_recipe;
+            $searchTerm = $request->searchTerm;
         }
 
         $data['searchTerm'] = $searchTerm;
