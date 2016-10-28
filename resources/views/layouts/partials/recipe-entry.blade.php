@@ -49,4 +49,3 @@
             <a href="{{ action('UsersController@show' , Auth::id()) }}" class="btn btn-danger pull-right">Cancel</a>
         </form>
     @endif
->>>>>>> master
