@@ -11,6 +11,7 @@ use DB;
 
 class RecipesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,64 +19,19 @@ class RecipesController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('sort')) {
-            $sort = $request->sort;
-        }else {
-            $sort = 'created_at';
+        
+        $recipesPerPage = 9;
+
+        if (isset($request->searchTerm))
+        {
+            $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate(9);
+
+        } else
+        {
+            $recipes = Recipe::paginate($recipesPerPage);
         }
 
-        if ($request->has('searchParameter')) {
-            $searchParameter = $request->searchParameter;
-        }else{
-            $searchParameter = null;
-        }
-
-        if ($request->searchDifficulty != 'null') {
-            $searchDifficulty = $request->searchDifficulty;
-        }else{
-            $searchDifficulty = null;
-        }
-
-        if ($searchParameter == 'tag' && $searchDifficulty == null) {
-
-            $searchTerm = $request->searchTerm;
-            $sort = 'recipes.created_at';
-            $recipes = DB::table('recipes')
-            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
-            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
-            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
-            ->orderBy($sort,'desc')
-            ->paginate(9);
-        }elseif ($searchParameter == 'tag' && $searchDifficulty != null) {
-            $searchTerm = $request->searchTerm;
-            $sort = 'recipes.created_at';
-            $recipes = DB::table('recipes')
-            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
-            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
-            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
-            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
-            ->orderBy($sort,'desc')
-            ->paginate(9);
-        }else if($searchParameter=='name' && $searchDifficulty == null){
-            $searchTerm = $request->searchTerm;
-            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
-            ->orderBy($sort,'desc')
-            ->paginate(9);
-        }elseif ($searchParameter=='name' && $searchDifficulty != null) {
-            $searchTerm = $request->searchTerm;
-            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
-            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
-            ->orderBy($sort,'desc')
-            ->paginate(9);
-        }else{
-            $recipes = Recipe::paginate(9);
-            $searchTerm = $request->searchTerm;
-        }
-
-        $data['searchTerm'] = $searchTerm;
-        $data['searchParameter'] = $searchParameter;
-
-
+        $data['searchTerm'] = $request->searchTerm;
         $data['recipes'] = $recipes;
 
         

@@ -36,4 +36,9 @@ class Recipe extends Model
         return DB::table('steps')->where('recipe_id', $id)->orderBy('created_at', 'asc')->get();
     }
 
+    public static function getSearchTerm($searchTerm)
+    {
+        return self::where('name','LIKE','%' . $searchTerm .'%');
+    }
+
 }
