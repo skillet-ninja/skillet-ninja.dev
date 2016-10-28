@@ -24,9 +24,47 @@ class RecipesController extends Controller
             $sort = 'created_at';
         }
 
-        if(isset($request->search_recipe)){
+        if ($request->has('searchParameter')) {
+            $searchParameter = $request->searchParameter;
+        }else{
+            $searchParameter = null;
+        }
+
+        if ($request->searchDifficulty != 'null') {
+            $searchDifficulty = $request->searchDifficulty;
+        }else{
+            $searchDifficulty = null;
+        }
+
+
+        if ($searchParameter == 'tag' && $searchDifficulty == null) {
+            $searchTerm = $request->search_recipe;
+            $sort = 'recipes.created_at';
+            $recipes = DB::table('recipes')
+            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
+            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
+            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }elseif ($searchParameter == 'tag' && $searchDifficulty != null) {
+            $searchTerm = $request->search_recipe;
+            $sort = 'recipes.created_at';
+            $recipes = DB::table('recipes')
+            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
+            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
+            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
+            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }else if($searchParameter=='name' && $searchDifficulty == null){
             $searchTerm = $request->search_recipe;
             $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }elseif ($searchParameter=='name' && $searchDifficulty != null) {
+            $searchTerm = $request->search_recipe;
+            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
+            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
             ->orderBy($sort,'desc')
             ->paginate(9);
         }else{
@@ -35,6 +73,7 @@ class RecipesController extends Controller
         }
 
         $data['searchTerm'] = $searchTerm;
+        $data['searchParameter'] = $searchParameter;
 
 
         $data['recipes'] = $recipes;
