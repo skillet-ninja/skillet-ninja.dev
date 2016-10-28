@@ -13,10 +13,24 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET" name="recipe_search">
+        <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET">
             {!! csrf_field() !!}
             <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="search_recipe" />
+        <label>Search by Difficulty</label>
+            <select class="form-control" name="searchDifficulty">
+                <option value="null" selected>None</option>
+                <option value="beginner">beginner</option>
+                <option value="intermediate">intermediate</option>
+                <option value="expert">expert</option>
+            </select>
+            <br>
+                    <label>Search by Tags</label>
+                  <input type="radio" name="searchParameter" value="tag" checked>
+                  <br>
+                  <label>Search by Name</label>
+                  <input type="radio" name="searchParameter" value="name">
+                  <br>
+                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="search_recipe"/>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
