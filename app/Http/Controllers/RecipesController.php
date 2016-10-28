@@ -168,7 +168,7 @@ class RecipesController extends Controller
         $recipe = Recipe::findOrFail($id);
         $data['recipe'] = $recipe;
 
-        return view ('layouts.recipes.edit')->with($data);
+        return view ('recipes.edit')->with($data);
     }
 
     /**
