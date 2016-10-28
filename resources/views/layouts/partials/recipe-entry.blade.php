@@ -17,6 +17,7 @@
     @if ($errors->has('overall_time'))
         {!! $errors->first('overall_time', '<span class="help-block">:message</span>') !!}
     @endif
+
 <form class="form" action="{{ action('RecipesController@store')}}" method="POST" id="recipeCreate" name="recipeCreate">
     {!! csrf_field() !!}
     <label for="recipeName" >Recipe Name</label>
