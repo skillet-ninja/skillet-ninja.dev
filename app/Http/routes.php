@@ -54,10 +54,7 @@ get('/profile', function(){
 	return redirect()->action('UsersController@show', Auth::id());
 });
 
-get('/test', function(){
-	$recipe = App\Models\Recipe::first();
-	$recipe->ingredients()->()
-});
+
 
 
 // Authentication routes...
