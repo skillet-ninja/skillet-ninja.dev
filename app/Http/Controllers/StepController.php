@@ -74,7 +74,10 @@ class StepController extends Controller
         ->where('recipe_id', $recipeId)
         ->get();
 
-        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed, 'tagsDisplayed' => $tagsDisplayed];
+        $data = ['recipe_id' => $recipeId, 
+        'ingredientsDisplayed' => $ingredientsDisplayed, 
+        'stepsDisplayed' => $stepsDisplayed, 
+        'tagsDisplayed' => $tagsDisplayed];
 
         return view('recipes/create')->with($data);
     }

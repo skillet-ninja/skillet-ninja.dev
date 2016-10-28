@@ -30,7 +30,7 @@
                   <label>Search by Name</label>
                   <input type="radio" name="searchParameter" value="name">
                   <br>
-                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="search_recipe"/>
+                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="searchTerm"/>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
