@@ -5,13 +5,12 @@
 {{-- New Ingredient Partial --}}
 
 @if(isset($ingredientsDisplayed))
-	@foreach($ingredientsDisplayed as $ingredient)
+    @foreach($ingredientsDisplayed as $ingredient)
 
+        <p>{{ $ingredient->amount }}<p>
+        <p>{{ $ingredient->ingredient }}</p>
 
-		<p>{{ $ingredient->amount }}<p>
-		<p>{{ $ingredient->ingredient }}</p>
-
-	@endforeach
+    @endforeach
 @endif
 
 
@@ -29,14 +28,27 @@
     
 
     @if(isset($recipe_id)&&!isset($ingredient_Id))
+
         <h3>Ingredients</h3>
-	    <input type="hidden" name="recipe_id" value="{{ $recipe_id }}">
-	    <label for="recipe-name" >Amount</label>
-	    <input type="text" name="amount">
-	    <label for="recipe-name" >Ingredient</label>
-	    <input type="text" name="ingredient">
-	    <button class="btn btn-success" id="ingredient-submit">Add Ingredient</button>
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="hidden" name="recipe_id" value="{{ $recipe_id }}">
+                <label class="sr-only" for="ingredientName">Ingredient</label>
+                <input id="ingredientName" class="form-control" type="text" name="ingredient" placeholder="Enter ingredient">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="amountName">Amount</label>
+                <input id="amountName" class="form-control" type="text" name="amount" placeholder="Enter amount">
+            </div>
+            <button class="btn btn-success" id="ingredient-submit">Add</button>
+        </form>
+
+
     @endif
 
 
 </form>
+
+@if(isset($recipe_id))
+    <button id="toStepEntry" class="btn btn-primary center-block">Next</button>
+@endif

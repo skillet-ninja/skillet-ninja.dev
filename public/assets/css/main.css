@@ -312,3 +312,15 @@ a.footer-links {
     margin-top: 15px;
     margin-bottom: 30px;
 }
+
+/* Wizard */
+
+.wizardContainer {
+    height: 90vh;
+}
+
+
+
+.hide {
+    display: none;
+}
