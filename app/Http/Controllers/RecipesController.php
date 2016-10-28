@@ -165,7 +165,10 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipes = Recipe::findOrFail($id);
+        $data['recipe'] = $recipe;
+
+        return view ('recipes.edit')->with($data);
     }
 
     /**
