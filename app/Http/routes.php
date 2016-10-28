@@ -55,6 +55,8 @@ get('/profile', function(){
 });
 
 
+
+
 // Authentication routes...
 Route::get('auth/check', 'Auth\AuthController@authCheck');
 Route::get('auth/login', 'Auth\AuthController@getLogin');

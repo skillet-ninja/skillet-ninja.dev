@@ -12,7 +12,8 @@
         <input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe_id }}">
         <label for="keywordName">Keywords</label>
         <input id="keywordName" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tag" value="">
-        <button class="btn btn-primary">Add Tags</button>
+
+        <button class="btn btn-primary">Add Tag</button>
     </form> 
 
 
