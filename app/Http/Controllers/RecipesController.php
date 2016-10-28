@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Recipe;
+use DB;
 
 class RecipesController extends Controller
 {
@@ -17,15 +18,68 @@ class RecipesController extends Controller
      */
     public function index(Request $request)
     {
-        $recipesPerPage = 9;
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+        }else {
+            $sort = 'created_at';
+        }
 
-        $recipes = Recipe::paginate($recipesPerPage);
+        if ($request->has('searchParameter')) {
+            $searchParameter = $request->searchParameter;
+        }else{
+            $searchParameter = null;
+        }
 
-        $data = array (
-            'recipes'=>$recipes,
-            );
+        if ($request->searchDifficulty != 'null') {
+            $searchDifficulty = $request->searchDifficulty;
+        }else{
+            $searchDifficulty = null;
+        }
 
-        return view ('recipes.index')->with($data);
+        if ($searchParameter == 'tag' && $searchDifficulty == null) {
+
+            $searchTerm = $request->searchTerm;
+            $sort = 'recipes.created_at';
+            $recipes = DB::table('recipes')
+            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
+            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
+            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }elseif ($searchParameter == 'tag' && $searchDifficulty != null) {
+            $searchTerm = $request->searchTerm;
+            $sort = 'recipes.created_at';
+            $recipes = DB::table('recipes')
+            ->join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
+            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
+            ->where('tag', 'LIKE', '%' . $searchTerm . '%')
+            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }else if($searchParameter=='name' && $searchDifficulty == null){
+            $searchTerm = $request->searchTerm;
+            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }elseif ($searchParameter=='name' && $searchDifficulty != null) {
+            $searchTerm = $request->searchTerm;
+            $recipes = Recipe::where('name','LIKE','%' . $searchTerm . '%')
+            ->where('difficulty', 'LIKE', '%' . $searchDifficulty . '%')
+            ->orderBy($sort,'desc')
+            ->paginate(9);
+        }else{
+            $recipes = Recipe::paginate(9);
+            $searchTerm = $request->searchTerm;
+        }
+
+        $data['searchTerm'] = $searchTerm;
+        $data['searchParameter'] = $searchParameter;
+
+
+        $data['recipes'] = $recipes;
+
+        
+        return view('recipes.index', $data);
 
     }
 
@@ -68,15 +122,13 @@ class RecipesController extends Controller
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
         $recipe->user_id = $request->user()->id;
+        $recipe->notes = $request->notes;
         $recipe->save();
 
-
-        // Log::info('Inputs for create'.http_build_query($request->input()));
-
-        // $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
+        $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
 
 
-        return redirect()->action('RecipesController@show', $recipe->id);
+        return view('recipes/create', ['recipe_id'=>$recipe->id]);
     }
 
     /**
@@ -89,14 +141,17 @@ class RecipesController extends Controller
     {
         if($request->ajax()){
             $recipe = Recipe::findOrFail($id);
-            $data = array ('recipe' => $recipe);
+            $data['recipe'] = $recipe;
+            $data['continue'] = $request->continue;
             return view ('layouts.partials.recipe-modal')->with($data);
         }
 
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::findOrFail($id);
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
-        // dd($data);
+        $data['continue'] = $request->continue;
+        // dd(count($data['steps']));
+
         return view('vca.vca')->with($data);
     }
 
@@ -110,10 +165,7 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        $recipe = Recipe::find($id);
-        $data['recipe'] = $recipe;
-
-        return view ('recipes.edit')->with($data);
+        //
     }
 
     /**

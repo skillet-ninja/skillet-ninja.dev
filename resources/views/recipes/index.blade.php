@@ -17,10 +17,9 @@
                 <h4 class="modal-title" id="myModalLabel">Recipe</h4>
             </div>
             <div class="recipe-modal"></div>
-            {{-- modal footer in partial blade because button to launch Skillet needs Recipe id --}}
         </div>
     </div>
-</div>
+</div>  <!-- End.Recipe Modal -->
 
 
 <div class="row">
@@ -36,8 +35,7 @@
                     <!-- Button trigger modal -->
                     
                     <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
-                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary pull-right">SKILLET!
-                    </a>
+                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!</a>
                 </div> <!-- caption -->
             </div> <!-- thumbnail -->
         </div> <!-- recipe -->
@@ -45,13 +43,12 @@
 
 </div>  <!-- row -->
 
-{!! $recipes->render() !!}
+{!! $recipes->appends(['searchTerm' => $searchTerm, 'searchParameter'=>$searchParameter])->render() !!}
 
 @stop
 
 @section('bottom-scripts')
 
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script type="text/javascript">
         
         $('.rating input').change(function () {
@@ -62,7 +59,7 @@
 
         $('.btn-view-recipe').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
-            $.get("/recipes/" + recipeId , function(data){
+            $.get("/recipes/" + recipeId + "?continue=false", function(data){
             $(".recipe-modal").html(data);
             });
             $('#myModal').modal('show');

@@ -22,12 +22,12 @@ class Recipe extends Model
 
     public function ingredients()
     {
-        return $this->belongsToMany('App\Models\Ingredient')->withPivot('amount');
+        return $this->belongsToMany('App\Models\Ingredient')->withPivot('amount')->withTimestamps();
     }
 	
 	public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }
 
 

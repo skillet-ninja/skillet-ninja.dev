@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Ingredient;
+use App\Models\Tag;
 use App\Models\Recipe;
 use DB;
 
-class IngredientController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,38 +40,31 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        // $rules = array(
-        // 'ingredient' => 'required|max:100',
-        // 'amount' => 'required',
-        // );
-
-        // $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
-        // $this->validate($request, $rules);
-        // $request->session()->forget('ERROR_MESSAGE');
-
-
-
-        $ingredient = Ingredient::firstOrNew(['ingredient'=>$request->ingredient]);
-        $ingredient->ingredient = $request->ingredient;
-        $ingredient->save();
+        $tags = explode(',', $request->tag);
+        // dd($tags);
 
         $recipeId = $request->recipe_id;
 
-        $amount = $request->amount;
+        foreach ($tags as $tagName) {
 
-        $recipe = Recipe::find($recipeId);
+            $tag = Tag::firstOrNew(['tag'=>$tagName]);
+            $tag->tag = $tagName;
+            $tag->save();
 
-        $ingredientId = $ingredient->id;
-        
-        $recipe->ingredients()->attach($ingredientId, ['amount' => $amount]);
+            $recipe = Recipe::find($recipeId);
+            $tagId = $tag->id;
+            $recipe->tags()->attach($tagId);
+        }
+
+
+
+
+
+
 
         $ingredientsDisplayed = DB::table('ingredients')
         ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
         ->where('recipe_id', $recipeId)
-        ->get();
-
-        $stepsDisplayed = DB::table('steps')
-        ->where('recipe_id', $request->recipe_id)
         ->get();
 
         $tagsDisplayed = DB::table('tags')
@@ -79,11 +72,16 @@ class IngredientController extends Controller
         ->where('recipe_id', $recipeId)
         ->get();
 
-        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed, 'tagsDisplayed' => $tagsDisplayed];
+        $stepsDisplayed = DB::table('steps')
+        ->where('recipe_id', $recipeId)
+        ->get();
+
+        $data = ['recipe_id' => $recipeId,
+         'ingredientsDisplayed' => $ingredientsDisplayed,
+          'stepsDisplayed' => $stepsDisplayed,
+           'tagsDisplayed' => $tagsDisplayed];
 
         return view('recipes/create')->with($data);
-
-
     }
 
     /**

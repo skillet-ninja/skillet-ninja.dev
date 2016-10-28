@@ -21,13 +21,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Recipe::class, function (Faker\Generator $faker) {
+        $difficultyIndex = mt_rand(0,2);
+        $difficultyArray = array('Beginner','Intermediate','Expert');
+        $difficulty = $difficultyArray[$difficultyIndex];
+
     return [
         'name' => $faker->words($nb = 3, $asText = true),
         'user_id' => App\User::all()->unique()->random()->id,
         'servings' => $faker->numberBetween($min = 1, $max = 12),
         'summary' => $faker->sentences($nb = 3, $asText = true),
+        'notes' => $faker->sentences($nb = 3, $asText = true),
         'image_url' => "http://placehold.it/350x300",
         'overall_time' => $faker->numberBetween($min = 1, $max = 120),
+        'difficulty' => $difficulty,
     ];
 });
 

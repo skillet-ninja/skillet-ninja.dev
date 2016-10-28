@@ -13,9 +13,24 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-right">
+        <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET">
+            {!! csrf_field() !!}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+        <label>Search by Difficulty</label>
+            <select class="form-control" name="searchDifficulty">
+                <option value="null" selected>None</option>
+                <option value="beginner">beginner</option>
+                <option value="intermediate">intermediate</option>
+                <option value="expert">expert</option>
+            </select>
+            <br>
+                    <label>Search by Tags</label>
+                  <input type="radio" name="searchParameter" value="tag" checked>
+                  <br>
+                  <label>Search by Name</label>
+                  <input type="radio" name="searchParameter" value="name">
+                  <br>
+                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="searchTerm"/>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -28,15 +43,13 @@
 
             @if(Auth::check())
                 <li><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
-                <li><a href="{{ action('UsersController@edit' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  Edit My Account</a></li>
-                <li><a href="{{ action('RecipesController@create' , Auth::id()) }}">Create Recipe</a></li>
+                <li><a href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>    Create Recipe</a></li>
                 <li><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                <li><a href="{{ '/auth/users/about' }}"><span class="glyphicon glyphicon-log-in">About</a></li> 
             @else
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
-                <li><a href="{{ '/users/about' }}">About</a></li> 
             @endif
+            <li><a href="{{ '/users/about' }}">About</a></li> 
         </ul>
 
     </div><!-- /.navbar-collapse -->
