@@ -193,4 +193,35 @@ class RecipesController extends Controller
     {
         //
     }
+
+    public function addVote(Request $request)
+    {
+        $vote = Vote::firstOrCreate(['recipe_id' => $request->id, 'user_id' => $request->user_id]);
+
+        $vote->user_id = $request->user_id;
+        $vote->recipe_id = $request->id;
+        $vote->vote = 1;
+        $vote->save();
+        $recipe = $vote->recipe;
+        $recipe->vote_score = $recipe->voteScore();
+        $recipe->save();
+
+        return redirect('/recipes/' . $vote->recipe_id);
+    }
+
+    public function downVote(Request $request)
+    {
+        $vote = Vote::firstOrCreate(['recipe_id' => $request->id, 'user_id' => $request->user_id]);
+
+        $vote->user_id = $request->user_id;
+        $vote->recipe_id = $request->id;
+        $vote->vote = 0;
+        $vote->save();
+        $recipe = $vote->recipe;
+        $recipe->vote_score = $recipe->voteScore();
+        $recipe->save();
+
+        return redirect('/recipe/' . $vote->recipe_id);
+    }
+
 }

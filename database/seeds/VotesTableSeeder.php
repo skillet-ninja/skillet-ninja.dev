@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Vote;
 
-class VoteSeeder extends Seeder
+class VotesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
