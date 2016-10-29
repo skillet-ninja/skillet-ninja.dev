@@ -51,7 +51,7 @@
                     <!-- Button trigger modal -->
                     
                     <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
-                    <a href="{{ action('RecipesController@update', $recipe->id) }}" class="btn btn-primary">Edit Recipe
+                    <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="btn btn-primary">Edit Recipe
                     </a>
                     <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!
                     </a>
