@@ -99,6 +99,7 @@ class RecipesController extends Controller
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
             $data['continue'] = $request->continue;
+            dd($request);
             return view ('layouts.partials.recipe-modal')->with($data);
         }
 
@@ -119,22 +120,23 @@ class RecipesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         if($request->ajax()){
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
 
-            //bring up appropriate modal for editing
-            if($request->edit_recipe)
+            // bring up appropriate modal for editing
+
+            if($request->recipe)
             {
                 return view ('layouts.partials.modal-edit-recipe')->with($data);
 
-            } elseif ($request->edit_ingredient)
+            } elseif ($request->ingredient)
             {
                 return view ('layouts.partials.modal-edit-ingredient')->with($data);
 
-            } elseif ($request->edit_step)
+            } elseif ($request->step)
             {
                 return view ('layouts.partials.modal-edit-step')->with($data);
             }
