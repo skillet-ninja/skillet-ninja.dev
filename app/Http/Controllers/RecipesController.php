@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Recipe;
+use App\User;
+use App\Models\Tag;
+use App\Models\Ingredient;
 use DB;
 
 class RecipesController extends Controller
@@ -58,16 +61,8 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
 
-        $rules = array(
-        'name' => 'required|max:100',
-        'servings' => 'required',
-        'summary'=>'required',
-        'difficulty'=>'required',
-        'overall_time'=>'required',
-        );
-
         $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
-        $this->validate($request, $rules);
+        $this->validate($request, Recipe::$rules);
         $request->session()->forget('ERROR_MESSAGE');
 
         $recipe = new Recipe();
@@ -158,7 +153,23 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
+        // $this->validate($request, Recipe::$rules);
+        // $request->session()->forget('ERROR_MESSAGE');
+
+        $recipe = Recipe::findOrFail($id);
+        $recipe->name = $request->name;
+        $recipe->servings = $request->servings;
+        $recipe->overall_time = $request->overall_time;
+        $recipe->summary = $request->summary;
+        $recipe->difficulty = $request->difficulty;
+        $recipe->image_url = $request->image_url;
+        $recipe->notes = $request->notes;
+        $recipe->save();
+
+        // $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
+
+        return redirect()->action('RecipesController@edit', $recipe->id);
     }
 
     /**

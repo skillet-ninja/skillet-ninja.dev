@@ -10,6 +10,14 @@ class Recipe extends Model
 {
     protected $table = 'recipes';
 
+    protected static $rules = array(
+        'name' => 'required|max:100',
+        'servings' => 'required',
+        'summary'=>'required',
+        'difficulty'=>'required',
+        'overall_time'=>'required',
+        );
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
