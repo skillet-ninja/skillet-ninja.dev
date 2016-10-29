@@ -44,5 +44,10 @@
 
         @yield('bottom-scripts')
 
+        <script>
+            var currentUrl = "{{ Request::url() }}";
+
+        </script>
+
     </body>
 </html>
