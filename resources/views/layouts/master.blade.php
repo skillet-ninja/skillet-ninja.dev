@@ -46,7 +46,7 @@
 
         <script>
             var currentUrl = "{{ Request::url() }}";
-
+            
         </script>
 
     </body>

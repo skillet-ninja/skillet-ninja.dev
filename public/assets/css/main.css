@@ -309,6 +309,11 @@ a.footer-links {
     margin-bottom: 30px;
 }
 
+.bottomPlacement {
+    position: absolute;
+    bottom: 0;
+}
+
 /* Wizard */
 
 .wizardContainer {
@@ -326,4 +331,17 @@ a.footer-links {
 
 .thumbnailStyle {
     height: 500px !important;
+}
+
+.bottomPlacement {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.recipeHeader {
+    font-size: 1.5em;
+}
+
+.recipeBtn {
+    
 }
