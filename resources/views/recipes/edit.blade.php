@@ -1,9 +1,32 @@
 @extends ('layouts.master')
 
-@section ('title', 'Recipe Creator')
+@section ('title', 'Recipe Editor')
 
 @section ('content')
     <h1 class="h1 text-center">Recipe Editor</h1>
+    <hr/>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{$recipe->image_url}}" class="thumbnail" alt="recipe image">
+        </div>
+        <div class="col-md-4">
+            <h1>{{ $recipe->name }}</h1>
+            <p><em>{{ $recipe->summary }}</em></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <p><span class="recipe-data"><strong>SERVINGS</strong> {{ $recipe->servings }}</span>
+               <span class="recipe-data"><strong>Total Time</strong> {{ $recipe->overall_time }}</span></p>
+            <p><span class="recipe-data"><strong>Tags</strong>
+                @foreach ($recipe->tags as $tag)
+                    {{ $tag->tag }}
+                @endforeach
+
+        </div>
+
+    </div>
 
     {{-- {!! dd($recipe->ingredients); !!} --}}
 

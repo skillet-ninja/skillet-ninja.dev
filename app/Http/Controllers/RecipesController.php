@@ -123,6 +123,8 @@ class RecipesController extends Controller
     {
         $recipe = Recipe::findOrFail($id);
         $data['recipe'] = $recipe;
+        // $data['tags'] = $recipe->tags();
+        // dd($recipe->tags());
 
         return view ('recipes.edit')->with($data);
     }
