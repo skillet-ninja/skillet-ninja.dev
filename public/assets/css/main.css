@@ -292,7 +292,7 @@ a.footer-links {
     overflow : hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;  
 }
 
@@ -300,13 +300,8 @@ a.footer-links {
     height: 520;
 }
 
-.recipe:nth-child(3n+1) {
-    clear:left;
-}
-
 
 /*   Account Page  */
-
 
 .btn-edit-account {
     margin-top: 15px;
@@ -323,4 +318,11 @@ a.footer-links {
 
 .hide {
     display: none;
+}
+
+
+/* Recipe Index */
+
+.thumbnailStyle {
+    height: 500px !important;
 }
