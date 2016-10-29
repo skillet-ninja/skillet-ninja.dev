@@ -2,38 +2,79 @@
 
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+        
         <h2>Edit</h2>
 
-        <form class="form" action="{{ action('RecipesController@update')}}" method="POST" id="recipeUpdate" name="recipeUpdate">
-        {!! csrf_field() !!}
-            
-            <label for="recipeName">Recipe Name</label>
-            <input class="form-control" id="name" type="text" name="name" value ="{{ (old('name') == null) ? $recipe->name : old('name') }}" placeholder="Enter recipe name">
-            <br>
+        <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST" id="recipeUpdate" name="recipeUpdate">  
 
-            <label for="summary">Summary</label>
-            <textarea placeholder="Please write a short description of the recipe." class="form-control" id="summary" name="summary" rows="3">{{ (old('summary') == null) ? $recipe->summary : old('summary') }}</textarea>
-            <br>
-                
-            <label>Difficulty</label>
-            <select class="form-control" name="difficulty">
-                <option value="beginner" selected>Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-            </select>
-            <br>
+            {!! csrf_field() !!}
+            {!! method_field('PUT') !!}
+        
+            <div class="form-group">
+                <label for="recipeName">Recipe Name</label>
+                <input class="form-control" id="name" type="text" name="name" value ="{{ (old('name') == null) ? $recipe->name : old('name') }}" placeholder="Enter recipe name">
+                <br>
+            </div>
 
-            <label for="Servings">Servings</label>
-            <input class="form-control" id="servings" type="text" name="servings" value ="{{ (old('servings') == null) ? $recipe->servings : old('servings') }}" placeholder="Number of servings">
-            <br>
+            <div class="form-group">
+                <label for="summary">Summary</label>
+                <textarea placeholder="Please write a short description of the recipe." class="form-control" id="summary" name="summary" rows="3">{{ (old('summary') == null) ? $recipe->summary : old('summary') }}</textarea>
+                <br>
+            </div>
 
-            <label for="overall_time">Total Time</label>
-            <input placeholder="Number of minutes" id="overall_time" class="form-control" type="text" name="overall_time"value ="{{ (old('overall_time') == null) ? $recipe->overall_time : old('overall_time') }}">
-            <br>
+            <div class="row">
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Difficulty</label>
+                    <select class="form-control" name="difficulty">
+                        <option value="beginner" selected>Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="Servings">Servings</label>
+                    <input class="form-control" id="servings" type="text" name="servings" value ="{{ (old('servings') == null) ? $recipe->servings : old('servings') }}" placeholder="Number of servings">
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="overall_time">Total Time</label>
+                    <input placeholder="Number of minutes" id="overall_time" class="form-control" type="text" name="overall_time"value ="{{ (old('overall_time') == null) ? $recipe->overall_time : old('overall_time') }}">
+                    <br>
+                </div>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="image_url">Image Link</label>
+                    <input type="url" id="image_url" name="image_url" value="{{ (old('image_url') == null) ? $recipe->image_url : old('image_url') }}" placeholder="Link to image" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="video_url">Video Link</label>
+                    <p>Add to database table</p>
+                    {{-- <input type="url" id="video_url" name="video_url" value="{{ (old('video_url') == null) ? $recipe->video_url : old('video_url') }}" placeholder="Link to video" class="form-control"> --}}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="notes">Additional notes</label>
             <br>
             <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3" >{{ (old('notes') == null) ? $recipe->notes : old('notes') }}</textarea>
             <br>
+        </div>
 
             <button class="btn btn-success" id="recipe-submit">Save Changes</button>
 
