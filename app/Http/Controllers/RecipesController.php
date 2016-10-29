@@ -24,7 +24,7 @@ class RecipesController extends Controller
 
         if (isset($request->searchTerm))
         {
-            $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate(9);
+            $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate($recipesPerPage);
 
         } else
         {
