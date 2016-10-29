@@ -94,7 +94,6 @@ class RecipesController extends Controller
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
             $data['continue'] = $request->continue;
-            dd($request);
             return view ('layouts.partials.recipe-modal')->with($data);
         }
 
@@ -102,7 +101,6 @@ class RecipesController extends Controller
         $data['recipe'] = $recipe;
         $data['steps'] = $recipe->getSteps($id);
         $data['continue'] = $request->continue;
-        // dd(count($data['steps']));
 
         return view('vca.vca')->with($data);
     }
