@@ -8,9 +8,14 @@
 
     <div class="row">
         <div class="col-md-4">
+
+<button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
+<a href="{{ action('RecipesController@edit', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!</a>
+
             <img src="{{$recipe->image_url}}" class="thumbnail" alt="recipe image">
         </div>
         <div class="col-md-4">
+            <span class="pull-right"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></span>
             <h1>{{ $recipe->name }}</h1>
             <p><em>{{ $recipe->summary }}</em></p>
         </div>
@@ -23,48 +28,43 @@
                 @foreach ($recipe->tags as $tag)
                     {{ $tag->tag }}
                 @endforeach
+            </p>
+            {{-- <p>{{ $recipe->video_url }}</p> --}}
 
         </div>
 
     </div>
 
-    {{-- {!! dd($recipe->ingredients); !!} --}}
+
+   
 
 
-    @foreach($recipe->ingredients as $i)
-    	<div class="ingredient">
-	    	<label for="name-ingredient-{{$i->id}}">Ingredient Name</label>
-	    	<input type=text name="name-ingredient-{{$i->id}}" value="{{$i->ingredient}}">
-	    	<label for="name-ingredient-{{$i->id}}">Amount</label>
-	    	<input type=text name="name-ingredient-{{$i->id}}" value="{{$i->pivot->amount}}">
-	    	<br/>	
-	    </div>
+@section('bottom-scripts')
 
-    @endforeach
+    <script type="text/javascript">
 
+        $('.btn-edit-recipe').on('click', function(e){
+            var recipeId = e.target.getAttribute("data-recipe");
+            $.get("/recipes/" + recipeId + "?edit_recipe=true", function(data){
+            $(".recipe-modal").html(data);
+            });
+            $('#myModal').modal('show');
+        });
+        $('.btn-edit-ingredient').on('click', function(e){
+            var recipeId = e.target.getAttribute("data-recipe");
+            $.get("/recipes/" + recipeId + "?edit_ingredient=true", function(data){
+            $(".recipe-modal").html(data);
+            });
+            $('#myModal').modal('show');
+        });
+        $('.btn-edit-step').on('click', function(e){
+            var recipeId = e.target.getAttribute("data-recipe");
+            $.get("/recipes/" + recipeId + "?edit_step=true", function(data){
+            $(".recipe-modal").html(data);
+            });
+            $('#myModal').modal('show');
+        });
 
-    //With jquery, get all ingredients
-
-
-    <script>
-    	var ingredients[];
-
-    	//each ingredient 
-    	var ingredient = {
-    		id: "id",
-    		name: "name",
-    		amount: "amont"
-    	}
     </script>
-
-
-    {{-- @include('layouts.partials.recipe-entry') --}}
-
-    {{-- @include('layouts.partials.ingredient-entry') --}}
-
-    {{-- @include('layouts.partials.step-entry') --}}
-
-
-
 
 @stop
