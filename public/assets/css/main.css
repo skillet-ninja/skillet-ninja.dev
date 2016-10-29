@@ -41,7 +41,7 @@ body {
 
 .vca-step {
     font-size: 3rem;
-    max-width: 65vw;
+    max-width: 30em;
     text-align: left;
 }
 
@@ -53,17 +53,18 @@ body {
 
 .carousel-inner {
     min-height: 70vh;
-    min-width: 80vw;
+    /*min-width: 80vw;*/
     position: relative;
     text-align: center;
 }
 
 
-/*#carouselImg {
+#carouselImg {
     opacity: 1;
-    width: 50vw;
+    max-width: 40%;
+    /*max-height: */
   
-}*/
+}
 
 
 /*#myCarousel {
@@ -81,7 +82,7 @@ body {
     justify-content: center;
     flex-direction: column;
     min-height: 70vh;
-    min-width: 80vw;
+    /*min-width*/: 80vw;
 }
 
 

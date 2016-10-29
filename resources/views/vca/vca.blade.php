@@ -7,7 +7,7 @@
 
 @section('content')
 
-  <!-- Recipe Modal -->
+    <!-- Recipe Modal -->
     <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -25,15 +25,20 @@
         <label for="mic">Microphone</label>
         <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
     </div>
-
+    
     <div class="narration-button">
         <label for="mic">Narration</label>
         <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
     </div>
     
     <div class="pull-right">
-    <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
-        View Details</button>
+        <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
+            View Details</button>
+    </div>
+    
+    <div class="pull-right">
+        <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
+            View Tutorial</button>
     </div>
     
 
@@ -52,7 +57,7 @@
                                 <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
                                 <button id="viewStep{{ $key + 1 }}" class="btn btn-primary">View Step</button>
                                 <br><br>
-                                <img id="carouselImg" src="{{ '/assets/img/logo.png' }}" alt="...">
+                                <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
                             </div>
                         </div>
                     @endforeach
@@ -169,19 +174,29 @@
             });
 
             // GREETING
-            var welcome = new SpeechSynthesisUtterance('Welcome to Skillet Ninja.');
-            welcome.rate = .9;
-            window.speechSynthesis.speak(welcome);
+            var msg = new SpeechSynthesisUtterance('Welcome to Skillet Ninja.');
+            msg.rate = .9;
+            window.speechSynthesis.speak(msg);
+            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
+            //     speechSynthesis.cancel();
+            // } 
+            
 
             // CURRENT STEP NUMBER
             var msg = new SpeechSynthesisUtterance($('.vca-step-header')[0].innerHTML);
             msg.rate = .9;
             window.speechSynthesis.speak(msg);
+            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
+            //     speechSynthesis.cancel();
+            // } 
 
             // CURRENT STEP INSTRUCTION
             var msg = new SpeechSynthesisUtterance($('.vca-step')[0].innerHTML);
             msg.rate = .9;
             window.speechSynthesis.speak(msg);
+            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
+            //     speechSynthesis.cancel();
+            // } 
 
 
             {{-- Voice command functionality --}}
