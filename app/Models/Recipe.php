@@ -12,10 +12,10 @@ class Recipe extends Model
 
     public function user()
     {
-    	return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
-	
-	public function steps()
+    
+    public function steps()
     {
         return $this->hasMany('App\Models\Step', 'recipe_id');
     }
@@ -24,8 +24,8 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\Models\Ingredient')->withPivot('amount')->withTimestamps();
     }
-	
-	public function tags()
+    
+    public function tags()
     {
         return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }

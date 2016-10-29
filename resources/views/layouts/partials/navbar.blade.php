@@ -16,21 +16,7 @@
         <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET">
             {!! csrf_field() !!}
             <div class="form-group">
-        <label>Search by Difficulty</label>
-            <select class="form-control" name="searchDifficulty">
-                <option value="null" selected>None</option>
-                <option value="beginner">beginner</option>
-                <option value="intermediate">intermediate</option>
-                <option value="expert">expert</option>
-            </select>
-            <br>
-                    <label>Search by Tags</label>
-                  <input type="radio" name="searchParameter" value="tag" checked>
-                  <br>
-                  <label>Search by Name</label>
-                  <input type="radio" name="searchParameter" value="name">
-                  <br>
-                <input type="text" class="form-control input-lg" placeholder="Search Recipes" name="searchTerm"/>
+                <input type="text" class="form-control" placeholder="Search Recipes" name="searchTerm"/>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -49,7 +35,7 @@
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span>Signup</a></li>
                 <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
             @endif
-            <li><a href="{{ '/users/about' }}">About</a></li> 
+            <li><a href="{{ '/users/about' }}">About</a></li>
         </ul>
 
     </div><!-- /.navbar-collapse -->
