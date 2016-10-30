@@ -39,8 +39,7 @@
 		<h1>Ingredients <small>click item to edit</small></h1>
 			<div class="list-group">
 				@foreach ($recipe->ingredients as $ingredient)
-				  <button type="button" class="list-group-item edit-ingredient">
-
+				  <button type="button" class="list-group-item edit-ingredient" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
 					{{$ingredient->pivot->amount}} of {{ $ingredient->ingredient }}
 					<span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				  </button>
@@ -55,12 +54,12 @@
 			<h1>Steps <small>click item to edit</small></h1>
 			<div class="list-group">
 				@foreach ($recipe->steps as $step)
-				  <button type="button" class="list-group-item edit-ingredient">
+				  <button type="button" class="list-group-item edit-step">
 					{{ $step->step }}
 					<span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				  </button>
 				@endforeach
-				<button type="button" class="list-group-item add-ingredient">Add A Step
+				<button type="button" class="list-group-item add-step">Add A Step
 					<span class="badge"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 				  </button>
 			</div>
@@ -87,18 +86,24 @@
 			$('#myModal').modal('show');
 		});
 
-
-
-
-
 		$('.edit-ingredient').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
             var ingredientId = e.target.getAttribute("data-ingredient");
-            $.get("/recipes/" + recipeId + "?continue=false", function(data){
+            $.get("/recipes/" + recipeId + "/edit?ingredient=true&ingredientId=" + ingredientId, function(data){
             $(".recipe-modal").html(data);
             });
             $('#myModal').modal('show');
         });
+
+        $('.add-ingredient').on('click', function(e){
+			var currentURL = $(location).attr("href");
+			var hasHash = currentURL.indexOf("#") + 1;
+			var pageURL = hasHash ? currentURL.replace('#', "?addIngredient=true") : currentURL + "?addIngredient=true";
+			$.get(pageURL, function(data){
+				$(".recipe-modal").html(data);
+			});
+			$('#myModal').modal('show');
+		});
 
 
 	</script>

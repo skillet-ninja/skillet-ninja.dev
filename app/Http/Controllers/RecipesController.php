@@ -117,8 +117,18 @@ class RecipesController extends Controller
     public function edit($id, Request $request)
     {
         if($request->ajax()){
+
+            // dd($request);
+            
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
+
+            if ($request->ingredient != null)
+            {
+                $ingredient = $recipe->ingredients->find($request->ingredientId);
+                $data['ingredient'] = $ingredient;
+            }
+
 
             // bring up appropriate modal for editing
 
@@ -129,6 +139,10 @@ class RecipesController extends Controller
             } elseif ($request->ingredient)
             {
                 return view ('layouts.partials.modal-edit-ingredient')->with($data);
+
+            } elseif ($request->addIngredient)
+            {
+                return view ('layouts.partials.modal-add-ingredient')->with($data);
 
             } elseif ($request->step)
             {
@@ -182,10 +196,6 @@ class RecipesController extends Controller
         //
     }
 
-    public function removeIngredient(Request $request, $id)
-    {
-        //
-    }
 
 
 
