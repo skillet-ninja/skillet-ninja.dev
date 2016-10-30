@@ -117,7 +117,14 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
+        $ingredient->ingredient = $request->ingredient;
+        $ingredient->save();
+
+        $recipe = Recipe::findOrFail($request->recipe_id);
+        
+        $recipe->ingredients()->updateExistingPivot($ingredient->id, ['amount' => $request->amount]);
     }
 
     /**
@@ -128,6 +135,8 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
     }
+
 }

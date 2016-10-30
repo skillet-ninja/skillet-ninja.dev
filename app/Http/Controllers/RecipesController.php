@@ -181,6 +181,14 @@ class RecipesController extends Controller
         //
     }
 
+    public function removeIngredient(Request $request, $id)
+    {
+        $
+    }
+
+
+
+
     public function addVote(Request $request)
     {
         $vote = Vote::firstOrCreate(['recipe_id' => $request->id, 'user_id' => $request->user_id]);
