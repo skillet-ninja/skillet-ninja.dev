@@ -8,6 +8,22 @@
 
 @section ('content')
 
+<h1 class="text-center">Recipes</h1>
+
+{{-- <div class="row"> --}}
+    <div class="dropdown text-right">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu pull-right">
+            <li><a href="#">Top Rated</a></li>
+            <li><a href="#">Most Recent</a></li>
+            <li><a href="#">Difficulty</a></li>
+        </ul>
+    </div>
+    <br>
+{{-- </div> --}}
+
+
 <!-- Recipe Modal -->
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -25,49 +41,16 @@
 <div class="row">
 
     @foreach ($recipes as $recipe)
-        <div class="col-sm-6 col-md-4 recipe">
-            <div class="thumbnail">
-                {{-- <img src="https://placehold.it/350x300" class="img-responsive image1"> --}}
-                <img src="{!! $recipe->image_url !!}" class="img-responsive image1">
-                <div class="caption recipe-thumbnail">
-                    <h3>{{ $recipe->name }}</h3>
-                    <p class="line-clamp">{{ $recipe->summary }}</p>
-                    <!-- Button trigger modal -->
-                    
-                    <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
-                    <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!</a>
-                                @if(Auth::check())
-                                    <div class="col-sm-2">
-                                        <div class="row">
-                                            <form class="form" method="POST" name="upvote" action="{{ action('RecipesController@addVote') }}">
-                                            
-                                                <input type="hidden" name="id" value="{{ $recipe->id }}">
-                                                <input type="hidden" name="user_id" value="{{ $recipe->user_id }}">
-
-                                                {!! csrf_field() !!}
-                                                <input type="submit" value="Vote Up" class="btn btn-default">
-                                            </form>
-                                            <form class="form" method="POST" name="downvote" action="{{ action('RecipesController@downVote') }}">
-                                            
-                                                <input type="hidden" name="id" value="{{ $recipe->id }}">
-                                                <input type="hidden" name="user_id" value="{{ $recipe->user_id }}">
-
-                                                {!! csrf_field() !!}
-                                                <input type="submit" value="Vote Down" class="btn btn-default">
-                                            </form>
-
-                                        </div>
-                                    </div>
-
-        @endif
-                </div> <!-- caption -->
-            </div> <!-- thumbnail -->
-        </div> <!-- recipe -->
+        @include('layouts.partials.recipe-index')
     @endforeach
 
 </div>  <!-- row -->
 
-{!! $recipes->appends(['searchTerm' => $searchTerm, 'searchParameter'=>$searchParameter])->render() !!}
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+        {!! $recipes->appends(['searchTerm' => $searchTerm])->render() !!}
+    </div>
+</div>
 
 @stop
 
@@ -89,7 +72,9 @@
             $('#myModal').modal('show');
         });
 
+
     </script>
+
 
 @stop
  
