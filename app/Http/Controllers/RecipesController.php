@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Recipe;
+use App\Models\Vote;
 use App\User;
 use App\Models\Tag;
 use App\Models\Ingredient;
@@ -191,32 +192,32 @@ class RecipesController extends Controller
 
     public function addVote(Request $request)
     {
-        $vote = Vote::firstOrCreate(['recipe_id' => $request->id, 'user_id' => $request->user_id]);
+        $vote = Vote::firstOrCreate(['recipe_id' => $request->recipe_id, 'user_id' => $request->user_id]);
 
         $vote->user_id = $request->user_id;
-        $vote->recipe_id = $request->id;
+        $vote->recipe_id = $request->recipe_id;
         $vote->vote = 1;
         $vote->save();
         $recipe = $vote->recipe;
         $recipe->vote_score = $recipe->voteScore();
         $recipe->save();
 
-        return redirect('/recipes/' . $vote->recipe_id);
+        return redirect()->action('RecipesController@index');
     }
 
     public function downVote(Request $request)
     {
-        $vote = Vote::firstOrCreate(['recipe_id' => $request->id, 'user_id' => $request->user_id]);
+        $vote = Vote::firstOrCreate(['recipe_id' => $request->recipe_id, 'user_id' => $request->user_id]);
 
         $vote->user_id = $request->user_id;
-        $vote->recipe_id = $request->id;
+        $vote->recipe_id = $request->recipe_id;
         $vote->vote = 0;
         $vote->save();
         $recipe = $vote->recipe;
         $recipe->vote_score = $recipe->voteScore();
         $recipe->save();
 
-        return redirect('/recipe/' . $vote->recipe_id);
+        return redirect()->action('RecipesController@index');
     }
 
 }
