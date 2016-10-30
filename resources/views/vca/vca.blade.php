@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-xs-4 text-center">
-            <span>Active Timers</span>
+            <h4>Active Timers</h4>
             <table class="table table-condensed text-center">
                 <thead>
                     <tr>
@@ -78,18 +78,12 @@
 
         <div class="col-xs-2">
             <div class="pull-right">
-                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Tutorial</button>
+                {{-- @if($steps->video_url != null) --}}
+                    <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Tutorial</button>
+                {{-- @endif --}}
             </div>
         </div>
     </div>
-
-    
-    
-    
-    
-    
-    
-
 
     {{-- CAROUSEL --}}
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -103,25 +97,28 @@
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
                                 {{-- Voice --}}
                                 <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
-                                <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
+                                @if($step->image_url != null)
+                                    <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
+                                @endif
                             </div>
                                 <div class="row">
+                                    @if($step->video_url != null)
+                                        <div class="col-xs-6">
+                                            <button id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center">View Step</button>
+                                        </div>
+                                    @endif
 
-                                    <div class="col-xs-6">
-                                        <button id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center">View Step</button>
-                                    </div>
-
-                                    <div class="col-xs-6">
-                                        <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer text-center">Start Timer</button>
-                                    </div>
-
+                                    @if($step->time != null)
+                                        <div class="col-xs-6">
+                                            <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer text-center">Start Timer</button>
+                                        </div>
+                                    @endif
                                 </div> 
-                        </div>
+                            </div>
                     @endforeach
                 </div>
             </div>
         </div>
-
 
         <!-- Controls -->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" id="prev">
@@ -379,7 +376,6 @@
             //     speechSynthesis.cancel();
             // } 
 
-
             {{-- Voice command functionality --}}
             if (document.getElementById('mic').checked) {
                 if (annyang) {
@@ -425,14 +421,6 @@
                 }
 
             }
-
-
-
-
-
-
-
-
     
         });
     </script>
