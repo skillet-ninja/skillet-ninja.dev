@@ -40,49 +40,18 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        // $rules = array(
-        // 'ingredient' => 'required|max:100',
-        // 'amount' => 'required',
-        // );
 
-        // $request->session()->flash('ERROR_MESSAGE', 'Ingredient was not saved.');
-        // $this->validate($request, $rules);
-        // $request->session()->forget('ERROR_MESSAGE');
-
-
-
-        $ingredient = Ingredient::firstOrNew(['ingredient'=>$request->ingredient]);
-        $ingredient->ingredient = $request->ingredient;
-        $ingredient->save();
-
-        $recipeId = $request->recipe_id;
-
+        $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
         $amount = $request->amount;
-
-        $recipe = Recipe::find($recipeId);
-
-        $ingredientId = $ingredient->id;
+        $recipe = Recipe::find($request->recipeId);
         
-        $recipe->ingredients()->attach($ingredientId, ['amount' => $amount]);
+        $recipe->ingredients()->attach($ingredient->id, ['amount' => $amount]);
 
-        $ingredientsDisplayed = DB::table('ingredients')
-        ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
+        // $data['recipe'] = $recipe;
 
-        $stepsDisplayed = DB::table('steps')
-        ->where('recipe_id', $request->recipe_id)
-        ->get();
+        // return view('recipes/create')->with($data);
 
-        $tagsDisplayed = DB::table('tags')
-        ->join('recipe_tag', 'tags.id', '=', 'recipe_tag.tag_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $data = ['recipe_id' => $recipeId, 'ingredientsDisplayed' => $ingredientsDisplayed, 'stepsDisplayed' => $stepsDisplayed, 'tagsDisplayed' => $tagsDisplayed];
-
-        return view('recipes/create')->with($data);
-
+        return redirect()->back();
 
     }
 
@@ -112,19 +81,33 @@ class IngredientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $recipeId (NOT ingredient's)
+     *  use recipe Id since we don't need ingredient id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        
-        $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
-        $ingredient->ingredient = $request->ingredient;
-        $ingredient->save();
 
-        $recipe = Recipe::findOrFail($request->recipe_id);
+        $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
+
+        $recipe = Recipe::findOrFail($request->recipeId);
+
+        $oldIngredient = Ingredient::findOrFail($request->ingredientId);
+
+
+        if ($oldIngredient->ingredient != $ingredient->ingredient)
+        {
+            $recipe->ingredients()->detach($oldIngredient->id);
+
+        } elseif ($oldIngredient->ingredient = $ingredient->ingredient)
+        {
+            $recipe->ingredients()->updateExistingPivot($ingredient->id, ['amount' => $request->amount]);
+        }
+
+        $recipe->ingredients()->attach($ingredient->id, ['amount' => $request->amount]);
         
-        $recipe->ingredients()->updateExistingPivot($ingredient->id, ['amount' => $request->amount]);
+
+        return redirect()->action('RecipesController@edit', $request->recipeId);
     }
 
     /**
@@ -133,10 +116,16 @@ class IngredientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        // dd($request);
+        
+        $recipe = Recipe::findOrFail($request->recipeId);
+        $recipe->ingredients()->detach($request->ingredientId);
 
+        return redirect()->action('RecipesController@edit', $request->recipeId);
 
     }
+
 
 }
