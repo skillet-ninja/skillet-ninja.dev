@@ -87,29 +87,13 @@
 			$('#myModal').modal('show');
 		});
 
-		$('.edit-ingredient').on('click', function(e){
-			var currentURL = $(location).attr("href");
-			var hasHash = currentURL.indexOf("#") + 1;
-			var pageURL = hasHash ? currentURL.replace('#', "?ingredient=true") : currentURL + "?ingredient=true";
-			$.get(pageURL, function(data){
-				$(".recipe-modal").html(data);
-			});
-			$('#myModal').modal('show');
-		});
 
-		$('.edit-step').on('click', function(e){
-			var currentURL = $(location).attr("href");
-			var hasHash = currentURL.indexOf("#") + 1;
-			var pageURL = hasHash ? currentURL.replace('#', "?step=true") : currentURL + "?step=true";
-			$.get(pageURL, function(data){
-				$(".recipe-modal").html(data);
-			});
-			$('#myModal').modal('show');
-		});
+
 
 
 		$('.edit-ingredient').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
+            var ingredientId = e.target.getAttribute("data-ingredient");
             $.get("/recipes/" + recipeId + "?continue=false", function(data){
             $(".recipe-modal").html(data);
             });

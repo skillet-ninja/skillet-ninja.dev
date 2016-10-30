@@ -112,17 +112,19 @@ class IngredientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $recipeId (NOT ingredient's)
+     *  use recipe Id since we don't need ingredient id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        
+        //ingredient name does not change as this is many to many
+        //create a new record if it's a new ingredient
         $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
-        $ingredient->ingredient = $request->ingredient;
-        $ingredient->save();
+        // $ingredient->ingredient = $request->ingredient;
+        // $ingredient->save();
 
-        $recipe = Recipe::findOrFail($request->recipe_id);
+        $recipe = Recipe::findOrFail($recipeId;
         
         $recipe->ingredients()->updateExistingPivot($ingredient->id, ['amount' => $request->amount]);
     }
