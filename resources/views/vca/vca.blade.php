@@ -78,8 +78,8 @@
 
         <div class="col-xs-2">
             <div class="pull-right">
-                {{-- @if($steps->video_url != null) --}}
-                    <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Tutorial</button>
+                {{-- @if($recipe->video_url != null) --}}
+                    <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
                 {{-- @endif --}}
             </div>
         </div>
@@ -104,7 +104,7 @@
                                 <div class="row">
                                     @if($step->video_url != null)
                                         <div class="col-xs-6">
-                                            <button id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center">View Step</button>
+                                            <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center" target="_blank">View Step</a>
                                         </div>
                                     @endif
 
