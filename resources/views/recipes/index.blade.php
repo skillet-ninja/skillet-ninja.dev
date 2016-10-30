@@ -36,6 +36,30 @@
                     
                     <button type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Recipe</button>
                     <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!</a>
+                                @if(Auth::check())
+                                    <div class="col-sm-2">
+                                        <div class="row">
+                                            <form class="form" method="POST" name="upvote" action="{{ action('RecipesController@addVote') }}">
+                                            
+                                                <input type="hidden" name="id" value="{{ $recipe->id }}">
+                                                <input type="hidden" name="user_id" value="{{ $recipe->user_id }}">
+
+                                                {!! csrf_field() !!}
+                                                <input type="submit" value="Vote Up" class="btn btn-default">
+                                            </form>
+                                            <form class="form" method="POST" name="downvote" action="{{ action('RecipesController@downVote') }}">
+                                            
+                                                <input type="hidden" name="id" value="{{ $recipe->id }}">
+                                                <input type="hidden" name="user_id" value="{{ $recipe->user_id }}">
+
+                                                {!! csrf_field() !!}
+                                                <input type="submit" value="Vote Down" class="btn btn-default">
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+        @endif
                 </div> <!-- caption -->
             </div> <!-- thumbnail -->
         </div> <!-- recipe -->

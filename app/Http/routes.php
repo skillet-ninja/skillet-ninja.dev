@@ -36,6 +36,11 @@ Route::get('users/profile', function () {
     return action('UsersController@show' , Auth::id());
 });
 
+//routes to vote
+Route::post('recipes/addvote', 'RecipesController@addVote');
+Route::post('votes/downvote', 'RecipesController@downVote');
+Route::post('recipes/delete', 'RecipesController@destroy');
+
 //Resource controllers....
 Route::resource('recipes','RecipesController');
 Route::resource('users', 'UsersController', ['except' => ['create','store']]);
@@ -64,5 +69,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
 
 
