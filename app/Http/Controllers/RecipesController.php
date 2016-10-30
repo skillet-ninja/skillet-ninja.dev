@@ -183,7 +183,7 @@ class RecipesController extends Controller
 
     public function removeIngredient(Request $request, $id)
     {
-        $
+        //
     }
 
 
