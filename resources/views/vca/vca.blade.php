@@ -20,26 +20,74 @@
         </div>
     </div>  <!-- End.Recipe Modal -->
 
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="mic-button">
+                <label for="mic">Microphone</label>
+                <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
+            </div>
+        </div>
 
-    <div class="mic-button">
-        <label for="mic">Microphone</label>
-        <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
+        <div class="col-xs-2">
+            <div class="narration-button">
+                <label for="mic">Narration</label>
+                <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
+            </div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+            <span>Active Timers</span>
+            <table class="table table-condensed text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center">Step</th>
+                        <th class="text-center">Time</th>
+                        <th class="text-center">Reset</th>
+                        <th class="text-center">Pause</th>
+                        <th class="text-center">Clear</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($steps as $key => $step)
+                        {{-- Timer beep source --}}
+                        <audio id="buzzer{{ $key + 1 }}" src="/assets/sounds/timerSound.mp3" type="audio/mp3"></audio>    
+                        <tr class="stepTimer{{ $key + 1 }} hidden">
+                            <td>{{ $key + 1 }}</td>
+                            <td>
+                                <div class="timer{{ $key + 1 }}">
+                                    <span class="hour{{ $key + 1 }}">00</span>:<span class="minute{{ $key + 1 }}">00</span>:<span class="second{{ $key + 1 }}">00</span>
+                                </div>
+                            </td>
+                            <div class="control{{ $key + 1 }}">
+                                <td><button onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }})" class="btn-success"><-></button></td>
+                                <td><button class="btn-primary" onClick="timer{{ $key + 1 }}.stop()">||</button></td>
+                                <td><button id="timerStop{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }}); timer{{ $key + 1 }}.stop()" class="btn-danger">X</button></td>
+                            </div>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-xs-2">
+            <div class="pull-right">
+                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Details</button>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="pull-right">
+                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Tutorial</button>
+            </div>
+        </div>
     </div>
+
     
-    <div class="narration-button">
-        <label for="mic">Narration</label>
-        <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
-    </div>
     
-    <div class="pull-right">
-        <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
-            View Details</button>
-    </div>
     
-    <div class="pull-right">
-        <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>
-            View Tutorial</button>
-    </div>
+    
+    
     
 
 
@@ -50,15 +98,24 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     @foreach ($steps as $key => $step)
-                        <div  @if ($key === 0) class="item active" @else class="item"  @endif>
+                        <div @if ($key === 0) class="item active" @else class="item"  @endif>
                             <div class="carouselWrapper recipe-card">
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
                                 {{-- Voice --}}
                                 <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
-                                <button id="viewStep{{ $key + 1 }}" class="btn btn-primary">View Step</button>
-                                <br><br>
                                 <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
                             </div>
+                                <div class="row">
+
+                                    <div class="col-xs-6">
+                                        <button id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center">View Step</button>
+                                    </div>
+
+                                    <div class="col-xs-6">
+                                        <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer text-center">Start Timer</button>
+                                    </div>
+
+                                </div> 
                         </div>
                     @endforeach
                 </div>
@@ -101,7 +158,131 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
     
     <script>
-        
+
+        @foreach ($steps as $key => $step)
+            // Timer logic from http://codepen.io/anodpixels/pen/dxJmi
+            function _timer{{ $key + 1 }}(callback) {
+                var time{{ $key + 1 }} = {{ $step->time * 60 }};     //  The default time of the timer
+                var mode{{ $key + 1 }} = 1;     //    Mode: count up or count down
+                var status{{ $key + 1 }} = 0;    //    Status: timer is running or stopped
+                var timer_id{{ $key + 1 }};    //    This is used by the setInterval function
+                
+                // this will start the timer e.g. start the timer with 1 second interval timer.start(1000) 
+                this.start = function(interval{{ $key + 1 }}) {
+                    interval{{ $key + 1 }} = (typeof(interval{{ $key + 1 }}) !== 'undefined') ? interval{{ $key + 1 }} : 1000;
+             
+                    if (status{{ $key + 1 }} == 0) {
+                        status{{ $key + 1 }} = 1;
+                        timer_id{{ $key + 1 }} = setInterval(function() {
+                            switch (mode{{ $key + 1 }}) {
+                                default:
+                                if(time{{ $key + 1 }}) {
+                                    time{{ $key + 1 }}--;
+                                    generateTime{{ $key + 1 }}();
+                                    if (typeof(callback) === 'function') callback(time{{ $key + 1 }});
+                                }
+                                break;
+                                
+                                case 1:
+                                if (time{{ $key + 1 }} < 86400) {
+                                    time{{ $key + 1 }}++;
+                                    generateTime{{ $key + 1 }}();
+                                    if (typeof(callback) === 'function') callback(time{{ $key + 1 }});
+                                }
+                                break;
+                            }
+                        }, interval{{ $key + 1 }});
+                    }
+                }
+                
+                //  Same as the name, this will stop or pause the timer ex. timer.stop()
+                this.stop = function() {
+                    if (status{{ $key + 1 }} == 1) {
+                        status{{ $key + 1 }} = 0;
+                        clearInterval(timer_id{{ $key + 1 }});
+                    }
+                }
+                
+                // Reset the timer to zero or reset to a custom time e.g. reset to zero second timer.reset(0)
+                this.reset = function(sec{{ $key + 1 }}) {
+                    sec{{ $key + 1 }} = (typeof(sec{{ $key + 1 }}) !== 'undefined') ? sec{{ $key + 1 }} : 0;
+                    time{{ $key + 1 }} = sec{{ $key + 1 }};
+                    generateTime{{ $key + 1 }}(time{{ $key + 1 }});
+                }
+                
+                // Change the mode of the timer, count-up (1) or countdown (0)
+                this.mode = function(tmode) {
+                    mode{{ $key + 1 }} = tmode;
+                }
+                
+                // This method returns the current value of the timer
+                this.getTime = function() {
+                    return time{{ $key + 1 }};
+                }
+                
+                // This method returns the current mode of the timer count-up (1) or countdown (0)
+                this.getMode = function() {
+                    return mode{{ $key + 1 }};
+                }
+                
+                // This method returns the status of the timer running (1) or stoped (1)
+                this.getStatus = function() {
+                    return status{{ $key + 1 }};
+                }
+                
+                // This method will render the time variable to hour:minute:second format
+                function generateTime{{ $key + 1 }}() {
+                    var second{{ $key + 1 }} = time{{ $key + 1 }} % 60;
+                    var minute{{ $key + 1 }} = Math.floor(time{{ $key + 1 }} / 60) % 60;
+                    var hour{{ $key + 1 }} = Math.floor(time{{ $key + 1 }} / 3600) % 60;
+                    
+                    second{{ $key + 1 }} = (second{{ $key + 1 }} < 10) ? '0'+second{{ $key + 1 }} : second{{ $key + 1 }};
+                    minute{{ $key + 1 }} = (minute{{ $key + 1 }} < 10) ? '0'+minute{{ $key + 1 }} : minute{{ $key + 1 }};
+                    hour{{ $key + 1 }} = (hour{{ $key + 1 }} < 10) ? '0'+hour{{ $key + 1 }} : hour{{ $key + 1 }};
+                    
+                    $('div.timer{{ $key + 1 }} span.second{{ $key + 1 }}').html(second{{ $key + 1 }});
+                    $('div.timer{{ $key + 1 }} span.minute{{ $key + 1 }}').html(minute{{ $key + 1 }});
+                    $('div.timer{{ $key + 1 }} span.hour{{ $key + 1 }}').html(hour{{ $key + 1 }});
+                }
+            }
+             
+            // example use
+            var timer{{ $key + 1 }};
+             
+            $(document).ready(function(e) {
+                timer{{ $key + 1 }} = new _timer{{ $key + 1 }}
+                (
+                    function(time{{ $key + 1 }}) {
+                        if (time{{ $key + 1 }} == 0) {
+                            timer{{ $key + 1 }}.stop();
+                            $('#start{{ $key + 1 }}').on('click', function() {
+                                $('#buzzer{{ $key + 1 }}').play();
+                            });
+                        }
+                    }
+                );
+                timer{{ $key + 1 }}.reset({{ $step->time * 60 }});
+                timer{{ $key + 1 }}.mode(0);
+            });
+
+            // Clear timer from timer table
+            $('#timerStop{{ $key + 1 }}').click(function() {
+                $('.stepTimer{{ $key + 1 }}').addClass('hidden');
+                $('#buzzer{{ $key + 1 }}').stop();
+
+            });
+
+            $('#startTimer{{ $key + 1 }}').click(function() {
+                $('.stepTimer{{ $key + 1 }}').removeClass('hidden');
+            });
+
+        @endforeach
+
+    </script>
+
+    <script>
+        // Video Player Logic
+
 
     </script>
 
