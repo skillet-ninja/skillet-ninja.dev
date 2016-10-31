@@ -52,12 +52,23 @@
     </div> <!-- .row -->
 
     <div class="row">
-        <input type="hidden" id="stepId" name="stepId" value="{{ $step->id }}">
-        <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-        <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <p></p>
+        <div class="col-md-4">
+            <input type="hidden" id="stepId" name="stepId" value="{{ $step->id }}">
+            <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
+            <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
+        </div>
+        <div class="col-md-4">
+            <form class="form" action="{{ action('StepController@destroy', $step->id) }}" method="POST">
+            {!! csrf_field() !!}
+            {!! method_field('DELETE') !!}
+            <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
+            <button class="btn btn-danger" id="ingredient-submit">Delete</button>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
     </div> <!-- .row -->
+        <p></p>
 
 </form>  <!-- form  -->
     </div> <!-- .col-sm-8 -->

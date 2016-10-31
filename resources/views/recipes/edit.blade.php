@@ -127,6 +127,16 @@
             $('#myModal').modal('show');
         });
 
+         $('.add-step').on('click', function(e){
+			var currentURL = $(location).attr("href");
+			var hasHash = currentURL.indexOf("#") + 1;
+			var pageURL = hasHash ? currentURL.replace('#', "?addStep=true") : currentURL + "?addStep=true";
+			$.get(pageURL, function(data){
+				$(".recipe-modal").html(data);
+			});
+			$('#myModal').modal('show');
+		});
+
 
 
 	</script>
