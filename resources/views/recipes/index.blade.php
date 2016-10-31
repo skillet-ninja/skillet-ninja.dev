@@ -37,8 +37,20 @@
     </div>
 </div>  <!-- End.Recipe Modal -->
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            @foreach ($tagsDiv as $tag)
+                    <a href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag }}">{{ $tag }}</a>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 
 <div class="row">
+
+
 
     @foreach ($recipes as $recipe)
         @include('layouts.partials.recipe-index')

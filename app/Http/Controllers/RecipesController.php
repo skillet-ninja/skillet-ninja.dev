@@ -24,7 +24,7 @@ class RecipesController extends Controller
     public function index(Request $request)
     {
 
-        $recipes = Recipe::sort($request);
+        $data = Recipe::sort($request);
         // if (isset($request->searchTerm)) {
         //     $searchTerm = $request->searchTerm;
         // }
@@ -50,7 +50,7 @@ class RecipesController extends Controller
         // }
 
         $data['searchTerm'] = $request->searchTerm;
-        $data['recipes'] = $recipes;
+        // $data['recipes'] = $recipes;
 
         
         return view('recipes.index', $data);
