@@ -15,6 +15,12 @@ body {
   min-height: 83vh;
 }
 
+/* Navbar */
+
+.navbar-form {
+    padding-right: 0;
+}
+
 /* VCA */
 
 .narration-button {
