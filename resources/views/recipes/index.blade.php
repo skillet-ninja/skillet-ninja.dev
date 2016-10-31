@@ -15,9 +15,9 @@
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
         <span class="caret"></span></button>
         <ul class="dropdown-menu pull-right">
-            <li><a href="#">Top Rated</a></li>
-            <li><a href="#">Most Recent</a></li>
-            <li><a href="#">Difficulty</a></li>
+            <li><a href="{{ URL::route('sortRecipes') }}?sort=top_rated">Top Rated</a></li>
+            <li><a href="{{ URL::route('sortRecipes') }}?sort=most_recent">Most Recent</a></li>
+            <li><a href="{{ URL::route('sortRecipes') }}?sort=difficulty">Difficulty</a></li>
         </ul>
     </div>
     <br>
