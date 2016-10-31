@@ -2,6 +2,14 @@
 
 body {
     background-color: gold;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'helvetica';
+}
+p, div {
+    font-family: 'arial';
 }
 
 .site {
@@ -16,6 +24,32 @@ body {
 }
 
 /* Navbar */
+
+.navbar {
+    /*background-color: #00B0D8;*/
+    background-color: black;
+    border: none;
+    font-style: arial;
+}
+
+/* Nav Font */
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: grey;
+}
+
+
+.navLogo {
+    height: inherit;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    bottom: 15px;
+    background-color: white;
+}
 
 .navbar-form {
     padding-right: 0;
@@ -270,6 +304,14 @@ ol {
     padding-left: 4em;
 }
 
+.welcome-logo {
+    width: 25%;
+}
+
+.welcomeHeader {
+    font-size: 5em;
+}
+
 /*footer*/
 
 .site-footer {
@@ -394,5 +436,11 @@ button.voter i {
 .customVotePadding {
     /*padding-left: 0;*/
     padding-right: 0;
+}
+
+/* About */
+
+.bioPics {
+    width: 50%;
 }
 
