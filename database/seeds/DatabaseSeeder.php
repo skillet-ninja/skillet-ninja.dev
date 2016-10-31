@@ -25,12 +25,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(RecipesTableSeeder::class);
-        $this->call(VotesTableSeeder::class);
         $this->call(IngredientsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(StepsTableSeeder::class);
         $this->call(RecipeTagTableSeeder::class);
         $this->call(IngredientRecipeTableSeeder::class);
+        $this->call(VotesTableSeeder::class);
 
 
         Model::reguard();

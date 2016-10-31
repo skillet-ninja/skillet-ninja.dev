@@ -8,7 +8,7 @@
         @endforeach
     @endif
 
-    <form class="form form-group" action="{{ action('TagController@store')}}" method="POST" id="tagCreate" name="tagCreate">
+    <form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
     {!! csrf_field() !!}
         <input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe_id }}">
         <label for="keywordName">Keywords</label>
