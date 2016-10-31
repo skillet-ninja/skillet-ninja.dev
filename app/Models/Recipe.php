@@ -50,55 +50,111 @@ class Recipe extends Model
         return self::where('name','LIKE','%' . $searchTerm .'%');
     }
 
+    public static function tagsDiv($recipes){
+
+        $tags = [];
+
+        foreach ($recipes as $recipe) {
+            foreach ($recipe->tags as $tag) {
+                array_push($tags, $tag->tag);
+            }
+        }
+
+        $tags = array_unique($tags);
+
+        return $tags;
+    }
+
     public static function sort($request){
 
         $recipesPerPage = 9;
 
         if (isset($request->searchTerm)&&$request->sort == 'top_rated')
         {
-            $recipes = Recipe::getSearchTerm($request->searchTerm)
+            $data['recipes'] = Recipe::getSearchTerm($request->searchTerm)
             ->orderBy('vote_score', 'Desc')
             ->paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($recipes);
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
 
         }else if ($request->sort == 'top_rated'){
 
-            $recipes = Recipe::orderBy('vote_score', 'Desc')
+            $data['recipes'] = Recipe::orderBy('vote_score', 'Desc')
             ->paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($recipes);
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
 
         }else if (isset($request->searchTerm)&&$request->sort == 'difficulty')
         {
 
-            $recipes = Recipe::getSearchTerm($request->searchTerm)
+            $data['recipes'] = Recipe::getSearchTerm($request->searchTerm)
             ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
             ->paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($recipes);
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
 
         }else if ($request->sort == 'difficulty'){
 
 
-            $recipes = DB::table('recipes')
+            $data['recipes'] = DB::table('recipes')
             ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
             ->paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($recipes);
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
 
         }else if (isset($request->searchTerm)){
 
 
-            $recipes = Recipe::getSearchTerm($request->searchTerm)
+            $data['recipes'] = Recipe::getSearchTerm($request->searchTerm)
             ->paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($recipes);
 
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
+
+        }else if (isset($request->search_tag)) {
+            
+            $recipes = Recipe::join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
+            ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
+            ->where('tag','LIKE','%' . $request->search_tag .'%')
+            ->paginate($recipesPerPage);
+
+
+            $tagsDiv = Recipe::tagsDiv($recipes);
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            $data['recipes'] = $recipes;
+
+            return $data;
         }else{
-            $recipes = Recipe::paginate($recipesPerPage);
+            $data['recipes'] = Recipe::paginate($recipesPerPage);
 
-            return $recipes;
+            $tagsDiv = Recipe::tagsDiv($data['recipes']);
+
+
+
+            $data['tagsDiv'] = $tagsDiv;
+
+            return $data;
 
         }
     }
