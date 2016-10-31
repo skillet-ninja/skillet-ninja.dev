@@ -26,41 +26,10 @@ class RecipesController extends Controller
         
         $recipesPerPage = 9;
 
-
-        // if (isset($request->searchTerm))
-        // {
-        //     $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate($recipesPerPage);
-        // $data = Recipe::sort($request);
-        // if (isset($request->searchTerm)) {
-        //     $searchTerm = $request->searchTerm;
-        // }
-
-        // if (isset($searchTerm))
-        // {
-        //     $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate($recipesPerPage);
-
-        // }else if ($request->sort == 'top_rated'){
-
-        //     $recipes = Recipe::orderBy('vote_score', 'Desc')->paginate($recipesPerPage);
-
-        // }else if($request->sort == 'difficulty'){
-
-
-        //     $recipes = DB::table('recipes')
-        //     ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
-        //     ->paginate($recipesPerPage);
-
-        // }else{
-        //     $recipes = Recipe::paginate($recipesPerPage);
-
-
-        // } else
-        // {
-        //     $recipes = Recipe::paginate($recipesPerPage);
-        // }
+        $data = Recipe::sort($request);
 
         $data['searchTerm'] = $request->searchTerm;
-        // $data['recipes'] = $recipes;
+
 
         
         return view('recipes.index', $data);
