@@ -71,8 +71,8 @@ class Recipe extends Model
 
         }else if (isset($request->searchTerm)&&$request->sort == 'difficulty')
         {
-            $recipes = DB::table('recipes')
-            ->where('name','LIKE','%' . $request->searchTerm . '%')
+
+            $recipes = Recipe::getSearchTerm($request->searchTerm)
             ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
             ->paginate($recipesPerPage);
 
@@ -83,6 +83,14 @@ class Recipe extends Model
 
             $recipes = DB::table('recipes')
             ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
+            ->paginate($recipesPerPage);
+
+            return $recipes;
+
+        }else if (isset($request->searchTerm)){
+
+
+            $recipes = Recipe::getSearchTerm($request->searchTerm)
             ->paginate($recipesPerPage);
 
             return $recipes;
