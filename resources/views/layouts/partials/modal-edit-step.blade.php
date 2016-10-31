@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
         
-        <h2>Edit</h2>
+        <h2>Edit Step</h2>
 
 
 <form class="form" action="{{ action('StepController@update') }}" method="POST">

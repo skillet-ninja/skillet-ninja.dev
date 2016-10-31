@@ -33,7 +33,7 @@
 
 
 <div class="row">
-    @if (isset($user->recipes->items))
+    @if (isset($user->recipes))
         <h2>No recipes have been added by {{ $user->name }} yet.</h2>
     @endif
 
@@ -58,11 +58,4 @@
 
     </script>
 
-    <script>
-        if ({{ Auth::id() }} !== null) 
-            if ({{Auth::id()}} == {{ $recipe->user_id }}) {
-                $('#editRecipeBtn').removeClass('hidden');
-        }
-    </script>
-
-@stop
+@stop 
