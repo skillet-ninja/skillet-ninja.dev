@@ -50,6 +50,51 @@ class Recipe extends Model
         return self::where('name','LIKE','%' . $searchTerm .'%');
     }
 
+    public static function sort($request){
+
+        $recipesPerPage = 9;
+
+        if (isset($request->searchTerm)&&$request->sort == 'top_rated')
+        {
+            $recipes = Recipe::getSearchTerm($request->searchTerm)
+            ->orderBy('vote_score', 'Desc')
+            ->paginate($recipesPerPage);
+
+            return $recipes;
+
+        }else if ($request->sort == 'top_rated'){
+
+            $recipes = Recipe::orderBy('vote_score', 'Desc')
+            ->paginate($recipesPerPage);
+
+            return $recipes;
+
+        }else if (isset($request->searchTerm)&&$request->sort == 'difficulty')
+        {
+            $recipes = DB::table('recipes')
+            ->where('name','LIKE','%' . $request->searchTerm . '%')
+            ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
+            ->paginate($recipesPerPage);
+
+            return $recipes;
+
+        }else if ($request->sort == 'difficulty'){
+
+
+            $recipes = DB::table('recipes')
+            ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
+            ->paginate($recipesPerPage);
+
+            return $recipes;
+
+        }else{
+            $recipes = Recipe::paginate($recipesPerPage);
+
+            return $recipes;
+
+        }
+    }
+
 
 
     // vote logic begins here
