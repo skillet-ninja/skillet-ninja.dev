@@ -34,7 +34,7 @@
 
 
 <div class="row">
-    @if (isset($user->recipes))
+    @if (!isset($user->recipes))
         <h2>No recipes have been added by {{ $user->name }} yet.</h2>
     @endif
 

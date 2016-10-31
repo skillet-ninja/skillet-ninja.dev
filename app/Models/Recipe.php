@@ -177,7 +177,7 @@ class Recipe extends Model
     {
         return $this->votes()->where('vote', '=', 0);
     }
-    
+
     public function voteScore()
     {
         // find total upvotes

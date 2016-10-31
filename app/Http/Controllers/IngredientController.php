@@ -41,7 +41,7 @@ class IngredientController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+        // dd($request);
         $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
         $amount = $request->amount;
         $recipe = Recipe::find($request->recipeId);
@@ -124,7 +124,7 @@ class IngredientController extends Controller
         $recipe = Recipe::findOrFail($request->recipeId);
         $recipe->ingredients()->detach($request->ingredientId);
 
-        return redirect()->action('RecipesController@edit', $request->recipeId);
+        return redirect()->back();
 
     }
 

@@ -23,8 +23,14 @@ class RecipesController extends Controller
      */
     public function index(Request $request)
     {
+        
+        $recipesPerPage = 9;
 
-        $data = Recipe::sort($request);
+
+        // if (isset($request->searchTerm))
+        // {
+        //     $recipes = Recipe::getSearchTerm($request->searchTerm)->paginate($recipesPerPage);
+        // $data = Recipe::sort($request);
         // if (isset($request->searchTerm)) {
         //     $searchTerm = $request->searchTerm;
         // }
@@ -47,6 +53,10 @@ class RecipesController extends Controller
         // }else{
         //     $recipes = Recipe::paginate($recipesPerPage);
 
+
+        // } else
+        // {
+        //     $recipes = Recipe::paginate($recipesPerPage);
         // }
 
         $data['searchTerm'] = $request->searchTerm;
@@ -62,9 +72,16 @@ class RecipesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view ('recipes.create');
+        // dd($request);
+        if($request->recipe)
+        {
+            return view ('layouts.partials.modal-add-recipe');
+
+        }
+
+        return view ('recipes.create2');
     }
 
     /**
@@ -76,9 +93,9 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
 
-        $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
-        $this->validate($request, Recipe::$rules);
-        $request->session()->forget('ERROR_MESSAGE');
+        // $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
+        // $this->validate($request, Recipe::$rules);
+        // $request->session()->forget('ERROR_MESSAGE');
 
         $recipe = new Recipe();
         $recipe->name = $request->name;
@@ -90,11 +107,12 @@ class RecipesController extends Controller
         $recipe->user_id = $request->user()->id;
         $recipe->notes = $request->notes;
         $recipe->save();
+        $data['recipe'] = $recipe;
 
         $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
 
 
-        return view('recipes/create', ['recipe_id'=>$recipe->id]);
+        return redirect("recipes/".$recipe->id."/edit")->with($data);
     }
 
     /**
@@ -190,10 +208,7 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
-        // $this->validate($request, Recipe::$rules);
-        // $request->session()->forget('ERROR_MESSAGE');
-
+        
         $recipe = Recipe::findOrFail($id);
         $recipe->name = $request->name;
         $recipe->servings = $request->servings;
@@ -217,7 +232,18 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $recipe = Recipe::findOrFail($id);
+        $userId = $recipe->user_id;
+
+        $recipe->steps()->delete();
+        $recipe->votes()->delete();
+        $recipe->ingredients()->detach();
+        $recipe->tags()->detach();
+        $recipe->delete();
+
+        return redirect()->action('UsersController@show', $userId) ;
+
     }
 
 

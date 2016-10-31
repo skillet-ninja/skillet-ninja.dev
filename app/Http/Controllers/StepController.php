@@ -115,9 +115,7 @@ class StepController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        dd($id);
-        $step = Step::findOrFail($id);
-        dd($step);
+        $step = Step::findOrFail($request->stepId);
         $step->delete();
 
         return redirect()->back();

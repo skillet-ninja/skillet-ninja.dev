@@ -22,13 +22,28 @@
                         value="{{ (old('ingredient') == null) ? $ingredient->ingredient : old('ingredient') }}">
                     </div>
                 </div>
+            </div> <!-- .row -->
+
+        {{-- Buttons --}}
+        <div class="row">
+            <div class="col-md-4">
                 <input type="hidden" id="ingredientId" name="ingredientId" value="{{ $ingredient->id }}">
                 <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-            </div> <!-- .row -->
-        
-            <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
-            
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
+            </div>
+            <div class="col-md-4">
+
+                <form class="form" action="ingredients/{{ $ingredient->id }}" method="POST">
+                    {!! csrf_field() !!}
+                    {!! method_field('DELETE') !!}
+                    <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div> <!-- .row -->
             <p></p>
 
         </form> <!-- form  -->
