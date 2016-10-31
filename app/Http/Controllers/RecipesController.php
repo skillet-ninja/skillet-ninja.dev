@@ -119,7 +119,7 @@ class RecipesController extends Controller
         if($request->ajax()){
 
             // dd($request);
-            
+
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
 
@@ -128,6 +128,10 @@ class RecipesController extends Controller
                 $ingredient = $recipe->ingredients->find($request->ingredientId);
                 $data['ingredient'] = $ingredient;
             }
+
+
+            $step = $recipe->steps->find($request->stepId);
+            $data['step']= $step;
 
 
             // bring up appropriate modal for editing

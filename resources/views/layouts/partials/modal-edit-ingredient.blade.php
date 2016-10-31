@@ -27,7 +27,6 @@
             </div> <!-- .row -->
         
             <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
-<a href="{{ action('IngredientController@destroy') }}" class="btn btn-primary btn-danger pull-right">Delete</a>
             
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <p></p>

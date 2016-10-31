@@ -49,6 +49,7 @@ class StepController extends Controller
         // $request->session()->flash('ERROR_MESSAGE', 'Post was not saved.');
         // $this->validate($request, $rules);
         // $request->session()->forget('ERROR_MESSAGE');
+        $recipeId = $request->recipe_id;
 
         $step = new Step;
         $step->recipe_id = $request->recipe_id;
@@ -58,26 +59,7 @@ class StepController extends Controller
         $step->video_url = $request->time;
         $step->save();
 
-        $recipeId = $request->recipe_id;
 
-        $ingredientsDisplayed = DB::table('ingredients')
-        ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $stepsDisplayed = DB::table('steps')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $tagsDisplayed = DB::table('tags')
-        ->join('recipe_tag', 'tags.id', '=', 'recipe_tag.tag_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $data = ['recipe_id' => $recipeId, 
-        'ingredientsDisplayed' => $ingredientsDisplayed, 
-        'stepsDisplayed' => $stepsDisplayed, 
-        'tagsDisplayed' => $tagsDisplayed];
 
         return view('recipes/create')->with($data);
     }
@@ -113,7 +95,17 @@ class StepController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $step = Step::findOrFail($request->stepId);
+
+        // $step->recipe_id = $request->recipe_id;
+        $step->step = $request->step;
+        $step->time = $request->time;
+        $step->image_url = $request->image_url;
+        $step->video_url = $request->video_url;
+        $step->save();
+
+        return redirect()->back();
     }
 
     /**
