@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Skillet Ninja</a>
+                    <a class="navbar-brand" href="/"><img class="navLogo" src="/assets/img/skillet-ninja-logo-edited.png"><span class="pull-right">Skillet Ninja</span></a>
                 </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,18 +30,15 @@
                     {{-- <li><a href="{{ action('RecipesController@index' }}">Recipes</a></li> --}}
 
                     @if(Auth::check())
-                        <li><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
-                        <li><a href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
-                        <li><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
-
-                            
-
-                        <li><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li class="navFont"><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
+                        <li class="navFont"><a href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
+                        <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                        <li class="navFont"><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     @else
-                        <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
-                        <li><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                        <li class="navFont"><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+                        <li class="navFont"><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
                     @endif
                 </ul>
                 

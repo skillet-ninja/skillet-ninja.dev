@@ -27,6 +27,7 @@
             <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
         </div>
     </div>
+<hr>
 <div class="row">
     <h1>{{ $user->name }}'s recipes:</h1>
 </div>
