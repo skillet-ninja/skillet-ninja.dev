@@ -345,3 +345,48 @@ a.footer-links {
 .recipeBtn {
     
 }
+
+button.voter {
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+}
+
+button.voter i {
+    background-color: none;
+    padding: 0;
+    margin: 0;
+}
+
+#voteUpButton {
+    position: relative;
+    top: 12px;
+}
+
+#voteDownButton {
+    position: relative;
+    bottom: 12px;   
+}
+
+.votingInterface {
+    background-color: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 40px;
+}
+
+#voteScore {
+    background-color: none;
+    color: black;
+    font-size: 1.3em;
+}
+
+.customParagraphPadding {
+    /*padding-right: 0;*/
+}
+
+.customVotePadding {
+    /*padding-left: 0;*/
+    padding-right: 0;
+}
+
