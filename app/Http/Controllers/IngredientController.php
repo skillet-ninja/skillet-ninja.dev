@@ -41,6 +41,7 @@ class IngredientController extends Controller
     public function store(Request $request)
     {
 
+        dd($request);
         $ingredient = Ingredient::firstOrCreate(['ingredient'=>$request->ingredient]);
         $amount = $request->amount;
         $recipe = Recipe::find($request->recipeId);

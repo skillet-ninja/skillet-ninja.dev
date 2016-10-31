@@ -49,10 +49,9 @@ class StepController extends Controller
         // $request->session()->flash('ERROR_MESSAGE', 'Post was not saved.');
         // $this->validate($request, $rules);
         // $request->session()->forget('ERROR_MESSAGE');
-        $recipeId = $request->recipe_id;
 
         $step = new Step;
-        $step->recipe_id = $request->recipe_id;
+        $step->recipe_id = $request->recipeId;
         $step->step = $request->step;
         $step->image_url = $request->image_url;
         $step->video_url = $request->video_url;
@@ -60,8 +59,8 @@ class StepController extends Controller
         $step->save();
 
 
-
-        return view('recipes/create')->with($data);
+        return redirect()->back();
+        // return view('recipes/create')->with($data);
     }
 
     /**
@@ -114,8 +113,12 @@ class StepController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+
+        $step = Step::findOrFail($id);
+        $step->delete();
+
+        return redirect()->back();
     }
 }
