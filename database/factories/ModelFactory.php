@@ -32,6 +32,7 @@ $factory->define(App\Models\Recipe::class, function (Faker\Generator $faker) {
         'summary' => $faker->sentences($nb = 3, $asText = true),
         'notes' => $faker->sentences($nb = 3, $asText = true),
         'image_url' => "http://placehold.it/350x300",
+        'tutorial_url' => "https://www.youtube.com/watch?v=IpNVe0n2atk",
         'overall_time' => $faker->numberBetween($min = 1, $max = 120),
         'difficulty' => $difficulty,
     ];

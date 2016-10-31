@@ -14,7 +14,7 @@ class VotesTableSeeder extends Seeder
     {
         $votes_created = App\Models\Vote::count();
         $this->command->info('Starting at ' . $votes_created . ' vote records');
-        while ($votes_created <= 10000) {
+        while ($votes_created <= 1000) {
             $user_id = App\User::all()->random()->id;
             $recipe_id = App\Models\Recipe::all()->random()->id;
             $vote = App\Models\Vote::where('recipe_id', $recipe_id)->where('user_id', $user_id)->first();
