@@ -45,9 +45,12 @@
 
         @yield('bottom-scripts')
 
+        {{-- Stops voice from running on other pages when clicking away from VCA --}}
         <script>
             var currentUrl = "{{ Request::url() }}";
-
+            if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
+                window.speechSynthesis.cancel();
+            } 
         </script>
 
         <script src="/assets/js/bootstrap-tagsinput.js"></script>

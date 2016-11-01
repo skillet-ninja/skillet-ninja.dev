@@ -313,9 +313,15 @@
                     window.speechSynthesis.speak(msg);
                 }
             }
+
+            // Stops narration
+            function silence() {
+                window.speechSynthesis.cancel();
+            }
             
             // Click event for left carousel button click
             $('#prev').click(function() {
+                silence();
                 step -= 1;
                 step = calculateStep(step);
                 // Say step number
@@ -326,6 +332,7 @@
 
             // Click event for right carousel button click
             $('#next').click(function() {
+                silence();
                 step += 1;
                 step = calculateStep(step);
                  // Say step number
@@ -335,6 +342,7 @@
             });
 
             $('.stepPageButton').click(function() {
+                silence();
                 var thisId = ($(this).attr('id'));
                 step = Number(thisId.substring(4));
                  // Say step number
@@ -355,26 +363,20 @@
             var msg = new SpeechSynthesisUtterance('Welcome to Skillet Ninja.');
             msg.rate = .9;
             window.speechSynthesis.speak(msg);
-            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
-            //     speechSynthesis.cancel();
-            // } 
+
             
 
             // CURRENT STEP NUMBER
             var msg = new SpeechSynthesisUtterance($('.vca-step-header')[0].innerHTML);
             msg.rate = .9;
             window.speechSynthesis.speak(msg);
-            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
-            //     speechSynthesis.cancel();
-            // } 
+
 
             // CURRENT STEP INSTRUCTION
             var msg = new SpeechSynthesisUtterance($('.vca-step')[0].innerHTML);
             msg.rate = .9;
             window.speechSynthesis.speak(msg);
-            // if (currentUrl.substring(0, 33) != 'http://skillet-ninja.dev/recipes/') {
-            //     speechSynthesis.cancel();
-            // } 
+
 
             {{-- Voice command functionality --}}
             if (document.getElementById('mic').checked) {
