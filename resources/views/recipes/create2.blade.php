@@ -4,7 +4,7 @@
 
 @section ('content')
 
-	@include('layouts.partials.modal-skeleton')
+@include('layouts.partials.modal-skeleton')
 
 
 <h1 class="h1 text-center">Recipe Creator</h1>
