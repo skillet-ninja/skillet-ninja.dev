@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use DB;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -51,5 +52,29 @@ class User extends Model implements AuthenticatableContract,
     public function recipes()
     {
             return $this->hasMany('App\Models\Recipe','user_id');
+    }
+
+    public function votes()
+    {
+        return $this->hasMany('App\Models\Vote','user_id');
+    }
+
+    public static function getRecipesVotedFor($id)
+    {
+            $recipes = DB::table('recipes')
+            ->join('votes', 'recipes.id', '=', 'votes.recipe_id')
+            ->where('votes.user_id','=','' . $id)
+            ->where('votes.vote','=','1')
+            ->paginate(9);
+            
+            return $recipes;
+    }
+    public static function getRecipesCreated($id)
+    {
+            $recipes = DB::table('recipes')
+            ->where('user_id','=','' . $id)
+            ->paginate(9);
+            
+            return $recipes;
     }
 }
