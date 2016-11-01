@@ -7,11 +7,11 @@
         <h2>A Virtual Cooking Assistant</h2>
     </div>
     
-        <h3>Feel free to browse the available recipes.</h3>
-        <h3>When you find a recipe you want to cook, please login or register then click Skillet!</h3>
-        <h3>After you login, click the create button to share your recipe with the world!</h3>
-        <h3>Happy cooking!</h3>
-        <h3 class="welcome-signiture">-Team Skillet Ninja</h3>
+        <p>Feel free to browse the available recipes.</p>
+        <p>When you find a recipe you want to cook, please login or register then click Skillet!</p>
+        <p>After you login, click the create button to share your recipe with the world!</p>
+        <p>Happy cooking!</p>
+        <p class="welcome-signiture">-Team Skillet Ninja</p>
     </div>
 
 
