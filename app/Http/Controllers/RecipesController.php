@@ -29,6 +29,7 @@ class RecipesController extends Controller
         $data = Recipe::sort($request);
 
         $data['searchTerm'] = $request->searchTerm;
+        $data['search_tag'] = $request->search_tag;
 
 
         
@@ -209,26 +210,6 @@ class RecipesController extends Controller
         $recipe->votes()->delete();
         $recipe->ingredients()->detach();
         $recipe->tags()->detach();
-
-        // if ($recipe->steps != null)
-        // {
-        //     $recipe->steps()->delete();
-        // }
-
-        // if ($recipe->votes != null)
-        // {
-        //     $recipe->votes()->delete();
-        // }
-
-        // if ($recipe->ingredients != null)
-        // {
-        //     $recipe->ingredients()->detach();
-        // }
-
-        // if ($recipe->tags != null)
-        // {
-        //     $recipe->tags()->detach();
-        // }
 
         $recipe->delete();
 
