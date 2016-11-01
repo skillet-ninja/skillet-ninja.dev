@@ -50,7 +50,7 @@ class RecipesController extends Controller
 
         }
 
-        return view ('recipes.create2');
+        return view ('recipes.create');
     }
 
     /**
@@ -209,6 +209,27 @@ class RecipesController extends Controller
         $recipe->votes()->delete();
         $recipe->ingredients()->detach();
         $recipe->tags()->detach();
+
+        // if ($recipe->steps != null)
+        // {
+        //     $recipe->steps()->delete();
+        // }
+
+        // if ($recipe->votes != null)
+        // {
+        //     $recipe->votes()->delete();
+        // }
+
+        // if ($recipe->ingredients != null)
+        // {
+        //     $recipe->ingredients()->detach();
+        // }
+
+        // if ($recipe->tags != null)
+        // {
+        //     $recipe->tags()->detach();
+        // }
+
         $recipe->delete();
 
         return redirect()->action('UsersController@show', $userId) ;
