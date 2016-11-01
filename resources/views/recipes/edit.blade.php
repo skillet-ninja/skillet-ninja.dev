@@ -37,23 +37,29 @@
 							{{ $tag->tag }} 
 					@endforeach
 
-				@if ($recipe->tags == null)
+				{{-- @if ($recipe->tags == null) --}}
 
-					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
+					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST">
 						{!! csrf_field() !!}
-				@else
-					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
+						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+						<label for="tags">Tags</label>
+						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
+						<button class="btn btn-primary">UpdateTags</button>
+					</form>
+
+			{{-- 	@elseif ($recipe->tags != null)
+					<form class="form form-group" action="{{ action('TagController@update') }}" method="POST" id="tagCreate" name="tagCreate">
 							{!! csrf_field() !!}
 							{!! method_field('PUT') !!}
-				@endif
 
+						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+						<label for="tags">Keywords</label>
+						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
+						<button class="btn btn-primary">Save Tags</button>
+					</form> --}}
 
+				{{-- @endif --}}
 
-					<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-					<label for="tags">Keywords</label>
-					<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
-					<button class="btn btn-primary">Add Tags</button>
-				</form>
 
 			</div><!-- .col-md-6 -->
 

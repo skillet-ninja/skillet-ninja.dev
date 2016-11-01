@@ -51,37 +51,9 @@ class TagController extends Controller
 
             $recipe->tags()->attach($tag->id);
         }
-
-            return redirect()->back();
-    }
-
-
-
-
-
-
-
-        $ingredientsDisplayed = DB::table('ingredients')
-        ->join('ingredient_recipe', 'ingredients.id', '=', 'ingredient_recipe.ingredient_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $tagsDisplayed = DB::table('tags')
-        ->join('recipe_tag', 'tags.id', '=', 'recipe_tag.tag_id')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $stepsDisplayed = DB::table('steps')
-        ->where('recipe_id', $recipeId)
-        ->get();
-
-        $data = ['recipe_id' => $recipeId,
-         'ingredientsDisplayed' => $ingredientsDisplayed,
-          'stepsDisplayed' => $stepsDisplayed,
-           'tagsDisplayed' => $tagsDisplayed];
-
-        return view('recipes/create')->with($data);
-    }
+     
+        return redirect()->back();
+    }   
 
     /**
      * Display the specified resource.
