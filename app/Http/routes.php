@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/justin', function () {
+    return view('errors.404');
+});
+
 Route::get('/home', function () {
     return view('welcome');
 });
