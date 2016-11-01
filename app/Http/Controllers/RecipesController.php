@@ -66,7 +66,6 @@ class RecipesController extends Controller
         // $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
         // $this->validate($request, Recipe::$rules);
         // $request->session()->forget('ERROR_MESSAGE');
-        dd($request->tags);
 
         $recipe = new Recipe();
         $recipe->name = $request->name;
@@ -80,16 +79,6 @@ class RecipesController extends Controller
         $recipe->notes = $request->notes;
         $recipe->save();
         $data['recipe'] = $recipe;
-
-        $tags = $request->tags;
-
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrNew(['tag'=>$tagName]);
-            $tag->tag = $tagName;
-            $tag->save();
-
-            $recipe->tags()->attach();
-        }
 
         $request->session()->flash('SUCCESS_MESSAGE', 'Recipe was SAVED successfully');
 
