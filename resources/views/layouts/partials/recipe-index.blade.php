@@ -1,9 +1,5 @@
 <div class="col-sm-6 col-md-4 recipe">
     <div class="thumbnail thumbnailStyle">
-
-
-
-        {{-- <img src="https://placehold.it/350x300" class="img-responsive image1"> --}}
         <img src="{!! $recipe->image_url !!}" class="img-responsive image1">
         <div class="caption recipe-thumbnail">
             <div class="row">
