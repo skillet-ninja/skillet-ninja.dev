@@ -1,7 +1,3 @@
-@section ('top-scripts')
-  <link href="/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
-@stop
-
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         
@@ -83,7 +79,7 @@
             <div class="form-group">
                 <label for="tags">Recipe Tags</label>
                 <br>
-                <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags[]" value="{{ old('tags') }}">
+                <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags" value="{{ old('tags') }}">
                 <br>
             </div>
         </div>
@@ -101,8 +97,3 @@
 </div> <!-- .row -->
 
 @include ('errors.list')
-
-@section('bottom-scripts')
-
-    <script src="/assets/js/bootstrap-tagsinput.js"></script>
-@stop
