@@ -90,15 +90,17 @@
         // Stops users that are not logged in from getting to the VCA
         $('.stopSkilletButton').click(function() {
             if ({{Auth::check() + 1}} == 1) {
-                console.log("pre modal close");
-                $('#closeModal').click();
-                console.log("post modal close");
                 alert('Please login or register to access the virtual cooking assistant.');
-                console.log("post alert");
             }
         });
 
-        console.log("Working");
+        // Stops users that are not logged in from getting to the VCA
+        
+        // $('.stopSkilletButton').click(function() {
+        //     if ({{Auth::check() + 1}} == 1) {
+        //         alert('Please login or register to access the virtual cooking assistant.');
+        //     }
+        // });
 
     </script>
 
