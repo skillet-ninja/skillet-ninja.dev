@@ -1,38 +1,69 @@
 <div class="modal-body">
 
-    <div class="title-rating">
-        <h2 class="modal-name">{{ $recipe->name }}</h2>
-    </div>
-
-    <h4 class="modal-author">Submitted by <strong>{{ $recipe->user->name}}</strong></h4>
-
-    <dl>
-        <dt>Description</dt>
-        <dd>{{ $recipe->summary }}</dd>
-    </dl>
-
-    <div class="row">
-        <div class="col-md-3 rounded-list">
-            <h1>Ingredients</h1>
-            <ol>
-                @foreach ($recipe->ingredients as $ingredient)
-                <li><a href="#">{{$ingredient->pivot->amount}} of {{ $ingredient->ingredient }}</a></li>
-                @endforeach
-            </ol>
-        </div>
-
-
-        <div class="col-md-8 rounded-list">
-            <h1>Steps</h1>
-            <ol>
-                @foreach ($recipe->steps as $step)
-                    <li><a href="#">{{ $step->step }}</a></li>
-                @endforeach
-            </ol>
-
-        </div>            
+{{-- Title and Creator --}}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+<h2 class="text-center text-capitalize">{{ $recipe->name }}</h2>
+<h4 class="modal-author">Submitted by <strong>{{ $recipe->user->name}}</strong></h4>
     </div>
 </div>
+
+
+{{-- Description       --}}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <p class="lead">{{ $recipe->summary }}</p>
+    </div>
+</div>
+
+
+<div class="row">
+
+    {{-- Ingredients --}}
+    <div class="col-md-3 col-md-offset-1 rounded-list">
+        <h3>Ingredients</h3>
+        <ol>
+            @foreach ($recipe->ingredients as $ingredient)
+            <li><a href="#">{{$ingredient->pivot->amount}} of {{ $ingredient->ingredient }}</a></li>
+            @endforeach
+        </ol>
+    </div>
+
+    {{-- Steps --}}
+    <div class="col-md-7 rounded-list">
+        <h3>Steps</h3>
+        <ol>
+            @foreach ($recipe->steps as $step)
+                <li><a href="#">{{ $step->step }}</a></li>
+            @endforeach
+        </ol>
+    </div>  
+
+</div>
+
+{{-- Notes       --}}
+<div class="row">
+    <div class="col-md-2">
+        <h3 class="text-right">Notes</h3>
+    </div>
+    <div class="col-md-8">
+        <p class="lead">{{ $recipe->notes }}</p>
+    </div>
+</div>
+
+{{-- Tags  --}}
+<div class="row">
+    <div class="col-md-2">
+        <p class="text-right">Tags</p>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        @foreach ($recipe->tags as $tag)
+            <span class="text-left">{{ $tag->tag }} </span>
+        @endforeach
+    </div>
+</div>
+
+
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
