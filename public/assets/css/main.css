@@ -30,6 +30,7 @@ p, div {
     background-color: black;
     border: none;
     font-style: arial;
+    border-radius: 0;
 }
 
 /* Nav Font */
@@ -48,12 +49,24 @@ p, div {
     margin: 0;
     position: relative;
     bottom: 15px;
-    background-color: white;
+    float: left;
 }
 
 .navbar-form {
     padding-right: 0;
 }
+
+/*.logoTitleRight {
+    color: white;
+    float: right;
+    font-size: .7em;
+}
+
+.logoTitleLeft {
+    color: white;
+    float: left;
+    font-size: .7em;
+}*/
 
 /* VCA */
 

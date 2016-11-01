@@ -10,9 +10,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><img class="navLogo" src="/assets/img/skillet-ninja-logo-edited.png"><span class="pull-right">Skillet Ninja</span></a>
+                    <a class="navbar-brand" href="/">
+                        {{-- <span class="logoTitleLeft">SKILLET</span> --}}
+                        <img class="navLogo" src="/assets/img/skillet-ninja-logo-invert.png">
+                        {{-- <span class="logoTitleRight">NINJA</span> --}}
+                    </a>
                 </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET">
