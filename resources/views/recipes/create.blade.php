@@ -2,6 +2,11 @@
 
 @section ('title', 'Recipe Editor')
 
+
+@section ('top-scripts')
+  <link href="/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+@stop
+
 @section ('content')
 
 @include('layouts.partials.modal-skeleton')
@@ -100,7 +105,10 @@
 
 @section('bottom-scripts')
 
+	<script src="/assets/js/bootstrap-tagsinput.js"></script>
+
 	<script type="text/javascript">
+
 
 		$('.add-recipe').on('click', function(e){
 			var currentURL = $(location).attr("href");
@@ -159,8 +167,6 @@
 			});
 			$('#myModal').modal('show');
 		});
-
-
 
 	</script>
 

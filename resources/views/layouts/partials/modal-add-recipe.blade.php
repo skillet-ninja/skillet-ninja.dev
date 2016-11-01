@@ -1,3 +1,7 @@
+@section ('top-scripts')
+  <link href="/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+@stop
+
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         
@@ -58,8 +62,8 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="video_url">Video Link</label>
-                    <input type="text" id="video_url" name="video_url" value="{{ old('video_url') }}" placeholder="Link to video" class="form-control">
+                    <label for="tutorial_url">Video Link</label>
+                    <input type="text" id="tutorial_url" name="tutorial_url" value="{{ old('tutorial_url') }}" placeholder="Link to video" class="form-control">
                 </div>
             </div>
         </div>
@@ -79,7 +83,7 @@
             <div class="form-group">
                 <label for="tags">Recipe Tags</label>
                 <br>
-                <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags" value="{{ old('tags') }}">
+                <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags[]" value="{{ old('tags') }}">
                 <br>
             </div>
         </div>
@@ -98,3 +102,7 @@
 
 @include ('errors.list')
 
+@section('bottom-scripts')
+
+    <script src="/assets/js/bootstrap-tagsinput.js"></script>
+@stop
