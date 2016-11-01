@@ -7,31 +7,56 @@
 	@include('layouts.partials.modal-skeleton')
 
 
-<h1 class="h1 text-center">Recipe Editor</h1>
+<h1 class="h1 text-center">{{ $recipe->name }}</h1>
 <hr/>
 
 <div class="row">
 		<button type="button" class="btn btn-sm btn-modal edit-recipe pull-right"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button><br>
 
 	<div class="col-md-4">
-		<img src="{{ $recipe->image_url }}"><br>
-		<p>Video URL to go here</p>
+		<img src="{{ $recipe->image_url }}">
+		<p></p>
+		<p><strong>Recipe video at </strong> {{ $recipe->tutorial_url }}</p>
 		{{-- <p>{{ $recipe->video_url }}</p> --}}
 	</div> <!-- .col-md-4 -->
 
 	<div class="col-md-8">
-		<h2>{{ $recipe->name }}</h2>
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-md-6">
+				<h4>Description</h4>
 				<p><em>{{ $recipe->summary }}</em></p>
 				<p><span class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</span>
 				   <span class="recipe-data"><strong>Total Time </strong> {{ $recipe->overall_time }}</span></p>
-				<p><span class="recipe-data"><strong>Tags</strong>
-					@foreach ($recipe->tags as $tag)
-						{{ $tag->tag }} 
-					@endforeach
 				</p>
-			</div>
+			</div><!-- .col-md-6 -->
+			
+			{{-- Tag Input --}}
+			<div class="col-md-6">
+				<h4>Tags</h4>
+					@foreach ($recipe->tags as $tag)
+							{{ $tag->tag }} 
+					@endforeach
+
+				@if ($recipe->tags == null)
+
+					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
+						{!! csrf_field() !!}
+				@else
+					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
+							{!! csrf_field() !!}
+							{!! method_field('PUT') !!}
+				@endif
+
+
+
+					<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+					<label for="tags">Keywords</label>
+					<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
+					<button class="btn btn-primary">Add Tags</button>
+				</form>
+
+			</div><!-- .col-md-6 -->
+
 		</div> <!-- .row -->
 	</div> <!-- .col-md-8 -->
 </div> <!-- .row -->
@@ -40,7 +65,7 @@
 
 <div class="row">
 	<div class="col-md-5">
-		<h1>Ingredients <small>click to edit</small></h1>
+		<h1>Ingredients</h1>
 			<div class="list-group">
 				@foreach ($recipe->ingredients as $ingredient)
 				  <button type="button" class="list-group-item edit-ingredient" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
@@ -58,7 +83,7 @@
 
 
 	<div class="col-md-7">
-		<h1>Steps <small>click to edit</small></h1>
+		<h1>Steps</h1>
 
 		<div class="list-group">
 			@foreach ($recipe->steps as $step)
@@ -86,6 +111,7 @@
 
 
 @section('bottom-scripts')
+
 
 	<script type="text/javascript">
 
