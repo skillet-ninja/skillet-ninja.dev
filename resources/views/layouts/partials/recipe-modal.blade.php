@@ -58,10 +58,12 @@
     </div>
     <div class="col-md-8 col-md-offset-2">
         @foreach ($recipe->tags as $tag)
-            <span class="text-left">{{ $tag->tag }} </span>
+            <a class="btn btn-default" href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag->tag }}" target="_blank">#{{ $tag->tag }}</a>
         @endforeach
     </div>
 </div>
+
+
 
 
 <div class="modal-footer">
