@@ -76,6 +76,11 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $recipesVotedFor = User::getRecipesVotedFor($id);
+        $recipesCreated = User::getRecipesCreated($id);
+
+        $data['recipesCreated'] = $recipesCreated; 
+        $data['recipesVotedFor'] = $recipesVotedFor;
         $data['user'] = $user;
 
         return view('users.show', $data);

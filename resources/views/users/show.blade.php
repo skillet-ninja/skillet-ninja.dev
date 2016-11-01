@@ -38,10 +38,34 @@
         <h2>No recipes have been added by {{ $user->name }} yet.</h2>
     @endif
 
-    @foreach ($user->recipes as $recipe)
+    @foreach ($recipesCreated as $recipe)
         @include('layouts.partials.recipe-index')
     @endforeach
-</div>  <!-- row -->
+
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+        {!! $recipesCreated->render() !!}
+    </div>
+</div>
+
+
+</div>  
+
+<!-- row -->
+
+<div class="row">
+    <h1>Recipes {{ $user->name }} likes:</h1>
+
+    @foreach ($recipesVotedFor as $recipe)
+        @include('layouts.partials.recipe-index')
+    @endforeach
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+        {!! $recipesVotedFor->render() !!}
+    </div>
+</div>
 
 
 @stop
