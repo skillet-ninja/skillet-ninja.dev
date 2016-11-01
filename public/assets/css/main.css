@@ -3,13 +3,30 @@
 body {
     background-color: gold;
     color: black;
+
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'helvetica';
+.customButtonStyle {
+    font-style: 'Gill Sans' !important;
+    background-color: black !important;
+    color: white !important;
 }
-p, div {
-    font-family: 'arial';
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Lato:700|Merriweather:300,300italic,700);
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Gill Sans", sans-serif;
+  font-weight: bold;
+}
+p,li,blockquote {
+  font-family: 'Chaparral', serif;
+  font-weight: bold;
+}
+
+.navbar li {
+    font-family: "Gill Sans";
 }
 
 .site {
@@ -29,7 +46,6 @@ p, div {
     /*background-color: #00B0D8;*/
     background-color: black;
     border: none;
-    font-style: arial;
     border-radius: 0;
 }
 
@@ -323,6 +339,10 @@ ol {
 
 .welcomeHeader {
     font-size: 5em;
+}
+
+.welcomeContent {
+    font-size: 2em;
 }
 
 /*footer*/
