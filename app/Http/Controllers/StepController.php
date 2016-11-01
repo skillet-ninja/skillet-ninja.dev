@@ -53,9 +53,9 @@ class StepController extends Controller
         $step = new Step;
         $step->recipe_id = $request->recipeId;
         $step->step = $request->step;
+        $step->time = $request->time;
         $step->image_url = $request->image_url;
         $step->video_url = $request->video_url;
-        $step->time = $request->time;
         $step->save();
 
 
