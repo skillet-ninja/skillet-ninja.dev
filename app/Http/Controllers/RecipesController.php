@@ -29,6 +29,7 @@ class RecipesController extends Controller
         $data = Recipe::sort($request);
 
         $data['searchTerm'] = $request->searchTerm;
+        $data['search_tag'] = $request->search_tag;
 
 
         
