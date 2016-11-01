@@ -44,7 +44,7 @@
 
 
             @foreach ($tagsDiv as $tag)
-                    <a class="btn btn-default" href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag }}">#{{ $tag }}</a>
+                    <a class="btn btn-default" href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag }}" target="_blank">#{{ $tag }}</a>
             @endforeach
         </div>
     </div>
