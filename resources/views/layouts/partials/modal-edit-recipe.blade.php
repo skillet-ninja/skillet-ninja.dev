@@ -4,14 +4,17 @@
     <div class="col-sm-8">
         <h1>Edit</h1>
     </div>
+
+    {{-- Delete Recipe Button --}}
     <div class="col-sm-2">
-    <form class="form pull-right" action="recipes/{{ $recipe->id }}" method="POST">
-        {!! csrf_field() !!}
-        {!! method_field('DELETE') !!}
-        <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-        <button class="btn btn-danger">Delete</button>
-    </form>
-    </div></div>
+        <form class="form pull-right" action="{{action ('RecipesController@destroy', $recipe->id) }}" method="POST">
+            {!! csrf_field() !!}
+            {!! method_field('DELETE') !!}
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+
+</div>
     <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST" id="recipeUpdate" name="recipeUpdate">  
