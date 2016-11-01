@@ -75,14 +75,14 @@
         </div>
 
         {{-- Tags Input --}}
-        <div class="row">
+ {{--        <div class="row">
             <div class="form-group">
                 <label for="tags">Recipe Tags</label>
                 <br>
                 <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags" value="{{ old('tags') }}">
                 <br>
             </div>
-        </div>
+        </div> --}}
         
             {{-- Buttons --}}
             <div class="modal-footer">
