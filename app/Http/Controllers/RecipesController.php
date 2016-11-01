@@ -74,6 +74,7 @@ class RecipesController extends Controller
         $recipe->summary = $request->summary;
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
+        $recipe->video_url = $request->video_url;
         $recipe->user_id = $request->user()->id;
         $recipe->notes = $request->notes;
         $recipe->save();
@@ -211,34 +212,11 @@ class RecipesController extends Controller
         $recipe->ingredients()->detach();
         $recipe->tags()->detach();
 
-        // if ($recipe->steps != null)
-        // {
-        //     $recipe->steps()->delete();
-        // }
-
-        // if ($recipe->votes != null)
-        // {
-        //     $recipe->votes()->delete();
-        // }
-
-        // if ($recipe->ingredients != null)
-        // {
-        //     $recipe->ingredients()->detach();
-        // }
-
-        // if ($recipe->tags != null)
-        // {
-        //     $recipe->tags()->detach();
-        // }
-
         $recipe->delete();
 
         return redirect()->action('UsersController@show', $userId) ;
 
     }
-
-
-
 
 
     public function addVote(Request $request)

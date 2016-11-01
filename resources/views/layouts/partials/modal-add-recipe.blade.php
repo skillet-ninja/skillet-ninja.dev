@@ -53,36 +53,48 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="image_url">Image Link</label>
-                    <input type="url" id="image_url" name="image_url" value="{{ old('image_url') }}" placeholder="Link to image" class="form-control">
+                    <input type="text" id="image_url" name="image_url" value="{{ old('image_url') }}" placeholder="Link to image" class="form-control">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="video_url">Video Link</label>
-                    <p>Add to database table</p>
-                    <input type="url" id="video_url" name="video_url" value="{{ old('video_url') }}" placeholder="Link to video" class="form-control">
+                    <input type="text" id="video_url" name="video_url" value="{{ old('video_url') }}" placeholder="Link to video" class="form-control">
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="notes">Additional notes</label>
-            <br>
-            <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3" >{{ old('notes') }}</textarea>
-            <br>
+        {{-- Recipe Notes Input --}}
+        <div class="row">
+            <div class="form-group">
+                <label for="notes">Additional notes</label>
+                <br>
+                <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3" >{{ old('notes') }}</textarea>
+                <br>
+            </div>
+        </div>
+
+        {{-- Tags Input --}}
+        <div class="row">
+            <div class="form-group">
+                <label for="tags">Recipe Tags</label>
+                <br>
+                <input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="Short descriptive categories" name="tags" value="{{ old('tags') }}">
+                <br>
+            </div>
         </div>
         
             {{-- Buttons --}}
-            <div class="row">
-                <div class="col-md-4">
-                    <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
+            <div class="modal-footer">
+                    <button class="btn btn-success" id="ingredient-submit">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                <br>
+            </div>
             
         </form> <!-- form  -->
     </div> <!-- .col-sm-8 .col-sm-offset-2 -->
 </div> <!-- .row -->
 
 @include ('errors.list')
+
