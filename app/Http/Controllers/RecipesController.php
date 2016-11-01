@@ -74,6 +74,7 @@ class RecipesController extends Controller
         $recipe->summary = $request->summary;
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
+        $recipe->video_url = $request->video_url;
         $recipe->user_id = $request->user()->id;
         $recipe->notes = $request->notes;
         $recipe->save();
@@ -216,9 +217,6 @@ class RecipesController extends Controller
         return redirect()->action('UsersController@show', $userId) ;
 
     }
-
-
-
 
 
     public function addVote(Request $request)

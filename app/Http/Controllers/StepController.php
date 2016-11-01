@@ -55,7 +55,7 @@ class StepController extends Controller
         $step->step = $request->step;
         $step->image_url = $request->image_url;
         $step->video_url = $request->video_url;
-        $step->video_url = $request->time;
+        $step->time = $request->time;
         $step->save();
 
 
