@@ -65,9 +65,12 @@
 
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-    @if ($continue == true)
-        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">SKILLET!</a>
+    @if(Auth::check())
+        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">START!</a>
+    @else
+        <a href="/auth/login" class="btn btn-primary btn-success pull-right stopSkilletButton">START!</a>
     @endif
+
 </div>
