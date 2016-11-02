@@ -16,13 +16,16 @@
 
 @section('content')
 
+    <h1 class="text-center">Account Edit</h1>
+    <hr>
+
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <i class="fa fa-user fa-5x pull-left" aria-hidden="true"></i>
                 <h1>{{ $user->name }}</h1>
                 <h3>{{ $user->email }}</h3><br>
         </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
 
 
     <form method="POST" action="{{ action('UsersController@update', $user->id) }}">

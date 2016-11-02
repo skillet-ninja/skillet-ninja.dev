@@ -44,7 +44,7 @@
 						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
 						<label for="tags">Tags</label>
 						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
-						<button class="btn btn-primary">UpdateTags</button>
+						<button class="btn btn-primary customButtonStyle">UpdateTags</button>
 					</form>
 
 			{{-- 	@elseif ($recipe->tags != null)

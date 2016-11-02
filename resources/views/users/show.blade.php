@@ -29,14 +29,15 @@
     </div>
 <hr>
 <div class="row">
-    @if ($recipesCreated['items'] == null)
+    {{-- ??????????????????????????? --}}
+{{--     @if ($recipesCreated['items'] == null)
         <h3>No recipes have been added yet.</h3>
-    @else
+    @else --}}
         <h3>Your recipes:</h3>
         @foreach ($recipesCreated as $recipe)
             @include('layouts.partials.recipe-index')
         @endforeach
-    @endif
+{{--     @endif --}}
 </div>
 
 
@@ -51,14 +52,15 @@
 
 <!-- row -->
 <div class="row">
-    @if ($recipesVotedFor['items'] == null)
+    {{-- ??????????????????????????? --}}
+{{--     @if ($recipesVotedFor['items'] == null)
         <h3>No recipes have been up-voted yet.</h3>
-    @else
+    @else --}}
         <h3>Recipes up-voted:</h3>
         @foreach ($recipesVotedFor as $recipe)
             @include('layouts.partials.recipe-index')
         @endforeach
-    @endif
+{{--     @endif --}}
 </div>
 
 <div class="row">

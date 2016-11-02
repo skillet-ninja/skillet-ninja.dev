@@ -65,14 +65,12 @@
         </div>
 
         {{-- Recipe Notes Input --}}
-        <div class="row">
             <div class="form-group">
                 <label for="notes">Additional notes</label>
                 <br>
                 <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3" >{{ old('notes') }}</textarea>
                 <br>
             </div>
-        </div>
 
         {{-- Tags Input --}}
  {{--        <div class="row">
