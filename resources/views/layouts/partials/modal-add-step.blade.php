@@ -54,8 +54,8 @@
     </div> <!-- .row -->
 
     <div class="row">
-        <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
+        <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Close</button>
         <p></p>
     </div> <!-- .row -->
 

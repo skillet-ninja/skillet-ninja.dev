@@ -11,11 +11,13 @@
 
 {{-- Description       --}}
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-2">
+        <h3 class="text-right">Summary</h3>
+    </div>
+    <div class="col-md-8">
         <p class="lead">{{ $recipe->summary }}</p>
     </div>
 </div>
-
 
 <div class="row">
 
@@ -54,23 +56,25 @@
 {{-- Tags  --}}
 <div class="row">
     <div class="col-md-2">
-        <p class="text-right">Tags</p>
+        <h3 class="modalTagHeader pull-right">Tags</h3>
     </div>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8">
         @foreach ($recipe->tags as $tag)
-            <span class="text-left">{{ $tag->tag }} </span>
+            <a class="btn btn-default customTagStyle text-left" href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag->tag }}" target="_blank">#{{ $tag->tag }}</a>
         @endforeach
     </div>
 </div>
 
 
+
+
 <div class="modal-footer">
-    <button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="closeModal" type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Close</button>
 
     @if(Auth::check())
-        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right">START!</a>
+        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right customButtonStyle">START!</a>
     @else
-        <a href="/auth/login" class="btn btn-primary btn-success pull-right stopSkilletButton">START!</a>
+        <a href="/auth/login" class="btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
     @endif
 
 </div>

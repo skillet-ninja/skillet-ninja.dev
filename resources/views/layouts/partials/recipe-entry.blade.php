@@ -45,7 +45,7 @@
             <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3"></textarea>
             <br>
 
-            <button class="btn btn-success" id="recipe-submit">Submit</button>
+            <button class="btn btn-success customButtonStyle" id="recipe-submit">Submit</button>
             <a href="{{ action('UsersController@show' , Auth::id()) }}" class="btn btn-danger pull-right">Cancel</a>
         </form>
     @endif

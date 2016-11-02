@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default">
     <div class="container">
-    
        
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -11,9 +10,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">
-                        {{-- <span class="logoTitleLeft">SKILLET</span> --}}
-                        <img class="navLogo" src="/assets/img/skillet-ninja-logo-invert.png">
-                        {{-- <span class="logoTitleRight">NINJA</span> --}}
+                        <img class="navLogo" src="/assets/img/skillet-ninja-head-pan-invert.png">
                     </a>
                 </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,8 +42,6 @@
                     @endif
                 </ul>
                 
-   
-    
 
     </div><!-- /.navbar-collapse -->
 

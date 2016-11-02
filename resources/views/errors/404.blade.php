@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Be right back.</title>
+        <title>Whoops! 404</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -14,10 +14,13 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
+                color: black;
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato';
+                background-color: gold;
+                font-size: 2em;
+                border
             }
 
             .container {
@@ -32,16 +35,15 @@
             }
 
             .title {
-                font-size: 72px;
-                margin-bottom: 40px;
+                font-size: 3em;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
+            <h1 class="title">Uh OH!!!</h1>
+            <h2>The skillet you are looking for is missing.</h2>
+            <h1 class="title">404</h1>
         </div>
     </body>
 </html>

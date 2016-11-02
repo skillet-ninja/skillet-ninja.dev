@@ -10,6 +10,7 @@
 @section ('content')
 
 <h1 class="text-center">Recipes</h1>
+<hr>
 
 {{-- <div class="row"> --}}
     <div class="dropdown text-right">
@@ -28,7 +29,7 @@
 @include('layouts.partials.modal-skeleton')
 
 
-<div class="container">
+{{-- <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
 
@@ -38,7 +39,7 @@
             @endforeach
         </div>
     </div>
-</div>
+</div> --}}
 
 
 <div class="row">

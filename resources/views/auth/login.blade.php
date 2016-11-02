@@ -14,7 +14,7 @@
 			    	<label for="password">Password:</label>
 			    	<input type="password" class="form-control" name="password">
 			  	</div>
-			  	<button type="submit" class="btn btn-success">Login</button>
+			  	<button type="submit" class="btn btn-success customButtonStyle center-block">Login</button>
 			</form>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 			    	<label for="password_confirmation">Password Confirmation:</label>
 			    	<input type="password" class="form-control" name="password_confirmation">
 			  	</div>
-			  	<button type="submit" class="btn btn-success">Register</button>
+			  	<button type="submit" class="btn btn-success customButtonStyle center-block">Register</button>
 			</form>
 		</div>
 	</div>
