@@ -65,14 +65,12 @@
         </div>
 
         {{-- Recipe Notes Input --}}
-        <div class="row">
             <div class="form-group">
                 <label for="notes">Additional notes</label>
                 <br>
                 <textarea class="form-control" id="notes" placeholder="Please enter any additional information." name="notes" rows="3" >{{ old('notes') }}</textarea>
                 <br>
             </div>
-        </div>
 
         {{-- Tags Input --}}
  {{--        <div class="row">
@@ -86,8 +84,8 @@
         
             {{-- Buttons --}}
             <div class="modal-footer">
-                    <button class="btn btn-success" id="ingredient-submit">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save</button>
+                    <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
                 </div>
                 <br>
             </div>

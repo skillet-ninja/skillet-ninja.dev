@@ -40,7 +40,7 @@
                 <label class="sr-only" for="amountName">Amount</label>
                 <input id="amountName" class="form-control" type="text" name="amount" placeholder="Enter amount">
             </div>
-            <button class="btn btn-success" id="ingredient-submit">Add</button>
+            <button class="btn btn-success customButtonStyle" id="ingredient-submit">Add</button>
         </form>
 
 
@@ -50,5 +50,5 @@
 </form>
 
 @if(isset($recipe_id))
-    <button id="toStepEntry" class="btn btn-primary center-block">Next</button>
+    <button id="toStepEntry" class="btn btn-primary center-block customButtonStyle">Next</button>
 @endif

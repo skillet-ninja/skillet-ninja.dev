@@ -26,12 +26,12 @@
         <input class="form-control" id="recipe-name" type="text" name="image_url">
 
         <br>
-        <button class="btn btn-primary">Add Step</button>
+        <button class="btn btn-primary customButtonStyle">Add Step</button>
 
     </form>
 
     @if(isset($recipe_id))
-        <button id="toKeywordEntry" class="btn btn-primary center-block">Next</button>
+        <button id="toKeywordEntry" class="btn btn-primary center-block customButtonStyle">Next</button>
     @endif
     
 

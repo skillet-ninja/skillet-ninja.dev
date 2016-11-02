@@ -56,7 +56,7 @@
         <div class="col-md-4">
             <input type="hidden" id="stepId" name="stepId" value="{{ $step->id }}">
             <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-            <button class="btn btn-success" id="ingredient-submit">Save Changes</button>
+            <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
         </div>
         <div class="col-md-4">
 
@@ -64,11 +64,11 @@
                 {!! csrf_field() !!}
                 {!! method_field('DELETE') !!}
                 <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger customButtonStyle">Delete</button>
             </form>
         </div>
         <div class="col-md-4">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Close</button>
         </div>
     </div> <!-- .row -->
         <p></p>

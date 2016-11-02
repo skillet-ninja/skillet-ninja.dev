@@ -24,23 +24,23 @@
             <i class="fa fa-user fa-5x text-center centered" aria-hidden="true"></i>
             <h1 class="text-center">{{ $user->name }}</h1>
             <h3>{{ $user->email }}</h3>
-            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account customButtonStyle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
         </div>
     </div>
 <hr>
 <div class="row">
-    <h1>{{ $user->name }}'s recipes:</h1>
+    {{-- ??????????????????????????? --}}
+{{--     @if ($recipesCreated['items'] == null)
+        <h3>No recipes have been added yet.</h3>
+    @else --}}
+        <h3>Your recipes:</h3>
+        @foreach ($recipesCreated as $recipe)
+            @include('layouts.partials.recipe-index')
+        @endforeach
+{{--     @endif --}}
 </div>
 
 
-<div class="row">
-    @if (!isset($user->recipes))
-        <h2>No recipes have been added by {{ $user->name }} yet.</h2>
-    @endif
-
-    @foreach ($recipesCreated as $recipe)
-        @include('layouts.partials.recipe-index')
-    @endforeach
 
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3 text-center">
@@ -48,17 +48,19 @@
     </div>
 </div>
 
-
-</div>  
+ 
 
 <!-- row -->
-
 <div class="row">
-    <h1>Recipes {{ $user->name }} likes:</h1>
-
-    @foreach ($recipesVotedFor as $recipe)
-        @include('layouts.partials.recipe-index')
-    @endforeach
+    {{-- ??????????????????????????? --}}
+{{--     @if ($recipesVotedFor['items'] == null)
+        <h3>No recipes have been up-voted yet.</h3>
+    @else --}}
+        <h3>Recipes up-voted:</h3>
+        @foreach ($recipesVotedFor as $recipe)
+            @include('layouts.partials.recipe-index')
+        @endforeach
+{{--     @endif --}}
 </div>
 
 <div class="row">
