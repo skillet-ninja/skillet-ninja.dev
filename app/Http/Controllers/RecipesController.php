@@ -229,7 +229,7 @@ class RecipesController extends Controller
         $recipe->vote_score = $recipe->voteScore();
         $recipe->save();
 
-        return redirect()->action('RecipesController@index');
+        return back();
     }
 
     public function downVote(Request $request)
@@ -244,7 +244,7 @@ class RecipesController extends Controller
         $recipe->vote_score = $recipe->voteScore();
         $recipe->save();
 
-        return redirect()->action('RecipesController@index');
+        return back();
     }
 
 }
