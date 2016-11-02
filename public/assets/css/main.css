@@ -12,15 +12,19 @@ body {
     color: white !important;
 }
 
+.customTagStyle {
+    border-radius: 40px;
+}
+
 
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700|Merriweather:300,300italic,700);
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6, li {
   font-family: "Gill Sans", sans-serif;
   font-weight: bold;
 }
-p,li,blockquote {
+p,blockquote {
   font-family: 'Chaparral', serif;
   font-weight: bold;
 }
@@ -60,11 +64,11 @@ p,li,blockquote {
 
 
 .navLogo {
-    height: inherit;
+    height: 200%;
     padding: 0;
     margin: 0;
     position: relative;
-    bottom: 15px;
+    bottom: 10px;
     float: left;
 }
 
@@ -204,6 +208,10 @@ p,li,blockquote {
 
 .title-rating {
     text-align: center;
+}
+
+.modalTagHeader {
+    margin-top: 0;
 }
 
 

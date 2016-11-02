@@ -48,11 +48,11 @@
             <input type="password" class="form-control" name="password_confirmation">
         </div>
 
-      <button type="submit" class="btn btn-default btn-success">Submit</button>
+      <button type="submit" class="btn btn-default btn-success customButtonStyle">Submit</button>
         <form action="{{action('UsersController@destroy', $user->id)}}" method="POST">
             {!! csrf_field() !!}
             {!! method_field('DELETE')!!}
-            <button type="submit" class="btn btn-danger pull-right" >Delete Account</button>
+            <button type="submit" class="btn btn-danger pull-right customButtonStyle" >Delete Account</button>
         </form>
     </form>
 

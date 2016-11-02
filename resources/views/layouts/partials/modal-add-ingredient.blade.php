@@ -28,8 +28,8 @@
                 <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
             </div> <!-- .row -->
         
-            <button type="Submit" class="btn btn-success">Add Ingredient</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="Submit" class="btn btn-success customButtonStyle">Add Ingredient</button>
+            <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Close</button>
 
             <p></p>
             

@@ -24,7 +24,7 @@
             <i class="fa fa-user fa-5x text-center centered" aria-hidden="true"></i>
             <h1 class="text-center">{{ $user->name }}</h1>
             <h3>{{ $user->email }}</h3>
-            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account customButtonStyle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
         </div>
     </div>
 <hr>

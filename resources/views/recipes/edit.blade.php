@@ -11,7 +11,7 @@
 <hr/>
 
 <div class="row">
-		<button type="button" class="btn btn-sm btn-modal edit-recipe pull-right"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button><br>
+		<button type="button" class="btn btn-sm btn-modal edit-recipe pull-right customButtonStyle"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button><br>
 
 	<div class="col-md-4">
 		<img src="{{ $recipe->image_url }}">
@@ -74,12 +74,12 @@
 		<h1>Ingredients</h1>
 			<div class="list-group">
 				@foreach ($recipe->ingredients as $ingredient)
-				  <button type="button" class="list-group-item edit-ingredient" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
+				  <button type="button" class="list-group-item edit-ingredient customButtonStyle" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
 					{{$ingredient->pivot->amount}}  {{ $ingredient->ingredient }}
 					<span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				  </button>
 				@endforeach
-				<button type="button" class="list-group-item add-ingredient"><strong>Add An Ingredient</strong>
+				<button type="button" class="list-group-item add-ingredient customButtonStyle"><strong>Add An Ingredient</strong>
 					<span class="badge"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 				  </button>
 			</div> <!-- .list-group  -->
@@ -93,7 +93,7 @@
 
 		<div class="list-group">
 			@foreach ($recipe->steps as $step)
-			  	<button type="button" class="list-group-item edit-step" data-recipe={{ $recipe->id }} data-step={{ $step->id }}>
+			  	<button type="button" class="list-group-item edit-step customButtonStyle" data-recipe={{ $recipe->id }} data-step={{ $step->id }}>
 				    <span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				    <h4 class="list-group-item-heading">{{$step->step}}</h4>
 				    Timer: {{ $step->time}} min <br>
@@ -101,7 +101,7 @@
 				    Video Link: {{ $step->video_url }}
 				</button>
 			@endforeach
-			<button type="button" class="list-group-item add-step"><strong>Add A Step</strong>
+			<button type="button" class="list-group-item add-step customButtonStyle"><strong>Add A Step</strong>
 				<span class="badge"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 			</button>
 

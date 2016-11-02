@@ -10,6 +10,7 @@
 @section ('content')
 
 <h1 class="text-center">Recipes</h1>
+<hr>
 
 {{-- <div class="row"> --}}
     <div class="dropdown text-right">

@@ -72,14 +72,14 @@
 
         <div class="col-xs-2">
             <div class="pull-right">
-                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }}>View Details</button>
+                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Details</button>
             </div>
         </div>
 
         <div class="col-xs-2">
             <div class="pull-right">
                 {{-- @if($recipe->video_url != null) --}}
-                    <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
+                    <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
                 {{-- @endif --}}
             </div>
         </div>
@@ -104,13 +104,13 @@
                                 <div class="row">
                                     @if($step->video_url != null)
                                         <div class="col-xs-6">
-                                            <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center" target="_blank">View Step</a>
+                                            <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary text-center customButtonStyle" target="_blank">View Step</a>
                                         </div>
                                     @endif
 
                                     @if($step->time != null)
                                         <div class="col-xs-6">
-                                            <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer text-center">Start Timer</button>
+                                            <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer text-center customButtonStyle">Start Timer</button>
                                         </div>
                                     @endif
                                 </div> 
