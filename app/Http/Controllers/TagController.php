@@ -86,7 +86,22 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        dd($request->tags);
+        
+        $tags = explode(',', $request->tags);
+
+        $recipe = Recipe::find($request->recipe_id);
+
+        foreach ($tags as $tagName) {
+            $tag = Tag::firstOrNew(['tag'=>$tagName]);
+            $tag->tag = $tagName;
+            $tag->save();
+
+            $recipe->tags()->attach($tag->id);
+        }
+     
+        return redirect()->back();
     }
 
     /**

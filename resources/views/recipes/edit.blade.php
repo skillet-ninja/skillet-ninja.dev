@@ -37,29 +37,14 @@
 							{{ $tag->tag }} 
 					@endforeach
 
-				{{-- @if ($recipe->tags == null) --}}
-
-					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST">
-						{!! csrf_field() !!}
-						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-						<label for="tags">Tags</label>
-						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
-						<button class="btn btn-primary customButtonStyle">UpdateTags</button>
-					</form>
-
-			{{-- 	@elseif ($recipe->tags != null)
 					<form class="form form-group" action="{{ action('TagController@update') }}" method="POST" id="tagCreate" name="tagCreate">
 							{!! csrf_field() !!}
 							{!! method_field('PUT') !!}
 
 						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-						<label for="tags">Keywords</label>
 						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
-						<button class="btn btn-primary">Save Tags</button>
-					</form> --}}
-
-				{{-- @endif --}}
-
+						<button class="btn btn-primary">Update Tags</button>
+					</form>
 
 			</div><!-- .col-md-6 -->
 
@@ -117,6 +102,14 @@
 
 
 @section('bottom-scripts')
+	
+<script src="/assets/js/bootstrap-tagsinput.js"></script>
+	
+	<script>
+
+	$("#tags").tagsinput('items');
+
+	</script>
 
 
 	<script type="text/javascript">
