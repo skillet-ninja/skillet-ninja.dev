@@ -23,8 +23,6 @@ class RecipesController extends Controller
      */
     public function index(Request $request)
     {
-        
-        $recipesPerPage = 9;
 
         $data = Recipe::sort($request);
 

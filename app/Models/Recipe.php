@@ -84,7 +84,7 @@ class Recipe extends Model
         }else if (!empty($request->search_tag)&&$request->sort == 'top_rated'){
             $recipes = Recipe::join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
             ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
-            ->where('tag','LIKE','%' . $request->search_tag .'%')
+            ->where('tag','=',$request->search_tag)
             ->orderBy('vote_score', 'Desc')
             ->paginate($recipesPerPage);
 
@@ -125,7 +125,7 @@ class Recipe extends Model
         }else if (!empty($request->search_tag)&&$request->sort=='difficulty') {
             $recipes = Recipe::join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
             ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
-            ->where('tag','LIKE','%' . $request->search_tag .'%')
+            ->where('tag','=',$request->search_tag)
             ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
             ->paginate($recipesPerPage);
 
@@ -169,7 +169,7 @@ class Recipe extends Model
             
             $recipes = Recipe::join('recipe_tag', 'recipes.id', '=', 'recipe_tag.recipe_id')
             ->join('tags', 'recipe_tag.tag_id', '=', 'tags.id')
-            ->where('tag','LIKE','%' . $request->search_tag .'%')
+            ->where('tag','=',$request->search_tag)
             ->paginate($recipesPerPage);
 
 
