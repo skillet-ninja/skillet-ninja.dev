@@ -29,18 +29,17 @@
     </div>
 <hr>
 <div class="row">
-    <h1>{{ $user->name }}'s recipes:</h1>
+    @if ($recipesCreated['items'] == null)
+        <h3>No recipes have been added yet.</h3>
+    @else
+        <h3>Your recipes:</h3>
+        @foreach ($recipesCreated as $recipe)
+            @include('layouts.partials.recipe-index')
+        @endforeach
+    @endif
 </div>
 
 
-<div class="row">
-    @if (!isset($user->recipes))
-        <h2>No recipes have been added by {{ $user->name }} yet.</h2>
-    @endif
-
-    @foreach ($recipesCreated as $recipe)
-        @include('layouts.partials.recipe-index')
-    @endforeach
 
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3 text-center">
@@ -48,17 +47,18 @@
     </div>
 </div>
 
-
-</div>  
+ 
 
 <!-- row -->
-
 <div class="row">
-    <h1>Recipes {{ $user->name }} likes:</h1>
-
-    @foreach ($recipesVotedFor as $recipe)
-        @include('layouts.partials.recipe-index')
-    @endforeach
+    @if ($recipesVotedFor['items'] == null)
+        <h3>No recipes have been up-voted yet.</h3>
+    @else
+        <h3>Recipes up-voted:</h3>
+        @foreach ($recipesVotedFor as $recipe)
+            @include('layouts.partials.recipe-index')
+        @endforeach
+    @endif
 </div>
 
 <div class="row">

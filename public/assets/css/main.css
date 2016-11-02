@@ -25,12 +25,12 @@ h1,h2,h3,h4,h5,h6, li {
   font-weight: bold;
 }
 p,blockquote {
-  font-family: 'Chaparral', serif;
+  font-family: 'helvetica', serif;
   font-weight: bold;
 }
 
 .navbar li {
-    font-family: "Gill Sans";
+    font-family: "helvetica";
 }
 
 .site {
