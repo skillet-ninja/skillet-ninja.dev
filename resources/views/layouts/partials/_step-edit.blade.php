@@ -3,10 +3,10 @@
 @section ('form-start')
 <form class="form" action="{{ action('StepController@update') }}" method="POST">
             {!! csrf_field() !!}
-            {!! method_field('PUT') !!}
+            {!! method_field('PATCH') !!}
 
             <input type="hidden" id="stepId" name="stepId" value="{{ $step->id }}">
-            <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
+            {{-- <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}"> --}}
 @stop
 
 @section ('step-input')
@@ -15,6 +15,7 @@
 @stop
 
 @section ('timer-input')
+
     <input class="form-control" id="time" type="text" name="time" placeholder="Time (min)" 
     value="{{ (old('time') == null) ? $step->time : old('time') }}">
 @stop

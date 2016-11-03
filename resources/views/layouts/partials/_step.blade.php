@@ -61,20 +61,20 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
+                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save</button>
                 </div>
+        </form>  <!-- form  -->
                 <div class="col-md-4">
 
                     @yield('delete-button')
 
                 </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
                 </div>
             </div> <!-- .row -->
                 <p></p>
 
-        </form>  <!-- form  -->
         </div> <!-- .modal-footer -->
     </div> <!-- .col-sm-10 col-sm-offset-1 -->
 </div> <!-- .row -->

@@ -40,15 +40,7 @@ class StepController extends Controller
      */
     public function store(Request $request)
     {
-        // $rules = array(
-        // 'title' => 'required|max:100',
-        // 'url'   => 'required|url',
-        // 'content'=>'required',
-        // );
 
-        // $request->session()->flash('ERROR_MESSAGE', 'Post was not saved.');
-        // $this->validate($request, $rules);
-        // $request->session()->forget('ERROR_MESSAGE');
 
         $step = new Step;
         $step->recipe_id = $request->recipeId;
@@ -97,7 +89,6 @@ class StepController extends Controller
 
         $step = Step::findOrFail($request->stepId);
 
-        // $step->recipe_id = $request->recipe_id;
         $step->step = $request->step;
         $step->time = $request->time;
         $step->image_url = $request->image_url;
