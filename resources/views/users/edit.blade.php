@@ -51,12 +51,21 @@
             <input type="password" class="form-control" name="password_confirmation">
         </div>
 
-      <button type="submit" class="btn btn-default btn-success customButtonStyle">Submit</button>
-        <form action="{{action('UsersController@destroy', $user->id)}}" method="POST">
-            {!! csrf_field() !!}
-            {!! method_field('DELETE')!!}
-            <button type="submit" class="btn btn-danger pull-right customButtonStyle" >Delete Account</button>
-        </form>
+        <div class="row">
+            <div class="col-xs-6">
+                <form action="{{action('UsersController@destroy', $user->id)}}" method="POST">
+                    {!! csrf_field() !!}
+                    {!! method_field('DELETE')!!}
+                    <button type="submit" class="btn btn-danger pull-left customButtonStyle" >Delete</button>
+                </form>
+            </div>
+            <div class="col-xs-4">
+                <a href="/users/{{ Auth::id() }}" class="btn btn-default customButtonStyle">Cancel</a>
+            </div>
+            <div class="col-xs-2">
+              <button type="submit" class="btn btn-default btn-success customButtonStyle pull-right">Submit</button>
+          </div>
+
     </form>
 
     </div> <!-- form -->
