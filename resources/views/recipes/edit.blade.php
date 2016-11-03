@@ -35,7 +35,9 @@
 				<div class="row">
 					@foreach ($recipe->tags as $tag)
 
-					<a href="#" class="btn btn-default customTagStyle text-left">{{ $tag->tag }}  <i class="fa fa-times" aria-hidden="true"></i></a>
+					<a href="#" class="btn btn-default customTagStyle text-left remove-item" 
+					data-id={{ $tag->id }} data-recipe={{ $recipe->id }}>{{ $tag->tag }}  <i class="fa fa-times" aria-hidden="true"></i></a>
+
 					@endforeach
 					<p></p>
 				</div>
@@ -105,11 +107,28 @@
 
 @section('bottom-scripts')
 	
-<script src="/assets/js/bootstrap-tagsinput.js"></script>
 	
 	<script>
 
-	$("#tags").tagsinput('items');
+
+ 		// $(".remove-item").on('click',function(e){
+   //          e.preventDefault();
+   //          console.log(e.target);
+   //          var id = $(e.target).data('id');
+				// $.ajax({
+				//     url: '/recipes/' + id,
+				//     data: { "_token": "{{ csrf_token() }}" },
+				//     type: 'DELETE',
+				//     success: function(result) {
+				//         console.log(result);
+				//     }
+				// });
+
+   //          $.ajax('/pathToDelete/'.id, function(){
+   //          })
+   //          $(e.target).fadeOut('fast');
+   //      });
+
 
 	</script>
 

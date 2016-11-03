@@ -99,8 +99,8 @@ class TagController extends Controller
     public function destroy(Request $request, $id)
     {
         
-        $tag = Tag::findOrFail(['tag'=>$request->tag]);
-        $recipe = Recipe::find($request->recipe_id);
+        $tag = Tag::findOrFail($id);
+        $recipe = Recipe::find($request->recipe);
 
         $recipe->tags()->detach($tag->id);
 
