@@ -96,7 +96,7 @@ class RecipesController extends Controller
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
             $data['continue'] = $request->continue;
-            return view ('layouts.partials.recipe-modal')->with($data);
+            return view ('layouts.partials._recipe')->with($data);
         }
 
         $recipe = Recipe::findOrFail($id);
@@ -153,11 +153,11 @@ class RecipesController extends Controller
 
             } elseif ($request->step)
             {
-                return view ('layouts.partials.modal-edit-step')->with($data);
+                return view ('layouts.partials._step-edit')->with($data);
 
             } elseif ($request->addStep)
             {
-                return view ('layouts.partials.modal-add-step')->with($data);
+                return view ('layouts.partials._step-add')->with($data);
             }
         }
 

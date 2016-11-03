@@ -1,10 +1,12 @@
 @extends ('layouts.master')
 
-@section ('title', 'Recipe Editor')
+@section ('title', 'Skillet Ninja - Edit')
+
+@section ('modal-title', 'Recipe Input')
 
 @section ('content')
 
-@include('layouts.partials.modal-skeleton')
+@include('layouts.partials._initialization')
 
 
 <h1 class="text-center">Recipe Edit</h1>
@@ -58,6 +60,8 @@
 </div>
 
 
+<hr/>
+
 <div class="row">
     <div class="col-md-5">
         <h3>Edit Ingredients</h3>
@@ -101,6 +105,7 @@
 
 
     </div> <!-- .col-md-5 -->
+
 </div> <!-- .row  -->
 
 
