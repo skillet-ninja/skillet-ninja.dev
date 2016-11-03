@@ -537,3 +537,25 @@ button.voter i {
     width: 50%;
 }
 
+/* Edit */
+
+.marginDown {
+    margin-top: 20px;
+}
+
+.topMarginHeader {
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.imgPadding {
+    padding-top: 5px;
+}
+
+.customBtnMargin {
+    margin-right: 10px;
+}
+
+form#recipeUpdate {
+    padding-bottom: 10px;
+}
