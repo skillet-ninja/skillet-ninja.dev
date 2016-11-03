@@ -56,6 +56,7 @@
 {{--     @if ($recipesVotedFor['items'] == null)
         <h3>No recipes have been up-voted yet.</h3>
     @else --}}
+    
         <h3>Recipes up-voted:</h3>
         @foreach ($recipesVotedFor as $recipe)
             @include('layouts.partials.recipe-index')
