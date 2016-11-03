@@ -4,30 +4,39 @@
 
 @section ('content')
 
-	@include('layouts.partials.modal-skeleton')
+@include('layouts.partials.modal-skeleton')
 
 
 <h1 class="h1 text-center">{{ $recipe->name }}</h1>
 <hr/>
 
+{{-- Recipe Edit Section --}}
 <div class="row">
+	<div class="col-sm-12">
 		<button type="button" class="btn btn-sm btn-modal edit-recipe pull-right customButtonStyle"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button><br>
+	</div>
+</div>
 
+{{-- Basic Recipe Display --}}
+<div class ="row">
+
+	{{-- Recipe Image --}}
 	<div class="col-md-4">
 		<img src="{{ $recipe->image_url }}">
 		<p></p>
-		<p><strong>Recipe video at </strong> {{ $recipe->tutorial_url }}</p>
 	</div> <!-- .col-md-4 -->
 
+
+	{{-- Description and Time --}}
 	<div class="col-md-8">
 		<div class="row">
 			<div class="col-md-6">
 				<h4>Description</h4>
 				<p><em>{{ $recipe->summary }}</em></p>
 				<p><span class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</span>
-				   <span class="recipe-data"><strong>Total Time </strong> {{ $recipe->overall_time }}</span></p>
+				   <span class="recipe-data"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $recipe->overall_time }}</span></p>
 				</p>
-			</div><!-- .col-md-6 -->
+			</div><!-- .col-md-8 -->
 			
 			{{-- Tag Input --}}
 			<div class="col-md-6">
@@ -36,7 +45,7 @@
 					@foreach ($recipe->tags as $tag)
 
 					<a href="#" class="btn btn-default customTagStyle text-left remove-item" 
-					data-id={{ $tag->id }} data-recipe={{ $recipe->id }}>{{ $tag->tag }}  <i class="fa fa-times" aria-hidden="true"></i></a>
+					data-tagId={{ $tag->id }} data-recipeId={{ $recipe->id }}>{{ $tag->tag }}  <i class="fa fa-times" aria-hidden="true"></i></a>
 
 					@endforeach
 					<p></p>
@@ -110,24 +119,21 @@
 	
 	<script>
 
-
- 		// $(".remove-item").on('click',function(e){
-   //          e.preventDefault();
-   //          console.log(e.target);
-   //          var id = $(e.target).data('id');
-				// $.ajax({
-				//     url: '/recipes/' + id,
-				//     data: { "_token": "{{ csrf_token() }}" },
-				//     type: 'DELETE',
-				//     success: function(result) {
-				//         console.log(result);
-				//     }
-				// });
-
-   //          $.ajax('/pathToDelete/'.id, function(){
-   //          })
-   //          $(e.target).fadeOut('fast');
-   //      });
+ 		$(".remove-item").on('click',function(e){
+            e.preventDefault();
+            console.log(e.target);
+            var id = $(e.target).data('tagid');
+            console.log(id);
+				$.ajax({
+				    url: '/tags/' + id +'?recipeId={{ $recipe->id }}',
+				    data: { "_token": "{{ csrf_token() }}" },
+				    type: 'DELETE',
+				    success: function(result) {
+				        console.log(result);
+				    }
+				});
+            $(e.target).fadeOut('fast');
+        });
 
 
 	</script>
