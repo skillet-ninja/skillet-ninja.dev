@@ -13,6 +13,7 @@ body {
 .customButtonStyle {
     font-style: 'Gill Sans' !important;
     background-color: black !important;
+    border-color: black;
     color: white !important;
     border: none;
 }

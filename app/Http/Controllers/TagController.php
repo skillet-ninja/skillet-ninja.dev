@@ -86,23 +86,9 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        dd($request->tags);
-        
-        $tags = explode(',', $request->tags);
-
-        $recipe = Recipe::find($request->recipe_id);
-
-        foreach ($tags as $tagName) {
-            $tag = Tag::firstOrNew(['tag'=>$tagName]);
-            $tag->tag = $tagName;
-            $tag->save();
-
-            $recipe->tags()->attach($tag->id);
-        }
-     
-        return redirect()->back();
+        //
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -110,8 +96,13 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        
+        $tag = Tag::findOrFail($id);
+        $recipe = Recipe::find($request->recipe);
+
+        $recipe->tags()->detach($tag->id);
+
     }
 }

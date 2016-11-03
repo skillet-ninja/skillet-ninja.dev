@@ -17,7 +17,6 @@
 		<img src="{{ $recipe->image_url }}">
 		<p></p>
 		<p><strong>Recipe video at </strong> {{ $recipe->tutorial_url }}</p>
-		{{-- <p>{{ $recipe->video_url }}</p> --}}
 	</div> <!-- .col-md-4 -->
 
 	<div class="col-md-8">
@@ -33,18 +32,23 @@
 			{{-- Tag Input --}}
 			<div class="col-md-6">
 				<h4>Tags</h4>
+				<div class="row">
 					@foreach ($recipe->tags as $tag)
-							{{ $tag->tag }} 
+
+					<a href="#" class="btn btn-default customTagStyle text-left remove-item" 
+					data-id={{ $tag->id }} data-recipe={{ $recipe->id }}>{{ $tag->tag }}  <i class="fa fa-times" aria-hidden="true"></i></a>
+
 					@endforeach
-
-					<form class="form form-group" action="{{ action('TagController@update') }}" method="POST" id="tagCreate" name="tagCreate">
+					<p></p>
+				</div>
+				<div class="row">
+					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
 							{!! csrf_field() !!}
-							{!! method_field('PUT') !!}
-
-						<input class="form-control" type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-						<input id="tags" class="form-control" data-role="tagsinput" type="text" placeholder="" name="tags" value="">
-						<button class="btn btn-primary">Update Tags</button>
+						<input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+						<input id="tags" class="form-control bootstrap-tagsinput" data-role="tagsinput" type="text" placeholder="Separate tags with a comma" name="tags" value=""><p></p>
+						<button class="btn btn-primary customButtonStyle">Add Tags</button>
 					</form>
+					</div>
 
 			</div><!-- .col-md-6 -->
 
@@ -59,7 +63,7 @@
 		<h1>Ingredients</h1>
 			<div class="list-group">
 				@foreach ($recipe->ingredients as $ingredient)
-				  <button type="button" class="list-group-item edit-ingredient customButtonStyle" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
+				  <button type="button" class="list-group-item edit-ingredient" data-recipe={{ $recipe->id }} data-ingredient={{ $ingredient->id }}>
 					{{$ingredient->pivot->amount}}  {{ $ingredient->ingredient }}
 					<span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				  </button>
@@ -78,7 +82,7 @@
 
 		<div class="list-group">
 			@foreach ($recipe->steps as $step)
-			  	<button type="button" class="list-group-item edit-step customButtonStyle" data-recipe={{ $recipe->id }} data-step={{ $step->id }}>
+			  	<button type="button" class="list-group-item edit-step" data-recipe={{ $recipe->id }} data-step={{ $step->id }}>
 				    <span class="badge"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 				    <h4 class="list-group-item-heading">{{$step->step}}</h4>
 				    Timer: {{ $step->time}} min <br>
@@ -103,11 +107,28 @@
 
 @section('bottom-scripts')
 	
-<script src="/assets/js/bootstrap-tagsinput.js"></script>
 	
 	<script>
 
-	$("#tags").tagsinput('items');
+
+ 		// $(".remove-item").on('click',function(e){
+   //          e.preventDefault();
+   //          console.log(e.target);
+   //          var id = $(e.target).data('id');
+				// $.ajax({
+				//     url: '/recipes/' + id,
+				//     data: { "_token": "{{ csrf_token() }}" },
+				//     type: 'DELETE',
+				//     success: function(result) {
+				//         console.log(result);
+				//     }
+				// });
+
+   //          $.ajax('/pathToDelete/'.id, function(){
+   //          })
+   //          $(e.target).fadeOut('fast');
+   //      });
+
 
 	</script>
 
