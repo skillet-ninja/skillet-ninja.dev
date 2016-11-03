@@ -145,11 +145,11 @@ class RecipesController extends Controller
 
             } elseif ($request->ingredient)
             {
-                return view ('layouts.partials.modal-edit-ingredient')->with($data);
+                return view ('layouts.partials._ingredient-edit')->with($data);
 
             } elseif ($request->addIngredient)
             {
-                return view ('layouts.partials.modal-add-ingredient')->with($data);
+                return view ('layouts.partials._ingredient-add')->with($data);
 
             } elseif ($request->step)
             {

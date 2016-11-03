@@ -30,10 +30,8 @@
     <div class="col-xs-5">
         <h3 class="topMarginHeader">Description</h3>
         <p><em>{{ $recipe->summary }}</em></p>
-        <p>
-            <span class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</span>
-            <span class="recipe-data"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $recipe->overall_time }}</span></p>
-        </p>
+        <p class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</p>
+        <p class="recipe-data"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $recipe->overall_time }} minutes</p>
             
         {{-- Tag Input --}}
         <h3>Tags</h3>
@@ -119,16 +117,11 @@
 
         $(".remove-item").on('click',function(e){
             e.preventDefault();
-            console.log(e.target);
             var id = $(e.target).data('tagid');
-            console.log(id);
                 $.ajax({
                     url: '/tags/' + id +'?recipeId={{ $recipe->id }}',
                     data: { "_token": "{{ csrf_token() }}" },
                     type: 'DELETE',
-                    success: function(result) {
-                        console.log(result);
-                    }
                 });
             $(e.target).fadeOut('fast');
         });
