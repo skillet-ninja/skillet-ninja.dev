@@ -1,10 +1,12 @@
 @extends ('layouts.master')
 
-@section ('title', 'Recipe Editor')
+@section ('title', 'Skillet Ninja - Create')
+
+@section ('modal-title', 'Recipe Creation')
 
 @section ('content')
 
-@include('layouts.partials.modal-skeleton')
+@include('layouts.partials._initialization')
 
 
 <h1 class="h1 text-center">Your New Recipe</h1>
