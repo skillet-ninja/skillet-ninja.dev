@@ -53,7 +53,7 @@
 </div>  <!-- row -->
 
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 text-center">
+    <div class="col-xs-8 col-xs-offset-2 text-center">
         {!! $recipes->appends(['searchTerm' => $searchTerm, 'search_tag' => $search_tag])->render() !!}
     </div>
 </div>

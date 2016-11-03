@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search Recipes" name="searchTerm"/>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -32,7 +32,7 @@
                     @if(Auth::check())
                         <li class="navFont"><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
                         <li class="navFont"><a href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
-                        <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                        {{-- <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li> --}}
                         <li class="navFont"><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     @else
