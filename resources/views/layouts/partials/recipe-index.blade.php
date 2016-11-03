@@ -35,13 +35,13 @@
             <!-- Button trigger modal -->
             <div class="row">
                 <div class="col-xs-4">
-                    <button type="button" class="recipeBtn btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Recipe</button>
+                    <button type="button" class="recipeBtn btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View</button>
                 </div>
 
                 <div class="col-xs-4">
                     @if(Auth::check())
                         @if(Auth::id() == $recipe->user_id)
-                            <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="recipeBtn btn btn-primary customButtonStyle" id="editRecipeBtn">Edit Recipe</a>
+                            <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="recipeBtn btn btn-primary customButtonStyle" id="editRecipeBtn">Edit</a>
                         @endif
                     @endif
                 </div>

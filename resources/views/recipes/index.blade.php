@@ -5,14 +5,18 @@
 @stop
 
 @section ('title', 'Recipes')
-@section ('modal-title', 'Recipe')
+
+@section ('modal-title', 'Check out...')
 
 @section ('content')
 
-<h1 class="text-center">Recipes</h1>
+<!-- Recipe Modal -->
+@include('layouts.partials.modal-skeleton')
+
+<h1 class="text-center">COMMUNITY RECIPES</h1>
 <hr>
 
-{{-- <div class="row"> --}}
+{{-- Sort By Selector --}}
     <div class="dropdown text-right">
         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
         <span class="caret"></span></button>
@@ -23,34 +27,20 @@
         </ul>
     </div>
     <br>
-{{-- </div> --}}
-
-<!-- Recipe Modal -->
-@include('layouts.partials.modal-skeleton')
 
 
-{{-- <div class="container">
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-
-
-            @foreach ($tagsDiv as $tag)
-                    <a class="btn btn-default" href="{{ URL::route('sortRecipes') }}?search_tag={{ $tag }}" target="_blank">#{{ $tag }}</a>
-            @endforeach
-        </div>
-    </div>
-</div> --}}
-
+{{-- Recipe Cards --}}
 
 <div class="row">
-
-
-
     @foreach ($recipes as $recipe)
         @include('layouts.partials.recipe-index')
     @endforeach
-
 </div>  <!-- row -->
+
+
+{{-- Pagination --}}
+
+<hr>
 
 <div class="row">
     <div class="col-xs-8 col-xs-offset-2 text-center">

@@ -96,7 +96,7 @@ class RecipesController extends Controller
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
             $data['continue'] = $request->continue;
-            return view ('layouts.partials.recipe-modal')->with($data);
+            return view ('layouts.partials._recipe')->with($data);
         }
 
         $recipe = Recipe::findOrFail($id);

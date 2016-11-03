@@ -26,21 +26,23 @@
 		<p></p>
 	</div> <!-- .col-md-4 -->
 
-
-	{{-- Description and Time --}}
+	{{-- General Information Section --}}
 	<div class="col-md-8">
 		<div class="row">
+
+			{{-- Description and Time --}}
 			<div class="col-md-6">
 				<h4>Description</h4>
 				<p><em>{{ $recipe->summary }}</em></p>
-				<p><span class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</span>
-				   <span class="recipe-data"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $recipe->overall_time }}</span></p>
-				</p>
-			</div><!-- .col-md-8 -->
+				<p class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</p>
+				<p class="recipe-data"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ $recipe->overall_time }} min</p>
+			</div><!-- sub.col-md-6 -->
 			
-			{{-- Tag Input --}}
 			<div class="col-md-6">
+
 				<h4>Tags</h4>
+
+				{{-- Tag Edit --}}
 				<div class="row">
 					@foreach ($recipe->tags as $tag)
 
@@ -49,25 +51,30 @@
 
 					@endforeach
 					<p></p>
-				</div>
+				</div> <!-- .row -->
+
+
+				{{-- Tag Input --}}
 				<div class="row">
-					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
-							{!! csrf_field() !!}
+					<form class="form form-group" action="{{ action('TagController@store') }}" method="POST">
+						{!! csrf_field() !!}
 						<input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-						<input id="tags" class="form-control bootstrap-tagsinput" data-role="tagsinput" type="text" placeholder="Separate tags with a comma" name="tags" value=""><p></p>
+
+						<input id="tags" class="form-control bootstrap-tagsinput" data-role="tagsinput" type="text" placeholder="Separate tags with a comma" name="tags" value="">
+						<p></p>
 						<button class="btn btn-primary customButtonStyle">Add Tags</button>
 					</form>
-					</div>
-
-			</div><!-- .col-md-6 -->
-
+					</div> <!-- .row -->
+			</div><!-- sub.col-md-6 -->
 		</div> <!-- .row -->
 	</div> <!-- .col-md-8 -->
 </div> <!-- .row -->
+
 <hr/>
 
-
 <div class="row">
+	
+{{-- Ingredient Input --}}
 	<div class="col-md-5">
 		<h1>Ingredients</h1>
 			<div class="list-group">
@@ -85,10 +92,9 @@
 	</div> <!-- .col-md-5 -->
 
 
-
+	{{-- Step Input --}}
 	<div class="col-md-7">
 		<h1>Steps</h1>
-
 		<div class="list-group">
 			@foreach ($recipe->steps as $step)
 			  	<button type="button" class="list-group-item edit-step" data-recipe={{ $recipe->id }} data-step={{ $step->id }}>
@@ -102,12 +108,16 @@
 			<button type="button" class="list-group-item add-step customButtonStyle"><strong>Add A Step</strong>
 				<span class="badge"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 			</button>
-
 		</div><!-- .list-group  -->
+	</div> <!-- .col-md-7 -->
+</div> <!-- .row  -->
 
 
-
-	</div> <!-- .col-md-5 -->
+<hr>
+<div class="row">
+	<div class="col-sm-12">
+		<a href="{{ action('UsersController@show', Auth::id()) }}" class="btn btn-default customButtonStyle btn-lg">DONE</a>
+	</div><!-- .col-sm-12 -->
 </div> <!-- .row  -->
 
 
