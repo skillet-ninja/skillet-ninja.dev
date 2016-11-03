@@ -559,3 +559,8 @@ button.voter i {
 form#recipeUpdate {
     padding-bottom: 10px;
 }
+
+.modal-footer {
+    padding-right: 0;
+    padding-left: 0;
+}
