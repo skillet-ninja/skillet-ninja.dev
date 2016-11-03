@@ -14,6 +14,7 @@ body {
     font-style: 'Gill Sans' !important;
     background-color: black !important;
     color: white !important;
+    border: none;
 }
 
 .customTagStyle {
@@ -30,7 +31,6 @@ h1,h2,h3,h4,h5,h6, li {
 }
 p,blockquote {
   font-family: 'helvetica', serif;
-  font-weight: bold;
 }
 
 .navbar li {
@@ -146,7 +146,6 @@ p,blockquote {
     /*max-height: */
   
 }
-
 
 /*#myCarousel {
   margin-top: 40px;
