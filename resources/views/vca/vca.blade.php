@@ -21,19 +21,47 @@
     </div>  <!-- End.Recipe Modal -->
 
     <div class="row">
-        <div class="col-xs-2">
-            <div class="mic-button">
+        <div class="col-xs-4">
+            {{-- <div class="mic-button">
                 <label for="mic">Microphone</label>
                 <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
+            </div> --}}
+
+
+            <div class="buttonBackground" >
+                {{-- New Mic Button --}}
+                <section title=".roundedOne" >
+                    <!-- .roundedOne -->
+                    <div class="roundedOne" style="left: 90px">
+                        <input type="checkbox" value="None" id="mic" name="mic" checked />
+                        <label for="mic"><span class="pull-right" style="padding-right:2.5em">Microphone</span></label>
+                    </div>
+                    <!-- end .roundedOne -->
+                </section>
+            </div>
+
+            <div class="buttonBackground">
+                {{-- New Mic Button --}}
+                <section title=".roundedOne">
+                    <!-- .roundedOne -->
+                    <div class="roundedOne" style="left: 90px">
+                        <input type="checkbox" value="None" id="narration" name="narration" checked />
+                        <label for="narration"><span class="pull-right" style="padding-right:2.5em">Narration</span></label>
+                    </div>
+                    <!-- end .roundedOne -->
+                </section>
             </div>
         </div>
 
-        <div class="col-xs-2">
+
+
+
+  {{--       <div class="col-xs-2">
             <div class="narration-button">
                 <label for="mic">Narration</label>
                 <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-xs-4 text-center">
             <h3 class="timerHeader">Active Timers</h3>
@@ -70,14 +98,13 @@
 
         </div>
 
-        <div class="col-xs-2">
+        <div class="col-xs-4">
+
             <div class="pull-right">
                 <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Details</button>
             </div>
-        </div>
 
-        <div class="col-xs-2">
-            <div class="pull-right">
+            <div class="text-center">
                 {{-- @if($recipe->video_url != null) --}}
                     <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
                 {{-- @endif --}}
@@ -134,7 +161,8 @@
     <div>
         <div class="row">
             <!-- Indicators -->
-            <div class="col-md-offset-2 col-md-8 carouselPagination">
+            <hr>
+            <div class="col-xs-12 carouselPagination">
                 <ol class="carousel-linked-nav pagination">
                     @foreach ($steps as $key => $step)
                         <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a class="stepPageButton" id="step{{ $key + 1 }}" href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>

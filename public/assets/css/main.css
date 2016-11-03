@@ -94,7 +94,47 @@ p,blockquote {
 
 /* VCA */
 
-.narration-button {
+
+/* .roundedOne */
+.roundedOne {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  border-radius: 50px;
+}
+.roundedOne label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  background: black;
+  border-radius: 50px;
+}
+.roundedOne label:after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: red;
+  opacity: 0;
+  border-radius: 50px;
+}
+.roundedOne label:hover::after {
+  opacity: 0.3;
+}
+.roundedOne input[type=checkbox] {
+  visibility: hidden;
+}
+.roundedOne input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+
+/*.narration-button {
     display: inline;
     position: relative;
 }
@@ -110,7 +150,7 @@ p,blockquote {
 
 .toggle.ios .toggle-handle { 
     border-radius: 20px; 
-}
+}*/
 
 .vca-step-header {
     font-size: 6rem;
