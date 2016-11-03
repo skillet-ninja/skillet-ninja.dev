@@ -65,6 +65,7 @@ class User extends Model implements AuthenticatableContract,
             ->join('votes', 'recipes.id', '=', 'votes.recipe_id')
             ->where('votes.user_id','=','' . $id)
             ->where('votes.vote','=','1')
+            ->select(array('recipes.*', 'votes.vote'))
             ->paginate(9);
             
             return $recipes;
