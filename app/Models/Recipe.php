@@ -88,7 +88,7 @@ class Recipe extends Model
         }else if (!empty($request->searchTerm)&&$request->sort == 'difficulty'){
 
             $recipes = Recipe::getSearchTerm($request->searchTerm)
-            ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'expert')" )
+            ->orderByRaw("FIELD(difficulty, 'beginner', 'intermediate', 'advanced')" )
             ->paginate($recipesPerPage);
 
             $data['recipes'] = $recipes;
