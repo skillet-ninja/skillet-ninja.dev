@@ -117,7 +117,7 @@ class IngredientController extends Controller
         // dd($request);
         
         $recipe = Recipe::findOrFail($request->recipeId);
-        $recipe->ingredients()->detach($request->ingredientId);
+        $recipe->ingredients()->detach($id);
 
         return redirect()->back();
 

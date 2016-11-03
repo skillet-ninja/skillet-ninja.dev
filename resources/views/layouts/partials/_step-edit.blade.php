@@ -35,7 +35,7 @@
 
 @section ('delete-button')
 
-    <form class="form" action="steps/{{ $step->id }}" method="POST">
+    <form class="form" action="/steps/{{ $step->id }}" method="POST">
         {!! csrf_field() !!}
         {!! method_field('DELETE') !!}
         <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
