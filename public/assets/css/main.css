@@ -352,10 +352,11 @@ ol {
     left: -1.3em;
     top: 50%;
     margin-top: -1.3em;
-    background: #87ceeb;
+    background: black;
+    color: white;
     height: 2em;
     width: 2em;
-    line-height: 2em;
+    line-height: 1.5em;
     border: .3em solid #fff;
     text-align: center;
     font-weight: bold;
@@ -558,4 +559,9 @@ button.voter i {
 
 form#recipeUpdate {
     padding-bottom: 10px;
+}
+
+.modal-footer {
+    padding-right: 0;
+    padding-left: 0;
 }
