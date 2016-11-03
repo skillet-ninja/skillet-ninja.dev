@@ -444,6 +444,9 @@ a.footer-links {
 }
 
 
+
+
+
 /*   Account Page  */
 
 .btn-edit-account {
@@ -485,7 +488,11 @@ a.footer-links {
 }
 
 .recipeBtn {
-    
+   align-self: flex-end; 
+}
+
+.fixedBottom {
+    position: flex;
 }
 
 button.voter {
