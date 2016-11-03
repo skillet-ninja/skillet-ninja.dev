@@ -4,14 +4,14 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @stop
 
-@section ('title', 'Recipes')
+@section ('title', 'Skillet Ninja Recipes')
 
 @section ('modal-title', 'Check out...')
 
 @section ('content')
 
 <!-- Recipe Modal -->
-@include('layouts.partials.modal-skeleton')
+@include('layouts.partials._initialization')
 
 <h1 class="text-center">COMMUNITY RECIPES</h1>
 <hr>
