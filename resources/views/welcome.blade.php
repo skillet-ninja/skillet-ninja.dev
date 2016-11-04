@@ -3,8 +3,12 @@
 @section('content')
     <div class=" welcome-title">
         <img src="/assets/img/skillet-ninja-head-pan.png" class="welcome-logo text-center">
-        <h1 class="welcomeHeader">Welcome to Skillet Ninja!</h1>
-        <h2>A Virtual Cooking Assistant</h2>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="welcomeHeader">Welcome to Skillet Ninja!</h1>
+                <h3>A Virtual Cooking Assistant</h3>
+            </div>
+        </div>
     </div>
 
     <hr>

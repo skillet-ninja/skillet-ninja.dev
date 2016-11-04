@@ -1,9 +1,9 @@
 {{-- Modal Body --}}
 
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-xs-10 col-xs-offset-1">
         
-        <h2>Edit</h2>
+        <h2>Ingredient</h2>
 
 @yield('form-start')
 
@@ -38,23 +38,20 @@
     {{-- Buttons --}}
 
     <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-default customButtonStyle">Save</button>
+        <div class="col-xs-10">
+            <span class="pull-left">@yield('delete-button')</span>
+        </div>
+        <div class="col-xs-1">
+            <button type="button" class="btn btn-default customButtonStyle pull-right" data-dismiss="modal">Cancel</button>
+        </div>
+        <div class="col-xs-1">
+            <button class="btn btn-default customButtonStyle pull-right">Save</button>
         </div>
 
 </form>  <!-- form  -->
 
-        <div class="col-md-4">
-
-            @yield('delete-button')
-
-        </div>
         
-        <div class="col-md-4">
-            <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
-        </div>
     </div> <!-- .row -->
-            <p></p>
 
     </div> <!-- .modal-footer -->
     </div> <!-- .col-sm-8 col-sm-offset-2-->
