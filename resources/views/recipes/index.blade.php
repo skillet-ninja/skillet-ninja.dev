@@ -13,7 +13,7 @@
 <!-- Recipe Modal -->
 @include('layouts.partials._initialization')
 
-<h1 class="text-center">COMMUNITY RECIPES</h1>
+<h1 class="text-center">Community Recipes</h1>
 <hr>
 
 {{-- Sort By Selector --}}
@@ -43,7 +43,7 @@
 <hr>
 
 <div class="row">
-    <div class="col-xs-8 col-xs-offset-2 text-center">
+    <div class="col-xs-12 text-center">
         {!! $recipes->appends(['searchTerm' => $searchTerm, 'search_tag' => $search_tag])->render() !!}
     </div>
 </div>
