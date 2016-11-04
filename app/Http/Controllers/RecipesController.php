@@ -95,7 +95,7 @@ class RecipesController extends Controller
         if($request->ajax()){
             $recipe = Recipe::findOrFail($id);
             $data['recipe'] = $recipe;
-            $data['continue'] = $request->continue;
+            $data['vca'] = $request->vca;
             return view ('layouts.partials._recipe')->with($data);
         }
 
@@ -120,9 +120,8 @@ class RecipesController extends Controller
         if($request->ajax()){
 
 
-            $recipe = Recipe::findOrFail($id);
+            $recipe = Recipe::find($id);
             $data['recipe'] = $recipe;
-            // dd($recipe);
 
             if ($request->ingredient != null)
             {
@@ -141,7 +140,7 @@ class RecipesController extends Controller
 
             if($request->recipe)
             {
-                return view ('layouts.partials.modal-edit-recipe')->with($data);
+                return view ('layouts.partials._recipe-edit')->with($data);
 
             } elseif ($request->ingredient)
             {
@@ -202,7 +201,7 @@ class RecipesController extends Controller
     public function destroy($id)
     {
         
-        $recipe = Recipe::findOrFail($id);
+        $recipe = Recipe::find($id);
         $userId = $recipe->user_id;
 
         $recipe->steps()->delete();

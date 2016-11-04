@@ -1,5 +1,4 @@
 <div class="container-fluid">
-    
 
     <div class="row">
 
@@ -9,7 +8,7 @@
 
                 {!! csrf_field() !!}
                 {!! method_field('PUT') !!}
-                {{-- <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}"> --}}
+                <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
             
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
@@ -76,24 +75,19 @@
             </div>
             
             {{-- Buttons --}}
-            <div class="row">
-                <div class="col-sm-8">
-                    <form class="form pull-left" action="/recipes/{{ $recipe->id) }}" method="POST">
-                        {!! csrf_field() !!}
-                        {!! method_field('DELETE') !!}
-                        <button class="btn btn-danger customButtonStyle pull-left">Delete Recipe</button>
-                    </form>
-                </div>            
-                <div class="col-md-2">
+            <div class="modal-footer">
+                {{-- <div class="col-sm-8">
+                    
+                </div>   --}}          
+                <div class="col-md-2 col-md-offset-8">
                     <button type="button" class="btn btn-default customButtonStyle pull-right customBtnMargin" data-dismiss="modal">Close</button>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
                 </div>
-            </form> <!-- form  -->
+            </form>
         </div>
-    </div> <!-- .row -->
-
+    </div> <!-- .modal-footer -->
 
 </div>
 
