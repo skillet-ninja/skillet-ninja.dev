@@ -46,26 +46,15 @@
                             @endif
                         @endif
 
-                    @endif
                 </div>
-                <div class="col-xs-4">
-                    
-                    @if(Auth::check())
-                        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="recipeBtn btn btn-primary btn-success pull-right customButtonStyle">START!</a>
-                    @else
-                        <a href="back" class="recipeBtn btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
-                    @endif
-
-                    </div>
                     <div class="col-xs-4">
-
-                        
+                    
                         @if(Auth::check())
                             <a href="{{ action('RecipesController@show', $recipe->id) }}" class="recipeBtn btn btn-primary btn-success pull-right customButtonStyle">START!</a>
                         @else
-                            <a href="/auth/login" class="recipeBtn btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
+                            <a href="back" class="recipeBtn btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
                         @endif
-                            
+
                     </div>  
                 </div>
             </div>
