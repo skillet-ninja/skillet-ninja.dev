@@ -18,9 +18,13 @@
                 <form class="navbar-form navbar-right" action="{{ action('RecipesController@index')}}" method="GET">
                     {!! csrf_field() !!}
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search Recipes" name="searchTerm"/>
-                    </div>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <div class="input-group pull-right">
+                          <input type="text" class="form-control" name="searchTerm" placeholder="Search for...">
+                          <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                          </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /form-group -->
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">

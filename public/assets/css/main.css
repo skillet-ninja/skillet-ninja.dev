@@ -167,7 +167,19 @@ p,blockquote {
     margin-top: 0;
 }
 
+.timerStyling {
+    font-size: 1.70em;
+    font-weight: bold;
+}
 
+.stepStyling {
+    font-size: 1.70em;
+    font-weight: bold;
+}
+
+.stepPageButton:active {
+    background-color: none;
+}
 
 .carouselWrapper {
     
@@ -352,10 +364,11 @@ ol {
     left: -1.3em;
     top: 50%;
     margin-top: -1.3em;
-    background: #87ceeb;
+    background: black;
+    color: white;
     height: 2em;
     width: 2em;
-    line-height: 2em;
+    line-height: 1.5em;
     border: .3em solid #fff;
     text-align: center;
     font-weight: bold;
@@ -443,6 +456,9 @@ a.footer-links {
 }
 
 
+
+
+
 /*   Account Page  */
 
 .btn-edit-account {
@@ -484,7 +500,11 @@ a.footer-links {
 }
 
 .recipeBtn {
-    
+   align-self: flex-end; 
+}
+
+.fixedBottom {
+    position: flex;
 }
 
 button.voter {
@@ -537,3 +557,30 @@ button.voter i {
     width: 50%;
 }
 
+/* Edit */
+
+.marginDown {
+    margin-top: 20px;
+}
+
+.topMarginHeader {
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.imgPadding {
+    padding-top: 5px;
+}
+
+.customBtnMargin {
+    margin-right: 10px;
+}
+
+form#recipeUpdate {
+    padding-bottom: 10px;
+}
+
+.modal-footer {
+    padding-right: 0;
+    padding-left: 0;
+}
