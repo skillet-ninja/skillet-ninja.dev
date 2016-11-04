@@ -20,14 +20,15 @@
 <div class ="row">
 
     {{-- Recipe Image --}}
-    <div class="col-xs-5">
-        <h3 class="pull-left topMarginHeader">{{ $recipe->name }}</h3>
-        <img src="{{ $recipe->image_url }}">
+    <div class="col-xs-12 col-md-5">
+        <h3 class="topMarginHeader">{{ $recipe->name }}</h3>
+        <div style="background-image: url('{{ $recipe->image_url }}'); background-size:cover; background-position:center; overflow:hidden; background-repeat:no-repeat" class="pictureContainer img-responsive image1 text-center center-block pull-left">
+        </div>
     </div> <!-- .col-md-4 -->
 
 
     {{-- Description and Time --}}
-    <div class="col-xs-5">
+    <div class="col-xs-12 col-md-5">
         <h3 class="topMarginHeader">Description</h3>
         <p><em>{{ $recipe->summary }}</em></p>
         <p class="recipe-data"><strong>Servings </strong> {{ $recipe->servings }}</p>
@@ -57,7 +58,7 @@
         </form>
     </div>
 
-    <div class="col-xs-2">
+    <div class="col-xs-12 col-md-2">
         <button type="button" class="btn btn-sm btn-modal edit-recipe pull-right customButtonStyle marginDown"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button><br>
     </div>
 
