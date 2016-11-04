@@ -50,6 +50,14 @@ class Recipe extends Model
         return self::where('name','LIKE','%' . $searchTerm .'%');
     }
 
+    public static function topVotedRecipes() {
+            $recipes = DB::table('recipes')
+            ->orderBy('vote_score','desc')
+            ->take(3);
+            
+            return $recipes;
+    }
+
     public static function sort($request){
 
         $recipesPerPage = 9;

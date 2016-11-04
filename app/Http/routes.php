@@ -54,6 +54,7 @@ Route::post('recipes/delete', 'RecipesController@destroy');
 //Resource controllers....
 Route::resource('recipes','RecipesController');
 Route::resource('users', 'UsersController', ['except' => ['create','store']]);
+Route::resource('home','HomeController');
 
 // Ingredient controller...
 Route::resource('ingredients','IngredientController');
