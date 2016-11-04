@@ -33,30 +33,27 @@
             
 
             <!-- Button trigger modal -->
-            <div class="fixedBottom">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <button type="button" class="recipeBtn btn btn-primary btn-primary btn-view-recipe pull-left customButtonStyle" data-recipe={{ $recipe->id }}>View</button>
-                    </div>
-
-                    <div class="col-xs-4 centered text-center">
-                        @if(Auth::check())
-                            @if(Auth::id() == $recipe->user_id)
-                                <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="recipeBtn btn btn-primary customButtonStyle text-center" id="editRecipeBtn">Edit</a>
-                            @endif
-                        @endif
-
+            <div class="row">
+                <div class="col-xs-4">
+                    <button type="button" class="recipeBtn btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View</button>
                 </div>
-                    <div class="col-xs-4">
+
+                <div class="col-xs-4">
+                    @if(Auth::check())
+                        @if(Auth::id() == $recipe->user_id)
+                            <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="recipeBtn btn btn-primary customButtonStyle" id="editRecipeBtn">Edit</a>
+                        @endif
+                    @endif
+                </div>
+                <div class="col-xs-4">
                     
-                        @if(Auth::check())
-                            <a href="{{ action('RecipesController@show', $recipe->id) }}" class="recipeBtn btn btn-primary btn-success pull-right customButtonStyle">START!</a>
-                        @else
-                            <a href="back" class="recipeBtn btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
-                        @endif
-
-                    </div>  
-                </div>
+                    @if(Auth::check())
+                        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="recipeBtn btn btn-primary btn-success pull-right customButtonStyle">START!</a>
+                    @else
+                        <a href="/auth/login" class="recipeBtn btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
+                    @endif
+                        
+                </div>  
             </div>
         </div> <!-- caption -->
     </div> <!-- thumbnail -->

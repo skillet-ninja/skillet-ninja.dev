@@ -69,10 +69,12 @@
         });
 
         // Stops users that are not logged in from getting to the VCA
-        $('.stopSkilletButton').click(function() {
+        $('.stopSkilletButton').click(function(event) {
             if ({{Auth::check() + 1}} == 1) {
                 var choice = confirm('Please login or register to access the virtual cooking assistant.');
-                if (choice) {
+                if (choice != true) {
+
+                    event.preventDefault();
                     
                 }
             }
