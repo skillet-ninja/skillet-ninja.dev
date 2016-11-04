@@ -112,6 +112,22 @@
     </div> <!-- .col-md-5 -->
 
 </div> <!-- .row  -->
+<div class="row">
+    <div class="col-sm-6 pull-left">
+        <form class="form" action="/recipes/{{ $recipe->id }}" method="POST">
+            {!! csrf_field() !!}
+            {!! method_field('DELETE') !!}
+            <button class="btn btn-danger btn-lg customButtonStyle">Delete Recipe</button>
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <a href="/users/{{ Auth::id() }}" class="btn btn-default btn-lg customButtonStyle pull-right">Done</a>
+    </div>
+</div>
+<br>
+<br>
+
+
 
 
 @stop
