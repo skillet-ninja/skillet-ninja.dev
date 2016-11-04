@@ -143,10 +143,6 @@ a.footer-links {
     text-align: center;
 }
 
-.welcome-signiture {
-    padding-left: 4em;
-}
-
 .welcome-logo {
     width: 25%;
 }
@@ -602,12 +598,22 @@ ol {
 @media only screen and (max-width : 1200px) {
 
     /* ================ General ================ */
-
+    body {
+        background-color: red;
+    }    
+    .container {
+        min-width: 90vw;
+    }
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
     /* ================ Welcome ================ Page */
+    .welcomeHeader {
+        font-size: 5em;
+        line-height: .8em;
+        padding-top: .2em;
+    }
 
     /* ================ Recipe Index ================ */
 
@@ -634,12 +640,23 @@ ol {
 @media only screen and (max-width : 992px) {
 
     /* ================ General ================ */
+    body {
+        background-color: blue;
+    }
 
+    .container {
+        min-width: 95vw;
+    }
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
     /* ================ Welcome ================ Page */
+    .welcomeHeader {
+        font-size: 5em;
+        line-height: .8em;
+        padding-top: .2em;
+    }
 
     /* ================ Recipe Index ================ */
 
@@ -665,13 +682,19 @@ ol {
 @media only screen and (max-width : 768px) {
 
     /* ================ General ================ */
-
+    body {
+        background-color: green;
+    }
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
     /* ================ Welcome ================ Page */
-
+    .welcomeHeader {
+        font-size: 5em;
+        line-height: .8em;
+        padding-top: .2em;
+    }
     /* ================ Recipe Index ================ */
 
     /* ================ Recipe Card ================ */
@@ -696,13 +719,19 @@ ol {
 @media only screen and (max-width : 480px) {
 
     /* ================ General ================ */
-
+    body {
+        background-color: silver;
+    }
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
     /* ================ Welcome ================ Page */
-
+    .welcomeHeader {
+        font-size: 5em;
+        line-height: .8em;
+        padding-top: .2em;
+    }
     /* ================ Recipe Index ================ */
 
     /* ================ Recipe Card ================ */
@@ -727,7 +756,9 @@ ol {
 @media only screen and (max-width : 320px) {
 
     /* ================ General ================ */
-
+    body {
+        background-color: purple;
+    }
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
