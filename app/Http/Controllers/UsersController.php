@@ -17,18 +17,7 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('search_user')){
-            $users = User::where('name','LIKE','%' . $request['search_user'] . '%')
-            ->orderBy('created_at','desc')
-            ->paginate(10);
-        }else{
-            $users = User::paginate(10);
-        }
-
-        $data['users'] = $users;
-        
-        return view('users.index', $data);
-
+        //
     }
 
     /**
@@ -76,11 +65,12 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $recipesVotedFor = User::getRecipesVotedFor($id);
-        $recipesCreated = User::getRecipesCreated($id);
+        $upVotedRecipes = User::getUpVotedRecipes($id);
+        $recipes = $user->recipes()->paginate(6);
 
-        $data['recipesCreated'] = $recipesCreated; 
-        $data['recipesVotedFor'] = $recipesVotedFor;
+
+        $data['upVotedRecipes'] = $upVotedRecipes;
+        $data['recipes'] = $recipes;
         $data['user'] = $user;
 
         return view('users.show', $data);

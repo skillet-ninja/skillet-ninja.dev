@@ -4,18 +4,7 @@
 
 @section ('content')
 
-<!-- Recipe Modal -->
-<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Recipe</h4>
-            </div>
-            <div class="recipe-modal"></div>
-        </div>
-    </div>
-</div>  <!-- End.Recipe Modal -->
+@include ('layouts.partials._initialization')
 
 
 <div class="container">
@@ -29,22 +18,26 @@
     </div>
 <hr>
 <div class="row">
-    {{-- ??????????????????????????? --}}
-{{--     @if ($recipesCreated['items'] == null)
+
+    @if ($recipes['items'] == null)
+        
         <h3>No recipes have been added yet.</h3>
-    @else --}}
+    
+    @else
+
         <h3>Your recipes:</h3>
-        @foreach ($recipesCreated as $recipe)
+        @foreach ($recipes as $recipe)
             @include('layouts.partials.recipe-index')
         @endforeach
-{{--     @endif --}}
+
+    @endif
 </div>
 
 
 
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3 text-center">
-        {!! $recipesCreated->render() !!}
+        {!! $recipes->render() !!}
     </div>
 </div>
 
@@ -52,21 +45,22 @@
 
 <!-- row -->
 <div class="row">
-    {{-- ??????????????????????????? --}}
-{{--     @if ($recipesVotedFor['items'] == null)
+    
+
+    @if ($upVotedRecipes['items'] == null)
         <h3>No recipes have been up-voted yet.</h3>
-    @else --}}
+    @else
     
         <h3>Recipes up-voted:</h3>
-        @foreach ($recipesVotedFor as $recipe)
+        @foreach ($upVotedRecipes as $recipe)
             @include('layouts.partials.recipe-index')
         @endforeach
-{{--     @endif --}}
+    @endif
 </div>
 
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3 text-center">
-        {!! $recipesVotedFor->render() !!}
+        {!! $upVotedRecipes->render() !!}
     </div>
 </div>
 
