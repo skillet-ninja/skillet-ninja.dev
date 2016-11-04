@@ -1,9 +1,28 @@
-/* General */
+/* 
+
+The css is organized by media breakpoint. Each breakpoint contains entries for the following views:
+
+    General 
+    Navbar 
+    Footer 
+    Welcome Page 
+    Recipe Index 
+    Recipe Card 
+    Recipe Modal 
+    Account Page  
+    Create Wizard 
+    Edit 
+    VCA 
+    About 
+    Logout 
+
+*/
+
+/* ================ General ================ */
 
 body {
     background-color: gold;
     color: black;
-
 }
 
 .content {
@@ -21,7 +40,6 @@ body {
 .customTagStyle {
     border-radius: 40px;
 }
-
 
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700|Merriweather:300,300italic,700);
@@ -49,7 +67,7 @@ p,blockquote {
   min-height: 83vh;
 }
 
-/* Navbar */
+/* ================ Navbar ================ */
 
 .navbar {
     /*background-color: #00B0D8;*/
@@ -93,7 +111,203 @@ p,blockquote {
     font-size: .7em;
 }*/
 
-/* VCA */
+
+
+/* ================ Footer ================ */
+
+.site-footer {
+    background-color: black;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    width:auto;
+}
+
+a.footer-links {
+    font-size: 1.15em;
+    margin-top: 15px;
+    padding: 10px;
+    color: white !important;
+}
+
+.footer-copyright {
+    font-size: .9em;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+
+/* ================ Welcome ================ Page */
+
+.welcome-title {
+    text-align: center;
+}
+
+.welcome-signiture {
+    padding-left: 4em;
+}
+
+.welcome-logo {
+    width: 25%;
+}
+
+.welcomeHeader {
+    font-size: 5em;
+    line-height: .8em;
+    padding-top: .2em;
+}
+
+.welcomeContent {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+
+/* ================ Recipe Index ================ */
+
+.thumbnailStyle {
+    height: 500px !important;
+}
+
+.bottomPlacement {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.recipeHeader {
+    font-size: 1.5em;
+}
+
+.recipeBtn {
+   align-self: flex-end; 
+}
+
+.fixedBottom {
+    position: flex;
+}
+
+button.voter {
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+}
+
+button.voter i {
+    background-color: none;
+    padding: 0;
+    margin: 0;
+}
+
+#voteUpButton {
+    position: relative;
+    top: 12px;
+}
+
+#voteDownButton {
+    position: relative;
+    bottom: 12px;   
+}
+
+.votingInterface {
+    background-color: none;
+    display: inline-block;
+    text-align: center;
+    border-radius: 40px;
+}
+
+#voteScore {
+    background-color: none;
+    color: black;
+    font-size: 1.3em;
+}
+
+.customParagraphPadding {
+    /*padding-right: 0;*/
+}
+
+.customVotePadding {
+    /*padding-left: 0;*/
+    padding-right: 0;
+}
+
+/*  ================ Recipe Card ================  */
+.line-clamp {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+}
+
+.recipe {
+    height: 520;
+}
+
+/* ================ Recipe Modal ================ */
+
+.modal-author {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.modal-name {
+    text-align: center;
+    display: inline;
+
+}
+
+.title-rating {
+    text-align: center;
+}
+
+.modalTagHeader {
+    margin-top: 0;
+}
+
+
+/* ================ Account Page ================  */
+
+.btn-edit-account {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.bottomPlacement {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* ================ Edit ================ */
+
+.marginDown {
+    margin-top: 20px;
+}
+
+.topMarginHeader {
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.imgPadding {
+    padding-top: 5px;
+}
+
+.customBtnMargin {
+    margin-right: 10px;
+}
+
+form#recipeUpdate {
+    padding-bottom: 10px;
+}
+
+.modal-footer {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* ================VCA ================ */
 
 
 /* .roundedOne */
@@ -256,27 +470,7 @@ p,blockquote {
 }*/
 
 
-/* Recipe Modal */
 
-.modal-author {
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.modal-name {
-    text-align: center;
-    display: inline;
-
-}
-
-.title-rating {
-    text-align: center;
-}
-
-.modalTagHeader {
-    margin-top: 0;
-}
 
 
 /* From https://codepen.io/chrisdpratt/pen/dmyne */
@@ -377,10 +571,13 @@ ol {
 }
 
 
+/* ================ About ================ */
 
+.bioPics {
+    width: 50%;
+}
 
-
-/* Logout */
+/* ================ Logout ================ */
 
 .logout-header {
     font-size: 8rem;
@@ -396,191 +593,163 @@ ol {
 }
 
 
-/* Welcome Page */
 
-.welcome-title {
-    text-align: center;
+
+
+
+
+/* ********************************************************** Large Devices, Wide Screens ********************************************************** */
+@media only screen and (max-width : 1200px) {
+
+    /* ================ General ================ */
+
+    /* ================ Navbar ================ */
+
+    /* ================ Footer ================ */
+
+    /* ================ Welcome ================ Page */
+
+    /* ================ Recipe Index ================ */
+
+    /* ================ Recipe Card ================ */
+
+    /* ================ Recipe Modal ================ */
+
+    /* ================ Account Page ================  */
+
+    /* ================ Create Wizard ================ */
+
+    /* ================ Edit ================ */
+
+    /* ================ VCA ================ */
+
+    /* ================ About ================ */
+
+    /* ================ Logout ================ */
+
+
 }
 
-.welcome-signiture {
-    padding-left: 4em;
+/* ********************************************************** Medium Devices, Desktops ********************************************************** */
+@media only screen and (max-width : 992px) {
+
+    /* ================ General ================ */
+
+    /* ================ Navbar ================ */
+
+    /* ================ Footer ================ */
+
+    /* ================ Welcome ================ Page */
+
+    /* ================ Recipe Index ================ */
+
+    /* ================ Recipe Card ================ */
+
+    /* ================ Recipe Modal ================ */
+
+    /* ================ Account Page ================  */
+
+    /* ================ Create Wizard ================ */
+
+    /* ================ Edit ================ */
+
+    /* ================ VCA ================ */
+
+    /* ================ About ================ */
+
+    /* ================ Logout ================ */
+
+}
+ 
+/* ********************************************************** Small Devices, Tablets ********************************************************** */
+@media only screen and (max-width : 768px) {
+
+    /* ================ General ================ */
+
+    /* ================ Navbar ================ */
+
+    /* ================ Footer ================ */
+
+    /* ================ Welcome ================ Page */
+
+    /* ================ Recipe Index ================ */
+
+    /* ================ Recipe Card ================ */
+
+    /* ================ Recipe Modal ================ */
+
+    /* ================ Account Page ================  */
+
+    /* ================ Create Wizard ================ */
+
+    /* ================ Edit ================ */
+
+    /* ================ VCA ================ */
+
+    /* ================ About ================ */
+
+    /* ================ Logout ================ */
+
 }
 
-.welcome-logo {
-    width: 25%;
+/* ********************************************************** Extra Small Devices, Phones ********************************************************** */ 
+@media only screen and (max-width : 480px) {
+
+    /* ================ General ================ */
+
+    /* ================ Navbar ================ */
+
+    /* ================ Footer ================ */
+
+    /* ================ Welcome ================ Page */
+
+    /* ================ Recipe Index ================ */
+
+    /* ================ Recipe Card ================ */
+
+    /* ================ Recipe Modal ================ */
+
+    /* ================ Account Page ================  */
+
+    /* ================ Create Wizard ================ */
+
+    /* ================ Edit ================ */
+
+    /* ================ VCA ================ */
+
+    /* ================ About ================ */
+
+    /* ================ Logout ================ */
+
 }
 
-.welcomeHeader {
-    font-size: 5em;
-}
+/* ********************************************************** Custom, iPhone Retina ********************************************************** */ 
+@media only screen and (max-width : 320px) {
 
-.welcomeContent {
-    font-size: 2em;
-}
+    /* ================ General ================ */
 
-/*footer*/
+    /* ================ Navbar ================ */
 
-.site-footer {
-    background-color: black;
-    padding-top: 20px;
-    text-align: center;
-    color: white;
-    width:auto;
-}
+    /* ================ Footer ================ */
 
-a.footer-links {
-    font-size: 1.15em;
-    margin-top: 15px;
-    padding: 10px;
-    color: white !important;
-}
+    /* ================ Welcome ================ Page */
 
-.footer-copyright {
-    font-size: .9em;
-    margin-top: 20px;
-    padding: 20px;
-}
+    /* ================ Recipe Index ================ */
 
+    /* ================ Recipe Card ================ */
 
-/*  Recipe Card  */
-.line-clamp {
-    overflow : hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
-}
+    /* ================ Recipe Modal ================ */
 
-.recipe {
-    height: 520;
-}
+    /* ================ Account Page ================  */
 
+    /* ================ Create Wizard ================ */
 
+    /* ================ Edit ================ */
 
+    /* ================ VCA ================ */
 
+    /* ================ About ================ */
 
-/*   Account Page  */
-
-.btn-edit-account {
-    margin-top: 15px;
-    margin-bottom: 30px;
-}
-
-.bottomPlacement {
-    position: absolute;
-    bottom: 0;
-}
-
-/* Wizard */
-
-.wizardContainer {
-    height: 90vh;
-}
-
-
-
-.hide {
-    display: none;
-}
-
-
-/* Recipe Index */
-
-.thumbnailStyle {
-    height: 500px !important;
-}
-
-.bottomPlacement {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.recipeHeader {
-    font-size: 1.5em;
-}
-
-.recipeBtn {
-   align-self: flex-end; 
-}
-
-.fixedBottom {
-    position: flex;
-}
-
-button.voter {
-    background-color: transparent;
-    border: none;
-    font-size: 2em;
-}
-
-button.voter i {
-    background-color: none;
-    padding: 0;
-    margin: 0;
-}
-
-#voteUpButton {
-    position: relative;
-    top: 12px;
-}
-
-#voteDownButton {
-    position: relative;
-    bottom: 12px;   
-}
-
-.votingInterface {
-    background-color: none;
-    display: inline-block;
-    text-align: center;
-    border-radius: 40px;
-}
-
-#voteScore {
-    background-color: none;
-    color: black;
-    font-size: 1.3em;
-}
-
-.customParagraphPadding {
-    /*padding-right: 0;*/
-}
-
-.customVotePadding {
-    /*padding-left: 0;*/
-    padding-right: 0;
-}
-
-/* About */
-
-.bioPics {
-    width: 50%;
-}
-
-/* Edit */
-
-.marginDown {
-    margin-top: 20px;
-}
-
-.topMarginHeader {
-    margin-top: 10px;
-    vertical-align: top;
-}
-
-.imgPadding {
-    padding-top: 5px;
-}
-
-.customBtnMargin {
-    margin-right: 10px;
-}
-
-form#recipeUpdate {
-    padding-bottom: 10px;
-}
-
-.modal-footer {
-    padding-right: 0;
-    padding-left: 0;
+    /* ================ Logout ================ */
+    
 }
