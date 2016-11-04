@@ -40,7 +40,6 @@
                     @else
                         <li class="navFont"><a class="navAnchorStyle" href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
                         <li class="navFont"><a class="navAnchorStyle" href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li class="navFont"><a class="navAnchorStyle" href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
                     @endif
                 </ul>
                 
