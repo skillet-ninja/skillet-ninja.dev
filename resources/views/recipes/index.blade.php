@@ -68,9 +68,11 @@
             $('#myModal').modal('show');
         });
 
+
         // Stops users that are not logged in from getting to the VCA
-        $('.stopSkilletButton').click(function(event) {
-            if ({{Auth::check() + 1}} == 1) {
+        $(document.body).on('click', '.stopSkilletButton', function(event) {
+
+            if (!Boolean({{Auth::check()}})) {
                 var choice = confirm('Please login or register to access the virtual cooking assistant.');
                 if (choice != true) {
 
@@ -79,14 +81,6 @@
                 }
             }
         });
-
-        // Stops users that are not logged in from getting to the VCA
-        
-        // $('.stopSkilletButton').click(function() {
-        //     if ({{Auth::check() + 1}} == 1) {
-        //         alert('Please login or register to access the virtual cooking assistant.');
-        //     }
-        // });
 
     </script>
 
