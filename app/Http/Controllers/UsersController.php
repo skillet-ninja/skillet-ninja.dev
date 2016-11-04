@@ -113,6 +113,9 @@ class UsersController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        $upVotedRecipes = User::getUpVotedRecipes($id);
+        $recipes = $user->recipes()->paginate(6);
+
         return redirect()->action('UsersController@show',$user->id);
 
     }
@@ -127,7 +130,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return view('welcome');
+        return redirect()->action('HomeController@index');
     }
     
 }
