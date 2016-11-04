@@ -19,6 +19,7 @@
     <h1 class="text-center">Account Edit</h1>
     <hr>
 
+    {{-- User Information --}}
     <div class="row">
         <div class="col-md-offset-3 col-md-6 text-center">
             <i class="fa fa-user fa-5x" aria-hidden="true"></i>
@@ -51,24 +52,23 @@
                     <input type="password" class="form-control" name="password_confirmation">
                 </div>
 
-                <div class="row">
-                    <div class="col-xs-6">
-                        <form action="{{action('UsersController@destroy', $user->id)}}" method="POST">
-                            {!! csrf_field() !!}
-                            {!! method_field('DELETE')!!}
-                            <button type="submit" class="btn btn-danger pull-left customButtonStyle" >Delete</button>
-                        </form>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="/users/{{ Auth::id() }}" class="btn btn-default customButtonStyle">Cancel</a>
-                    </div>
-                    <div class="col-xs-2">
-                      <button type="submit" class="btn btn-default btn-success customButtonStyle pull-right">Submit</button>
-                  </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-push-5">
+                            <a href="{{ action('UsersController@show', $user->id) }}" class="btn btn-default customButtonStyle">Cancel</a>
+                        </div>
+                        <div class="col-xs-2 col-xs-push-6">
+                          <button type="submit" class="btn btn-default pull-right btn-success customButtonStyle">Submit</button>
+                        </div>
+                </form>
+                        <div class="col-xs-6 col-xs-pull-6">
+                            <form class="form" action="/users/{{ $user->id }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE')!!}
+                                <button type="submit" class="btn btn-danger customButtonStyle" >Delete</button>
+                            </form>
+                        </div>
 
-            </form>
-
-    </div> <!-- form -->
+        </div> <!-- .col-md-4 -->
 </div>
 
 <br>
