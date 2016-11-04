@@ -84,7 +84,7 @@ p,blockquote {
 }
 
 .searchButtonStyling {
-    /*padding-bottom: 7px;*/
+
 }
 
 .navbar li {
@@ -758,6 +758,13 @@ ol {
     /* ================ Recipe Modal ================ */
 
     /* ================ Account Page ================  */
+    .usernameStyle {
+        font-size: 1.5em;
+    }
+
+    .emailStyle {
+        font-size: 1.2em;
+    }
 
     /* ================ Create Wizard ================ */
 
@@ -791,6 +798,8 @@ ol {
     /* ================ Recipe Modal ================ */
 
     /* ================ Account Page ================  */
+
+
 
     /* ================ Create Wizard ================ */
 

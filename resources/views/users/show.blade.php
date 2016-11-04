@@ -36,7 +36,7 @@
 
 
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 text-center">
+    <div class="col-xs-12 text-center">
         {!! $recipes->render() !!}
     </div>
 </div>
@@ -60,7 +60,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 text-center">
+    <div class="col-xs-12 text-center">
         {!! $upVotedRecipes->render() !!}
     </div>
 </div>
