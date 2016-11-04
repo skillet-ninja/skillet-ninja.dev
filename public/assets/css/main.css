@@ -25,6 +25,11 @@ body {
     color: black;
 }
 
+img {
+   max-width: 350px;
+   max-height: 300px;
+}
+
 .content {
     min-height: 80vh;
 }
@@ -176,17 +181,11 @@ a.footer-links {
 
 /* ================ Recipe Index ================ */
 
-.thumbnailStyle {
-    height: 490px !important;
-}
+
 
 .bottomPlacement {
     margin-top: auto;
     margin-bottom: auto;
-}
-
-.recipeHeader {
-    font-size: 1.5em;
 }
 
 .recipeBtn {
@@ -242,6 +241,11 @@ button.voter i {
 }
 
 /*  ================ Recipe Card ================  */
+
+.thumbnailStyle {
+    height: 480px !important;
+}
+
 .line-clamp {
     overflow : hidden;
     text-overflow: ellipsis;
@@ -252,6 +256,15 @@ button.voter i {
 
 .recipe {
     height: 520;
+}
+
+.pictureContainer {
+    height: 300px;
+    width: 350px;
+}
+
+.recipeHeader {
+    font-size: 1.2em;
 }
 
 /* ================ Recipe Modal ================ */
@@ -597,7 +610,7 @@ ol {
     /* ================ Recipe Index ================ */
 
     .thumbnailStyle {
-        height: 460px !important;
+        height: 480px !important;
     }
 
 

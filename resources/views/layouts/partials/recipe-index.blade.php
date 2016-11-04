@@ -1,6 +1,7 @@
-<div class="col-sm-6 col-md-4 recipe">
+<div class="col-sm-6 col-md-6 col-lg-4 recipe">
     <div class="thumbnail thumbnailStyle">
-        <img src="{!! $recipe->image_url !!}" class="img-responsive image1">
+        <div style="background-image: url('{!! $recipe->image_url !!}'); background-size:cover; background-position:center; overflow:hidden; background-repeat:no-repeat" class="pictureContainer img-responsive image1 text-center center-block">
+        </div>
         <div class="caption recipe-thumbnail">
             <div class="row">
                 <div class="col-xs-10 customParagraphPadding">
@@ -38,7 +39,7 @@
                     <button type="button" class="recipeBtn btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View</button>
                 </div>
 
-                <div class="col-xs-4">
+                <div class="col-xs-4 text-center">
                     @if(Auth::check())
                         @if(Auth::id() == $recipe->user_id)
                             <a href="{{ action('RecipesController@edit', $recipe->id) }}" class="recipeBtn btn btn-primary customButtonStyle" id="editRecipeBtn">Edit</a>
