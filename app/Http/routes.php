@@ -40,6 +40,10 @@ Route::get('users/profile', function () {
     return action('UsersController@show' , Auth::id());
 });
 
+Route::get('back', function () {
+    return back();
+});
+
 Route::get('recipes/index', ['as' => 'sortRecipes', 'uses' => 'RecipesController@index']);
 
 //routes to vote

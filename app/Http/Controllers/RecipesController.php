@@ -216,6 +216,7 @@ class RecipesController extends Controller
 
     }
 
+// These functions are for voting up and down
 
     public function addVote(Request $request)
     {
@@ -246,5 +247,4 @@ class RecipesController extends Controller
 
         return back();
     }
-
 }
