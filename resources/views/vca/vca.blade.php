@@ -22,11 +22,6 @@
 
     <div class="row">
         <div class="col-xs-4">
-            {{-- <div class="mic-button">
-                <label for="mic">Microphone</label>
-                <input name="mic" id="mic" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success">
-            </div> --}}
-
 
             <div class="buttonBackground" >
                 {{-- New Mic Button --}}
@@ -53,19 +48,9 @@
             </div>
         </div>
 
-
-
-
-  {{--       <div class="col-xs-2">
-            <div class="narration-button">
-                <label for="mic">Narration</label>
-                <input name="narration" id="narration" type="checkbox" checked data-toggle="toggle" data-style="ios" data-onstyle="success"> 
-            </div>
-        </div> --}}
-
         <div class="col-xs-4 text-center">
             <h3 class="timerHeader">Active Timers</h3>
-            <table class="table table-condensed text-center">
+            <table class="table table-inverse table-condensed text-center">
                 <thead>
                     <tr>
                         <th class="text-center">Step</th>
@@ -80,16 +65,16 @@
                         {{-- Timer beep source --}}
                         <audio id="buzzer{{ $key + 1 }}" src="/assets/sounds/timerSound.mp3" type="audio/mp3"></audio>    
                         <tr class="stepTimer{{ $key + 1 }} hidden">
-                            <td>{{ $key + 1 }}</td>
+                            <td class="stepStyling">{{ $key + 1 }}</td>
                             <td>
-                                <div class="timer{{ $key + 1 }}">
+                                <div class="timer{{ $key + 1 }} timerStyling">
                                     <span class="hour{{ $key + 1 }}">00</span>:<span class="minute{{ $key + 1 }}">00</span>:<span class="second{{ $key + 1 }}">00</span>
                                 </div>
                             </td>
                             <div class="control{{ $key + 1 }}">
-                                <td><button onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }})" class="btn-success"><-></button></td>
-                                <td><button class="btn-primary" onClick="timer{{ $key + 1 }}.stop()">||</button></td>
-                                <td><button id="timerStop{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }}); timer{{ $key + 1 }}.stop()" class="btn-danger">X</button></td>
+                                <td><button onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }})" class="btn-success"><i class="fa fa-refresh" aria-hidden="true"></i></button></td>
+                                <td><button class="btn-primary" onClick="timer{{ $key + 1 }}.stop()"><i class="fa fa-pause" aria-hidden="true"></i></button></td>
+                                <td><button id="timerStop{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }}); timer{{ $key + 1 }}.stop()" class="btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>
                             </div>
                         </tr>
                     @endforeach
