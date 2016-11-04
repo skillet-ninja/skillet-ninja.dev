@@ -5,10 +5,11 @@
 
         <div class="col-xs-12">
             <h1 class="text-center">Edit</h1>
-            <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST" id="recipeUpdate" name="recipeUpdate">  
+            <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST">  
 
                 {!! csrf_field() !!}
                 {!! method_field('PUT') !!}
+                {{-- <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}"> --}}
             
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
@@ -77,7 +78,7 @@
             {{-- Buttons --}}
             <div class="row">
                 <div class="col-sm-8">
-                    <form class="form pull-left" action="{{action ('RecipesController@destroy', $recipe->id) }}" method="POST">
+                    <form class="form pull-left" action="/recipes/{{ $recipe->id) }}" method="POST">
                         {!! csrf_field() !!}
                         {!! method_field('DELETE') !!}
                         <button class="btn btn-danger customButtonStyle pull-left">Delete Recipe</button>
@@ -87,12 +88,13 @@
                     <button type="button" class="btn btn-default customButtonStyle pull-right customBtnMargin" data-dismiss="modal">Close</button>
                 </div>
                 <div class="col-md-2">
-                    <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
                     <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
                 </div>
             </form> <!-- form  -->
         </div>
     </div> <!-- .row -->
+
+
 </div>
 
 

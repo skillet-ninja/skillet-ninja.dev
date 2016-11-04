@@ -112,6 +112,8 @@
 
 </div> <!-- .row  -->
 
+<a href="/users/{{ Auth::id() }}" class="btn btn-default btn-lg customButtonStyle">DONE</a>
+
 
 @stop
 
