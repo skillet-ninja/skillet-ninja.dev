@@ -29,9 +29,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-        {{-- REPLACE THESE PLACEHOLDERS WITH COMMENTED OUT LINES BELOW --}}
                     <li><a href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span> Recipes</a></li>
-                    {{-- <li><a href="{{ action('RecipesController@index' }}">Recipes</a></li> --}}
 
                     @if(Auth::check())
                         <li class="navFont"><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>

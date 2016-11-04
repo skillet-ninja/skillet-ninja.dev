@@ -42,12 +42,18 @@
 
         @endforeach
 
-        <form class="form form-group" action="{{ action('TagController@store') }}" method="POST" id="tagCreate" name="tagCreate">
+        <form class="form form-group" action="{{ action('TagController@store') }}" method="POST">
             {!! csrf_field() !!}
-            <br>
             <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-            <input id="tags" class="form-control bootstrap-tagsinput" data-role="tagsinput" type="text" placeholder="Separate tags with a comma" name="tags" value="">
-            <button class="btn btn-primary customButtonStyle">Add Tags</button>
+            <br>
+            
+            <div class="form-group">
+                
+                <input id="tags" class="form-control" data-role="tagsinput" placeholder="Separate with commas" name="tags">
+
+                <button type="submit" class="btn btn-primary customButtonStyle" type="button"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></button>
+
+            </div>
         </form>
     </div>
 
