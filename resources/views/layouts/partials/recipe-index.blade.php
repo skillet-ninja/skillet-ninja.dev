@@ -59,4 +59,24 @@
     </div> <!-- thumbnail -->
 </div> <!-- recipe -->
 
+{{-- jQuery --}}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+        // Stops users that are not logged in from getting to the VCA
+        // $(document.body).on('click', '.stopSkilletButton', function(event) {
+
+        //     if (!Boolean({{Auth::check()}})) {
+        //         var choice = confirm('Please login or register to access the virtual cooking assistant.');
+        //         if (choice != true) {
+
+        //             event.preventDefault();
+                    
+        //         }
+        //     }
+        // });
+
+
+</script>
+
 
