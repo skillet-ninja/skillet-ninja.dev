@@ -52,9 +52,7 @@ p,blockquote {
   font-family: 'helvetica', serif;
 }
 
-.navbar li {
-    font-family: "helvetica";
-}
+
 
 .site {
   display: flex;
@@ -75,6 +73,19 @@ p,blockquote {
     border: none;
     border-radius: 0;
 }
+
+.navAnchorStyle:active {
+    color: none;
+}
+
+.searchButtonStyling {
+    /*padding-bottom: 7px;*/
+}
+
+.navbar li {
+    font-family: "helvetica";
+}
+
 
 /* Nav Font */
 .navbar-default .navbar-nav>li>a {
@@ -154,15 +165,19 @@ a.footer-links {
 }
 
 .welcomeContent {
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: 400;
 }
 
+.welcomeContent a {
+    color: black;
+    text-decoration: underline;
+}
 
 /* ================ Recipe Index ================ */
 
 .thumbnailStyle {
-    height: 500px !important;
+    height: 490px !important;
 }
 
 .bottomPlacement {
@@ -344,25 +359,6 @@ form#recipeUpdate {
   opacity: 1;
 }
 
-
-/*.narration-button {
-    display: inline;
-    position: relative;
-}
-
-.mic-button {
-    display: inline;
-    position: relative;
-}
-
-.toggle.ios, .toggle-on.ios, .toggle-off.ios { 
-    border-radius: 20px; 
-}
-
-.toggle.ios .toggle-handle { 
-    border-radius: 20px; 
-}*/
-
 .vca-step-header {
     font-size: 6rem;
 }
@@ -410,10 +406,7 @@ form#recipeUpdate {
   
 }
 
-/*#myCarousel {
-  margin-top: 40px;
-}
-*/
+
 .carouselPagination {
     display: flex;
     justify-content: center;
@@ -425,9 +418,7 @@ form#recipeUpdate {
     justify-content: center;
     flex-direction: column;
     min-height: 70vh;
-    /*min-width*/: 80vw;
 }
-
 
 .carousel-control.left, .carousel-control.right {
     background-image: none;
@@ -437,8 +428,6 @@ form#recipeUpdate {
 .carousel-control.left {
     padding-right: 20px;
 }
-
-
 
 .carousel-linked-nav,
 .item img {
@@ -452,22 +441,6 @@ form#recipeUpdate {
   width: 60px;
   text-align: center;
 }
-
-/*.pagination>li>a, .pagination>li>span {
-    padding: 0;
-    text-align: center;
-}*/
-
-
-/*.carousel-linked-nav {
-  width: 60vw;
-  height: auto;
-  margin-bottom: 20px;   
-}*/
-
-
-
-
 
 /* From https://codepen.io/chrisdpratt/pen/dmyne */
 .rating {
@@ -615,7 +588,18 @@ ol {
         padding-top: .2em;
     }
 
+    .welcomeContent {
+        font-size: 2em;
+        font-weight: 400;
+    }
+
+
     /* ================ Recipe Index ================ */
+
+    .thumbnailStyle {
+        height: 460px !important;
+    }
+
 
     /* ================ Recipe Card ================ */
 
@@ -644,21 +628,31 @@ ol {
         background-color: blue;
     }
 
-    .container {
+  /*  .container {
         min-width: 95vw;
-    }
+    }*/
     /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
     /* ================ Welcome ================ Page */
     .welcomeHeader {
-        font-size: 5em;
+        font-size: 3.5em;
         line-height: .8em;
         padding-top: .2em;
     }
 
+    .welcomeContent {
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+
+
     /* ================ Recipe Index ================ */
+
+    .thumbnailStyle {
+        height: 480px !important;
+    }
 
     /* ================ Recipe Card ================ */
 
@@ -691,10 +685,15 @@ ol {
 
     /* ================ Welcome ================ Page */
     .welcomeHeader {
-        font-size: 5em;
-        line-height: .8em;
+        font-size: 2.5em;
         padding-top: .2em;
     }
+
+    .welcomeContent {
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+
     /* ================ Recipe Index ================ */
 
     /* ================ Recipe Card ================ */
@@ -712,6 +711,10 @@ ol {
     /* ================ About ================ */
 
     /* ================ Logout ================ */
+    .logout-header {
+        font-size: 4rem;
+    }
+
 
 }
 
@@ -728,10 +731,13 @@ ol {
 
     /* ================ Welcome ================ Page */
     .welcomeHeader {
-        font-size: 5em;
+        font-size: 2em;
         line-height: .8em;
         padding-top: .2em;
     }
+
+
+
     /* ================ Recipe Index ================ */
 
     /* ================ Recipe Card ================ */
