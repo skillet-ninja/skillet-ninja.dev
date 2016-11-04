@@ -68,7 +68,6 @@ class UsersController extends Controller
         $upVotedRecipes = User::getUpVotedRecipes($id);
         $recipes = $user->recipes()->paginate(6);
 
-
         $data['upVotedRecipes'] = $upVotedRecipes;
         $data['recipes'] = $recipes;
         $data['user'] = $user;
