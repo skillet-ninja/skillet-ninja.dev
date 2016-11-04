@@ -167,7 +167,19 @@ p,blockquote {
     margin-top: 0;
 }
 
+.timerStyling {
+    font-size: 1.70em;
+    font-weight: bold;
+}
 
+.stepStyling {
+    font-size: 1.70em;
+    font-weight: bold;
+}
+
+.stepPageButton:active {
+    background-color: none;
+}
 
 .carouselWrapper {
     

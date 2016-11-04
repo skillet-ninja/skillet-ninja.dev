@@ -21,6 +21,13 @@
                         <input type="text" class="form-control" placeholder="Search Recipes" name="searchTerm"/>
                     </div>
                     <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                    {{-- Need to make search bar above look like the one below --}}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Recipes" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </div>
+
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
