@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Recipe;
 
 class HomeController extends Controller
 {
@@ -17,8 +18,12 @@ class HomeController extends Controller
     public function index()
     {
 
-        
-    return view('welcome');
+
+    $recipes = Recipe::topVotedRecipes();
+
+    $data['recipes'] = $recipes;
+
+    return view('welcome')->with($data);
     }
 
     /**

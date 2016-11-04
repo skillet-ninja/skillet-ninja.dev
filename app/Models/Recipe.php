@@ -53,8 +53,9 @@ class Recipe extends Model
     public static function topVotedRecipes() {
             $recipes = DB::table('recipes')
             ->orderBy('vote_score','desc')
-            ->take(3);
-            
+            ->take(3)
+            ->get();
+
             return $recipes;
     }
 
