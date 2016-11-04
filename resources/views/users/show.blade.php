@@ -19,9 +19,9 @@
 <hr>
 <div class="row">
 
-    @if ($recipes['items'] == null)
+    @if ($recipes->count() == 0)
         
-        <h3>No recipes have been added yet.</h3>
+        <h3>Time to add your creations!!</h3>
     
     @else
 
@@ -47,7 +47,7 @@
 <div class="row">
     
 
-    @if ($upVotedRecipes['items'] == null)
+    @if ($upVotedRecipes->count() == 0)
         <h3>No recipes have been up-voted yet.</h3>
     @else
     
@@ -55,6 +55,7 @@
         @foreach ($upVotedRecipes as $recipe)
             @include('layouts.partials.recipe-index')
         @endforeach
+
     @endif
 </div>
 
