@@ -44,6 +44,9 @@ Route::get('back', function () {
     return back();
 });
 
+// welcome page routes
+Route::get('/','HomeController@index');
+
 Route::get('recipes/index', ['as' => 'sortRecipes', 'uses' => 'RecipesController@index']);
 
 //routes to vote
