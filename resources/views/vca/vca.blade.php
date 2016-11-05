@@ -98,7 +98,7 @@
                             <div class="carouselWrapper recipe-card">
                                 <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
                                 {{-- Voice --}}
-                                <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
+                                <p class="vca-step text-center">{{ $step->step }}</p> 
                                 @if($step->image_url != null)
                                     <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
                                 @endif
@@ -300,11 +300,12 @@
             var step = 1;
             
             // Filters step number to cycle up and down through total steps
-            function calculateStep(stepperValue) {
-                if (stepperValue == 0) {
+            function calculateStep(step) {
+                if (step > totalSteps) {
+                    step = 1;
+                }
+                if (step == 0) {
                     step = totalSteps;
-                } else {
-                    step = stepperValue % totalSteps;
                 }
                 return step;
             }
@@ -326,6 +327,7 @@
             // Click event for left carousel button click
             $('#prev').click(function() {
                 silence();
+                step = Number(step);
                 step -= 1;
                 step = calculateStep(step);
                 // Say step number
@@ -337,6 +339,7 @@
             // Click event for right carousel button click
             $('#next').click(function() {
                 silence();
+                step = Number(step);
                 step += 1;
                 step = calculateStep(step);
                  // Say step number

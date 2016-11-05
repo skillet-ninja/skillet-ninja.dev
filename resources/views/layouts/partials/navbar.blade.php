@@ -19,7 +19,7 @@
                     {!! csrf_field() !!}
                     <div class="form-group">
                         <div class="input-group pull-right">
-                          <input type="text" class="form-control" name="searchTerm" placeholder="Search for...">
+                          <input type="text" class="form-control" name="searchTerm" placeholder="Search recipes">
                           <span class="input-group-btn">
                             <button type="submit" class="btn btn-default form-control searchButtonStyling" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </span>
@@ -29,7 +29,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span> Recipes</a></li>
+                    <li><a class="searchBarCollapsePadding" href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span> Recipes</a></li>
 
                     @if(Auth::check())
                         <li class="navFont"><a class="navAnchorStyle" href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
