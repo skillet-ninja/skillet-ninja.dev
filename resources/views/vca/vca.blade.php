@@ -11,7 +11,7 @@
 
 
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4">
 
             <div class="buttonBackground" >
                 {{-- New Mic Button --}}
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="col-xs-4 text-center">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4 text-center">
             <h3 class="timerHeader">Active Timers</h3>
             <table class="table table-inverse table-condensed text-center">
                 <thead>
@@ -73,7 +73,7 @@
 
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4">
 
             <div class="pull-right">
                 <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Details</button>
