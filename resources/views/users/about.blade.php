@@ -24,14 +24,9 @@
                 <div class="thumbnail">
                     <img class="bioPics" src="/assets/img/DanielCarroll.jpg" alt="...">
                     <div class="caption">
-                        <h3>Daniel Carroll</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        
+                        <h3>Dan Carroll</h3>
+                        <p>A full-stack web developer who started as a Space Operations Officer in the U.S. Air Force and then became Civil Engineer. He is transitioning to coding and the immense opportunities in that field after 15 years of highway engineering design. He hopes to use his experience as an engineering designer and manager to attack the most challenging parts of web apps from the back end to the front end.
+                        </p>                   
                     </div>
                 </div>
             </div>
