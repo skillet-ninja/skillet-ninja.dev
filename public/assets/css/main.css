@@ -46,6 +46,22 @@ img {
     border-radius: 40px;
 }
 
+.pagination > li > a,
+.pagination > li > span {
+    color: black; 
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: black;
+    color: white;
+    border-color: #EEEEEE;
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700|Merriweather:300,300italic,700);
 
@@ -238,6 +254,10 @@ button.voter i {
 .customVotePadding {
     /*padding-left: 0;*/
     padding-right: 0;
+}
+
+.pagination {
+    color: black !important;
 }
 
 /*  ================ Recipe Card ================  */
