@@ -34,7 +34,7 @@
 
     <div class="row">
         @foreach ($recipes as $recipe)
-            @include('layouts.partials.recipe-index')
+            @include('layouts.partials.recipe-card')
         @endforeach
     </div>  <!-- row -->
 
