@@ -27,7 +27,7 @@
 
             <h3>Your recipes:</h3>
             @foreach ($recipes as $recipe)
-                @include('layouts.partials.recipe-index')
+                @include('layouts.partials.recipe-card')
             @endforeach
 
         @endif
@@ -53,7 +53,7 @@
         
             <h3>Recipes up-voted:</h3>
             @foreach ($upVotedRecipes as $recipe)
-                @include('layouts.partials.recipe-index')
+                @include('layouts.partials.recipe-card')
             @endforeach
 
         @endif

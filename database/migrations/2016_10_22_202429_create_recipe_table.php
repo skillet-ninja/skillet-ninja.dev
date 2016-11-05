@@ -25,7 +25,7 @@ class CreateRecipeTable extends Migration
             $table->integer('servings')->nullable();
             $table->string('difficulty')->nullable();
             $table->string('image_url')->default('/assets/img/RecipeDefault.png');
-            $table->string('tutorial_url')->default('None');
+            $table->string('tutorial_url')->nullable();
             $table->string('overall_time')->nullable();
             $table->timestamps();
         });
