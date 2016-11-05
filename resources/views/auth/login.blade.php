@@ -42,7 +42,7 @@
                 <form method="POST" action="{{ action('Auth\AuthController@postRegister') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="name">Name:</label>
+                        <label for="name">Username:</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                     </div>
                     <div class="form-group">
