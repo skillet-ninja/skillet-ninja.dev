@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
+@section ('modal-title', 'Check out...')
+
 @section('content')
+
 
 @include('layouts.partials._initialization')
 
@@ -42,7 +45,22 @@
 
         <br>
     </div>
-  
 
+@stop
+
+
+@section('bottom-scripts')
+
+    <script type="text/javascript">
+    
+    $('.btn-view-recipe').on('click', function(e){
+        var recipeId = e.target.getAttribute("data-recipe");
+        $.get("/recipes/" + recipeId, function(data){
+        $(".recipe-modal").html(data);
+        });
+        $('#myModal').modal('show');
+    });
+
+    </script>
 
 @stop
