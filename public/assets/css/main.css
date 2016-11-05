@@ -277,6 +277,14 @@ button.voter i {
     -webkit-box-orient: vertical;  
 }
 
+.line-clamp1 {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+}
+
 .recipe {
     height: 520;
 }
@@ -323,6 +331,11 @@ button.voter i {
 .bottomPlacement {
     position: absolute;
     bottom: 0;
+}
+
+.spacer {
+    height: 100px;
+    width: 100%;
 }
 
 
@@ -619,9 +632,9 @@ ol {
 @media only screen and (max-width : 1200px) {
 
     /* ================ General ================ */
-    body {
+    /*body {
         background-color: red;
-    }    
+    }  */  
     .container {
         min-width: 90vw;
     }
@@ -672,10 +685,10 @@ ol {
 @media only screen and (max-width : 992px) {
 
     /* ================ General ================ */
-    body {
+    /*body {
         background-color: blue;
     }
-
+*/
   /*  .container {
         min-width: 95vw;
     }*/
@@ -761,10 +774,10 @@ ol {
 @media only screen and (max-width : 768px) {
 
     /* ================ General ================ */
-    body {
+    /*body {
         background-color: green;
     }
-    /* ================ Navbar ================ */
+*/    /* ================ Navbar ================ */
     .navbar-form {
         margin-right: 0;
         border-top: 0;
@@ -819,10 +832,10 @@ ol {
 @media only screen and (max-width : 480px) {
 
     /* ================ General ================ */
-    body {
+    /*body {
         background-color: silver;
     }
-    /* ================ Navbar ================ */
+*/    /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
@@ -872,10 +885,10 @@ ol {
 @media only screen and (max-width : 320px) {
 
     /* ================ General ================ */
-    body {
+    /*body {
         background-color: purple;
     }
-    /* ================ Navbar ================ */
+*/    /* ================ Navbar ================ */
 
     /* ================ Footer ================ */
 
