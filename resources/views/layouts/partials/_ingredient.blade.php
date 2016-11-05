@@ -38,14 +38,12 @@
     {{-- Buttons --}}
 
     <div class="row">
-        <div class="col-xs-10">
+        <div class="col-xs-6">
             <span class="pull-left">@yield('delete-button')</span>
         </div>
-        <div class="col-xs-1">
-            <button type="button" class="btn btn-default customButtonStyle pull-right" data-dismiss="modal">Cancel</button>
-        </div>
-        <div class="col-xs-1">
-            <button class="btn btn-default customButtonStyle pull-right">Save</button>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-default customButtonStyle">Save</button>
         </div>
 
 </form>  <!-- form  -->

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-xs-8 col-xs-offset-2">
         
         <h2>Start A New Recipe</h2>
 

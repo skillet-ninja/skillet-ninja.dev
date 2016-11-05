@@ -45,7 +45,7 @@ class RecipesController extends Controller
         // dd($request);
         if($request->recipe)
         {
-            return view ('layouts.partials.modal-add-recipe');
+            return view ('layouts.partials._recipe-add');
 
         }
 

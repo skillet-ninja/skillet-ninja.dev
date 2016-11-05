@@ -34,7 +34,6 @@
                     @if(Auth::check())
                         <li class="navFont"><a class="navAnchorStyle" href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
                         <li class="navFont"><a class="navAnchorStyle" href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
-                        {{-- <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li> --}}
                         <li class="navFont"><a class="navAnchorStyle" href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     @else
