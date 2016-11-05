@@ -73,12 +73,20 @@
 {{-- Modal Footer --}}
 
 <div class="modal-footer">
-    <button id="closeModal" type="button" class="btn btn-default customButtonStyle pull-left" data-dismiss="modal">Close</button>
+    <div class="row">
+    <div class="col-sm-6">
+        <button id="closeModal" type="button" class="btn btn-default customButtonStyle pull-left" data-dismiss="modal">Close</button>
+    </div>
 
-    @if(Auth::check() && $vca != true)
-        <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success pull-right customButtonStyle">START!</a>
-    @elseif ($vca != true)
-        <a href="/auth/login" class="btn btn-primary btn-success pull-right stopSkilletButton customButtonStyle">START!</a>
-    @endif
+    <div class="col-sm-6">
+
+        @if(Auth::check() && $vca != true)
+            <a href="{{ action('RecipesController@show', $recipe->id) }}" class="btn btn-primary btn-success customButtonStyle">START!</a>
+        @elseif ($vca != true)
+            <a href="/auth/login" class="btn btn-primary btn-success stopSkilletButton customButtonStyle">START!</a>
+        @endif
+
+    </div>
+</div>
 
 </div>

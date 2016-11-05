@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <div class="col-xs-12">
+        <div class="col-xs-10 col-xs-offset-1">
             <h1 class="text-center">Edit</h1>
             <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST">  
 
@@ -76,17 +76,14 @@
             
             {{-- Buttons --}}
             <div class="modal-footer">
-                {{-- <div class="col-sm-8">
-                    
-                </div>   --}}          
-                <div class="col-md-2 col-md-offset-8">
-                    <button type="button" class="btn btn-default customButtonStyle pull-right customBtnMargin" data-dismiss="modal">Close</button>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-6">
+                        <button type="button" class="btn btn-default customButtonStyle " data-dismiss="modal">Close</button>
+                        <button class="btn btn-success customButtonStyle pull-right" id="ingredient-submit">Save Changes</button>
+                    </div>
                 </div>
             </form>
-        </div>
+            </div>
     </div> <!-- .modal-footer -->
 
 </div>
