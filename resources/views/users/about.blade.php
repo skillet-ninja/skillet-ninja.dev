@@ -35,12 +35,7 @@
                     <img class="bioPics" src="/assets/img/JustinReich.jpg" alt="...">
                     <div class="caption">
                         <h3>Justin Reich</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Justin is a bad cook; the driving impetus behind what became Skillet Ninja. When not setting the microwave ablaze, Justin loves developing and designing front-end solutions for web sites and applications. Before attending Codeup, Justin taught more than 40 piano students of all ages and levels for five years in San Antonio. In his spare time, Justin enjoys piano improvisation/composition and destroying the competition on his sweet gaming rig.</p>
                         
                     </div>
                 </div>
