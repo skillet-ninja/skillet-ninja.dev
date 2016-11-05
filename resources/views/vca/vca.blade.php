@@ -267,7 +267,7 @@
                         }
                     }
                 );
-                timer{{ $key + 1 }}.reset({{ $step->time / 2 }}); // taking out * 60 for testing //
+                timer{{ $key + 1 }}.reset({{ $step->time * 60 }});
                 timer{{ $key + 1 }}.mode(0);
             });
 
@@ -398,9 +398,14 @@
                         'Next': function() {
                             $("#next").click();
                         },
-                        'Back': function() {
+                        'Previous': function() {
                             $("#prev").click();
                         },
+                        {{-- @foreach ($steps as $key => $step) --}}
+                            // 'Start timer {{ $key + 1 }}': function() {
+                            //     $('#startTimer{{ $key + 1}}').click();
+                            // },
+                        {{-- @endforeach --}}
                         @foreach ($steps as $key => $step)
                             'Step {{ $key + 1 }}': function() {
                                 $('#step{{ $key + 1}}').click();
