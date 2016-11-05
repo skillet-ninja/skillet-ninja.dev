@@ -21,7 +21,7 @@
                         <div class="input-group pull-right">
                           <input type="text" class="form-control" name="searchTerm" placeholder="Search for...">
                           <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default searchButtonStyling" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-default form-control searchButtonStyling" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </span>
                         </div><!-- /input-group -->
                     </div><!-- /form-group -->
