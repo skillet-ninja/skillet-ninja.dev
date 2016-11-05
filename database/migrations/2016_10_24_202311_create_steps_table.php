@@ -19,7 +19,7 @@ class CreateStepsTable extends Migration
             $table->foreign('recipe_id')->references('id')->on('recipes');
 
             $table->longtext('step');
-            $table->string('video_url')->nullable();
+            $table->string('video_url')->default('None');
             $table->string('image_url')->nullable();
             $table->integer('time');
             $table->timestamps();
