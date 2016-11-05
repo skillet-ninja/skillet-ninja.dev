@@ -24,14 +24,9 @@
                 <div class="thumbnail">
                     <img class="bioPics" src="/assets/img/DanielCarroll.jpg" alt="...">
                     <div class="caption">
-                        <h3>Daniel Carroll</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        
+                        <h3>Dan Carroll</h3>
+                        <p>Dan is <strong>not</strong> a bad cook...check out that belly!  After a stint in the Air Force as a Space Operations Officer he almost became a chef (not kidding) but instead became civil engineer. After 15 years of highway engineering design he is transitioning to coding and the immense opportunities in that field. He hopes to use his experience as an engineering designer and manager to attack the most challenging parts of web apps from the back end to the front end.
+                        </p>                   
                     </div>
                 </div>
             </div>
