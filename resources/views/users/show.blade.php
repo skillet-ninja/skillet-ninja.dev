@@ -6,64 +6,66 @@
 
 @include ('layouts.partials._initialization')
 
+<div class="animated fadeIn">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <i class="fa fa-user fa-5x text-center centered" aria-hidden="true"></i>
+                <h1 class="text-center">{{ $user->name }}</h1>
+                <h3>{{ $user->email }}</h3>
+                <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account customButtonStyle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+            </div>
+        </div>
+    <hr>
+    <div class="row">
 
-<div class="container">
+        @if ($recipes->count() == 0)
+            
+            <h3>Time to add your creations!!</h3>
+        
+        @else
+
+            <h3>Your recipes:</h3>
+            @foreach ($recipes as $recipe)
+                @include('layouts.partials.recipe-index')
+            @endforeach
+
+        @endif
+    </div>
+
+
+
     <div class="row">
         <div class="col-xs-12 text-center">
-            <i class="fa fa-user fa-5x text-center centered" aria-hidden="true"></i>
-            <h1 class="text-center">{{ $user->name }}</h1>
-            <h3>{{ $user->email }}</h3>
-            <a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-primary btn-success btn-edit-account customButtonStyle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Profile</a>
+            {!! $recipes->render() !!}
         </div>
     </div>
-<hr>
-<div class="row">
 
-    @if ($recipes->count() == 0)
+     
+
+    <!-- row -->
+    <div class="row">
         
-        <h3>Time to add your creations!!</h3>
-    
-    @else
 
-        <h3>Your recipes:</h3>
-        @foreach ($recipes as $recipe)
-            @include('layouts.partials.recipe-index')
-        @endforeach
+        @if ($upVotedRecipes->count() == 0)
+            <h3>No recipes have been up-voted yet.</h3>
+        @else
+        
+            <h3>Recipes up-voted:</h3>
+            @foreach ($upVotedRecipes as $recipe)
+                @include('layouts.partials.recipe-index')
+            @endforeach
 
-    @endif
-</div>
+        @endif
+    </div>
 
-
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        {!! $recipes->render() !!}
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            {!! $upVotedRecipes->render() !!}
+        </div>
     </div>
 </div>
 
- 
-
-<!-- row -->
-<div class="row">
-    
-
-    @if ($upVotedRecipes->count() == 0)
-        <h3>No recipes have been up-voted yet.</h3>
-    @else
-    
-        <h3>Recipes up-voted:</h3>
-        @foreach ($upVotedRecipes as $recipe)
-            @include('layouts.partials.recipe-index')
-        @endforeach
-
-    @endif
-</div>
-
-<div class="row">
-    <div class="col-xs-12 text-center">
-        {!! $upVotedRecipes->render() !!}
-    </div>
-</div>
 
 
 @stop
