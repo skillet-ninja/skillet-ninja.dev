@@ -59,8 +59,11 @@ img {
 .pagination > .active > span:hover {
     background-color: black;
     color: white;
-    border-color: #EEEEEE;
+    border-color: #eeeeee;
 }
+
+
+
 
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700|Merriweather:300,300italic,700);
@@ -570,6 +573,17 @@ ol {
     font-weight: bold;
     border-radius: 2em;
     transition: all .3s ease-out;
+}
+
+.carouselPagination > .pagination > .active > a,
+.carouselPagination > .pagination > .active > a:focus,
+.carouselPagination > .pagination > .active > a:hover,
+.carouselPagination > .pagination > .active > span,
+.carouselPagination > .pagination > .active > span:focus,
+.carouselPagination > .pagination > .active > span:hover {
+    background-color: #ffffff;
+    border-color: #dddddd;
+    color: black;
 }
 
 
