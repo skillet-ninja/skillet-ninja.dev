@@ -53,7 +53,8 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect('/users');
+
+        return redirect()->action('RecipesController@index');
     }
 
     /**
