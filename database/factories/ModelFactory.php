@@ -55,7 +55,6 @@ $factory->define(App\Models\Step::class, function (Faker\Generator $faker){
 	return [
 		'recipe_id' => App\Models\Recipe::all()->random()->id,
 		'step' => $faker->sentence,
-		'video_url' => "None",
 		'time' => $faker->numberBetween($min = 1, $max = 30),
 	];
 

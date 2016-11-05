@@ -3,6 +3,9 @@
 @section('content')
     <div class="animated fadeIn">
         <div class="row">
+
+            {{-- LOGIN INPUT --}}
+
             <div class="col-sm-6 col-sm-offset-3">
                 <h2>Login</h2>
                 <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
@@ -20,6 +23,8 @@
             </div>
         </div>
 
+        {{-- LOGIN ERRORS --}}
+
         @if(count($errors))
             <div class="alert alert-danger">
             @foreach($errors->all() as $error)
@@ -29,6 +34,9 @@
             </div>
         @endif
         <div class="row">
+
+            {{-- REGISTER INPUT --}}
+            
             <div class="col-sm-6 col-sm-offset-3">
                 <h2>Register</h2>
                 <form method="POST" action="{{ action('Auth\AuthController@postRegister') }}">

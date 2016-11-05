@@ -82,9 +82,9 @@
                 </div>
 
                 <div class="text-center">
-                    {{-- @if($recipe->video_url != null) --}}
+                    @if($recipe->video_url != null)
                         <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
-                    {{-- @endif --}}
+                    @endif
                 </div>
             </div>
         </div>
@@ -106,17 +106,17 @@
                                     @endif
                                 </div>
                                     <div class="row">
+                                            <div class="col-xs-6">
                                         @if($step->video_url != null)
-                                            <div class="col-xs-6">
                                                 <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary pull-left customButtonStyle" target="_blank">View Step</a>
-                                            </div>
                                         @endif
+                                            </div>
 
-                                        @if($step->time != null)
                                             <div class="col-xs-6">
+                                        @if($step->time != null)
                                                 <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer pull-right customButtonStyle">Start Timer</button>
-                                            </div>
                                         @endif
+                                            </div>
                                     </div> 
                                 </div>
                         @endforeach
