@@ -84,8 +84,8 @@
         
             {{-- Buttons --}}
             <div class="modal-footer">
-                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save</button>
                     <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save</button>
                 </div>
                 <br>
             </div>

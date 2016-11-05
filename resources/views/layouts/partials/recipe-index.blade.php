@@ -5,7 +5,7 @@
         <div class="caption recipe-thumbnail">
             <div class="row">
                 <div class="col-xs-10 customParagraphPadding">
-                    <h3 class="recipeHeader">{{ $recipe->name }}</h3>
+                    <h3 class="recipeHeader line-clamp1">{{ $recipe->name }}</h3>
                     <p class="line-clamp">{{ $recipe->summary }}</p>
                 </div>
                 <div class="col-xs-2 customVotePadding text-center">

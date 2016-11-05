@@ -60,20 +60,16 @@
                               <button type="submit" class="btn btn-default pull-right btn-success customButtonStyle">Submit</button>
                             </div>
                     </form>
-                            <div class="col-xs-6 col-xs-pull-6">
-                                <form class="form" action="/users/{{ $user->id }}" method="POST">
-                                    {!! csrf_field() !!}
-                                    {!! method_field('DELETE')!!}
-                                    <button type="submit" class="btn btn-danger customButtonStyle" >Delete</button>
-                                </form>
-                            </div>
-
-            </div> <!-- .col-md-4 -->
+                        <div class="col-xs-6 col-xs-pull-6">
+                            <form class="form" action="/users/{{ $user->id }}" method="POST">
+                                {!! csrf_field() !!}
+                                {!! method_field('DELETE')!!}
+                                <button type="submit" class="btn btn-danger customButtonStyle" >Delete</button>
+                            </form>
+                        </div>
+            </div> 
+        </div>
     </div>
-
-    <br>
-        
-    </div>
-
+    <div class="spacer"></div>
 
 @stop
