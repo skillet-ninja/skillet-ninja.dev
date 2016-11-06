@@ -401,13 +401,13 @@
                         'Previous': function() {
                             $("#prev").click();
                         },
-                        {{-- @foreach ($steps as $key => $step) --}}
-                            // 'Start timer {{ $key + 1 }}': function() {
-                            //     $('#startTimer{{ $key + 1}}').click();
-                            // },
-                        {{-- @endforeach --}}
                         @foreach ($steps as $key => $step)
-                            'Start step {{ $key + 1 }}': function() {
+                            'Start timer {{ $key + 1 }}': function() {
+                                $('#startTimer{{ $key + 1}}').click();
+                            },
+                        @endforeach
+                        @foreach ($steps as $key => $step)
+                            'Go step {{ $key + 1 }}': function() {
                                 $('#step{{ $key + 1}}').click();
                             },
                         @endforeach
@@ -422,9 +422,6 @@
                                 $('#viewStep{{ $key + 1}}').click();
                             },
                         @endforeach
-                        'Start': function() {
-                            $("#prev").click();
-                        },
                         'Stop': function() {
                         },
                         'Repeat Step': function() {
