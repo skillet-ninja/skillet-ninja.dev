@@ -407,7 +407,7 @@
                             // },
                         {{-- @endforeach --}}
                         @foreach ($steps as $key => $step)
-                            'Step {{ $key + 1 }}': function() {
+                            'Start step {{ $key + 1 }}': function() {
                                 $('#step{{ $key + 1}}').click();
                             },
                         @endforeach
