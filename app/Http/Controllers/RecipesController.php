@@ -59,11 +59,15 @@ class RecipesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
 
-        // $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
-        // $this->validate($request, Recipe::$rules);
-        // $request->session()->forget('ERROR_MESSAGE');
+        if (empty($request->image_url)) {
+            $request->image_url = '/assets/img/RecipeDefault.png';
+        }
+
+        $request->session()->flash('ERROR_MESSAGE', 'Recipe was not saved.');
+        $this->validate($request, Recipe::$rules);
+        $request->session()->forget('ERROR_MESSAGE');
 
         $recipe = new Recipe();
         $recipe->name = $request->name;
@@ -73,7 +77,7 @@ class RecipesController extends Controller
         $recipe->difficulty = $request->difficulty;
         $recipe->image_url = $request->image_url;
         $recipe->tutorial_url = $request->tutorial_url;
-        $recipe->user_id = $request->user()->id;
+        $recipe->user_id = $request->user_id;
         $recipe->notes = $request->notes;
         $recipe->save();
         $data['recipe'] = $recipe;
