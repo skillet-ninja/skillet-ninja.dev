@@ -915,3 +915,24 @@ ol {
     /* ================ Logout ================ */
     
 }
+
+
+/* ********************************************************** BROWSER SPECIFIC CSS ********************************************************** */ 
+
+/* Safari (version 6+) */
+@media screen and (min-color-index:0) 
+and(-webkit-min-device-pixel-ratio:0) { @media
+{
+    img.navLogo { 
+
+        height: 125%;
+
+    }
+}}
+
+/* Firefox (all versions) */
+html>body .thumbnailStyle , 
+x:-moz-any-link, 
+x:default {
+    height: 500px !important;
+}
