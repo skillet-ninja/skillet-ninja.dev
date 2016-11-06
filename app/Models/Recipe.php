@@ -10,7 +10,7 @@ class Recipe extends Model
 {
     protected $table = 'recipes';
 
-    protected static $rules = array(
+    public static $rules = array(
         'name' => 'required|max:100',
         'servings' => 'required',
         'summary'=>'required',
@@ -30,18 +30,24 @@ class Recipe extends Model
 
     public function ingredients()
     {
-        return $this->belongsToMany('App\Models\Ingredient')->withPivot('amount')->withTimestamps();
+        return $this->belongsToMany('App\Models\Ingredient')
+        ->withPivot('amount')
+        ->withTimestamps();
     }
     
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag')->withTimestamps();
+        return $this->belongsToMany('App\Models\Tag')
+        ->withTimestamps();
     }
 
 
     public function getSteps($id) {
 
-        return DB::table('steps')->where('recipe_id', $id)->orderBy('created_at', 'asc')->get();
+        return DB::table('steps')
+        ->where('recipe_id', $id)
+        ->orderBy('created_at', 'asc')
+        ->get();
     }
 
 
