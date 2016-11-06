@@ -35,22 +35,22 @@
 
 <div class="modal-footer">
 
-    {{-- Buttons --}}
+            {{-- Buttons --}}
 
-    <div class="row">
-        <div class="col-xs-6">
-            <span class="pull-left">@yield('delete-button')</span>
-        </div>
-        <div class="col-xs-6">
-            <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-default customButtonStyle">Save</button>
-        </div>
+            <div class="row">
+        </form>  <!-- form  -->
+                <div class="col-sm-6">
+                <div class="pull-left">
+                    @yield('delete-button')
+                </div>
 
-</form>  <!-- form  -->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success customButtonStyle">Save</button>
+                </div>
+            </div> <!-- .row -->
 
-        
-    </div> <!-- .row -->
-
-    </div> <!-- .modal-footer -->
+        </div> <!-- .modal-footer -->
     </div> <!-- .col-sm-8 col-sm-offset-2-->
 </div> <!-- .row -->

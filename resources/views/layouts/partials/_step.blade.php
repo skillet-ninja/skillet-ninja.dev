@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-sm-6">
                     <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Step</button>
+                    <button class="btn btn-success customButtonStyle">Save</button>
                 </div>
             </div> <!-- .row -->
 
