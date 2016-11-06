@@ -31,7 +31,7 @@ $factory->define(App\Models\Recipe::class, function (Faker\Generator $faker) {
         'servings' => $faker->numberBetween($min = 1, $max = 12),
         'summary' => $faker->sentences($nb = 3, $asText = true),
         'notes' => $faker->sentences($nb = 3, $asText = true),
-        'image_url' => "http://placehold.it/350x300",
+        'image_url' => "/assets/img/RecipeDefault.png",
         'tutorial_url' => "https://www.youtube.com/watch?v=IpNVe0n2atk",
         'overall_time' => $faker->numberBetween($min = 1, $max = 120),
         'difficulty' => $difficulty,
@@ -55,8 +55,6 @@ $factory->define(App\Models\Step::class, function (Faker\Generator $faker){
 	return [
 		'recipe_id' => App\Models\Recipe::all()->random()->id,
 		'step' => $faker->sentence,
-		'video_url' => $faker->url,
-		'image_url' => "http://placehold.it/200x200",
 		'time' => $faker->numberBetween($min = 1, $max = 30),
 	];
 

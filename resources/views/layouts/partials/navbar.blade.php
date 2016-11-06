@@ -19,9 +19,9 @@
                     {!! csrf_field() !!}
                     <div class="form-group">
                         <div class="input-group pull-right">
-                          <input type="text" class="form-control" name="searchTerm" placeholder="Search for...">
+                          <input type="text" class="form-control" name="searchTerm" placeholder="Search recipes">
                           <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-default form-control searchButtonStyling" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </span>
                         </div><!-- /input-group -->
                     </div><!-- /form-group -->
@@ -29,18 +29,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span> Recipes</a></li>
+                    <li><a class="searchBarCollapsePadding" href="{{ action('RecipesController@index') }}"> <span class="glyphicon glyphicon-cutlery"></span> Recipes</a></li>
 
                     @if(Auth::check())
-                        <li class="navFont"><a href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
-                        <li class="navFont"><a href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
-                        {{-- <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li> --}}
-                        <li class="navFont"><a href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li class="navFont"><a class="navAnchorStyle" href="{{ action('UsersController@show' , Auth::id()) }}"><span class="glyphicon glyphicon-user"></span>  {{ Auth::user()->name }}</a></li>
+                        <li class="navFont"><a class="navAnchorStyle" href="{{ action('RecipesController@create' , Auth::id()) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Create Recipe</a></li>
+                        <li class="navFont"><a class="navAnchorStyle" href="{{ (action('Auth\AuthController@getLogout')) }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     @else
-                        <li class="navFont"><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
-                        <li class="navFont"><a href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li class="navFont"><a href="{{ '/users/about' }}"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                        <li class="navFont"><a class="navAnchorStyle" href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+                        <li class="navFont"><a class="navAnchorStyle" href="{{ action('Auth\AuthController@getLogin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     @endif
                 </ul>
                 

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-xs-10 col-xs-offset-1">
         
         <h2>Step Input</h2>
 
@@ -61,17 +61,15 @@
 
             <div class="row">
         </form>  <!-- form  -->
-                <div class="col-md-8">
+                <div class="col-sm-6">
                 <div class="pull-left">
                     @yield('delete-button')
                 </div>
 
                 </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-default customButtonStyle pull-right" data-dismiss="modal">Cancel</button>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-success customButtonStyle pull-right" id="ingredient-submit">Save Step</button>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Step</button>
                 </div>
             </div> <!-- .row -->
 

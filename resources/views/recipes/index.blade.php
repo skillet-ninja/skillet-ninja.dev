@@ -13,39 +13,42 @@
 <!-- Recipe Modal -->
 @include('layouts.partials._initialization')
 
-<h1 class="text-center">COMMUNITY RECIPES</h1>
-<hr>
+<div class="animated fadeIn">
+    <h1 class="text-center">Community Recipes</h1>
+    <hr>
 
-{{-- Sort By Selector --}}
-    <div class="dropdown text-right">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu pull-right">
-            <li><a href="{{ URL::route('sortRecipes') }}?sort=top_rated&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Top Rated</a></li>
-            <li><a href="{{ URL::route('sortRecipes') }}?sort=most_recent&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Most Recent</a></li>
-            <li><a href="{{ URL::route('sortRecipes') }}?sort=difficulty&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Difficulty</a></li>
-        </ul>
+    {{-- Sort By Selector --}}
+        <div class="dropdown text-right">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right">
+                <li><a href="{{ URL::route('sortRecipes') }}?sort=top_rated&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Top Rated</a></li>
+                <li><a href="{{ URL::route('sortRecipes') }}?sort=most_recent&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Most Recent</a></li>
+                <li><a href="{{ URL::route('sortRecipes') }}?sort=difficulty&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Difficulty</a></li>
+            </ul>
+        </div>
+        <br>
+
+
+    {{-- Recipe Cards --}}
+
+    <div class="row">
+        @foreach ($recipes as $recipe)
+            @include('layouts.partials.recipe-card')
+        @endforeach
+    </div>  <!-- row -->
+
+
+    {{-- Pagination --}}
+
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            {!! $recipes->appends(['searchTerm' => $searchTerm, 'search_tag' => $search_tag])->render() !!}
+        </div>
     </div>
-    <br>
-
-
-{{-- Recipe Cards --}}
-
-<div class="row">
-    @foreach ($recipes as $recipe)
-        @include('layouts.partials.recipe-index')
-    @endforeach
-</div>  <!-- row -->
-
-
-{{-- Pagination --}}
-
-<hr>
-
-<div class="row">
-    <div class="col-xs-8 col-xs-offset-2 text-center">
-        {!! $recipes->appends(['searchTerm' => $searchTerm, 'search_tag' => $search_tag])->render() !!}
-    </div>
+    
 </div>
 
 @stop
@@ -83,7 +86,6 @@
         });
 
     </script>
-
 
 @stop
  

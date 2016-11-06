@@ -1,14 +1,14 @@
 <div class="container-fluid">
-    
 
     <div class="row">
 
-        <div class="col-xs-12">
+        <div class="col-xs-10 col-xs-offset-1">
             <h1 class="text-center">Edit</h1>
-            <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST" id="recipeUpdate" name="recipeUpdate">  
+            <form class="form" action="{{ action('RecipesController@update', $recipe->id) }}" method="POST">  
 
                 {!! csrf_field() !!}
                 {!! method_field('PUT') !!}
+                <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
             
                 <div class="form-group">
                     <label for="recipeName">Recipe Name</label>
@@ -75,24 +75,17 @@
             </div>
             
             {{-- Buttons --}}
-            <div class="row">
-                <div class="col-sm-8">
-                    <form class="form pull-left" action="{{action ('RecipesController@destroy', $recipe->id) }}" method="POST">
-                        {!! csrf_field() !!}
-                        {!! method_field('DELETE') !!}
-                        <button class="btn btn-danger customButtonStyle pull-left">Delete Recipe</button>
-                    </form>
-                </div>            
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-default customButtonStyle pull-right customBtnMargin" data-dismiss="modal">Close</button>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-6">
+                        <button type="button" class="btn btn-default customButtonStyle " data-dismiss="modal">Close</button>
+                        <button class="btn btn-success customButtonStyle pull-right" id="ingredient-submit">Save Changes</button>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <input type="hidden" id="recipeId" name="recipeId" value="{{ $recipe->id }}">
-                    <button class="btn btn-success customButtonStyle" id="ingredient-submit">Save Changes</button>
-                </div>
-            </form> <!-- form  -->
-        </div>
-    </div> <!-- .row -->
+            </form>
+            </div>
+    </div> <!-- .modal-footer -->
+
 </div>
 
 

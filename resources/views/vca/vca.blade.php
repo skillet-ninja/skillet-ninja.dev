@@ -7,157 +7,153 @@
 
 @section('content')
 
-    <!-- Recipe Modal -->
-    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Recipe</h4>
+ @include('layouts.partials._initialization')
+
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4">
+
+                <div class="buttonBackground" >
+                    {{-- New Mic Button --}}
+                    <section title=".roundedOne" >
+                        <!-- .roundedOne -->
+                        <div class="roundedOne" style="left: 90px">
+                            <input type="checkbox" value="None" id="mic" name="mic" checked />
+                            <label for="mic"><span class="pull-right" style="padding-right:2.5em">Microphone</span></label>
+                        </div>
+                        <!-- end .roundedOne -->
+                    </section>
                 </div>
-                <div class="recipe-modal"></div>
-            </div>
-        </div>
-    </div>  <!-- End.Recipe Modal -->
 
-    <div class="row">
-        <div class="col-xs-4">
-
-            <div class="buttonBackground" >
-                {{-- New Mic Button --}}
-                <section title=".roundedOne" >
-                    <!-- .roundedOne -->
-                    <div class="roundedOne" style="left: 90px">
-                        <input type="checkbox" value="None" id="mic" name="mic" checked />
-                        <label for="mic"><span class="pull-right" style="padding-right:2.5em">Microphone</span></label>
-                    </div>
-                    <!-- end .roundedOne -->
-                </section>
+                <div class="buttonBackground">
+                    {{-- New Mic Button --}}
+                    <section title=".roundedOne">
+                        <!-- .roundedOne -->
+                        <div class="roundedOne" style="left: 90px">
+                            <input type="checkbox" value="None" id="narration" name="narration" checked />
+                            <label for="narration"><span class="pull-right" style="padding-right:2.5em">Narration</span></label>
+                        </div>
+                        <!-- end .roundedOne -->
+                    </section>
+                </div>
             </div>
 
-            <div class="buttonBackground">
-                {{-- New Mic Button --}}
-                <section title=".roundedOne">
-                    <!-- .roundedOne -->
-                    <div class="roundedOne" style="left: 90px">
-                        <input type="checkbox" value="None" id="narration" name="narration" checked />
-                        <label for="narration"><span class="pull-right" style="padding-right:2.5em">Narration</span></label>
-                    </div>
-                    <!-- end .roundedOne -->
-                </section>
-            </div>
-        </div>
-
-        <div class="col-xs-4 text-center">
-            <h3 class="timerHeader">Active Timers</h3>
-            <table class="table table-inverse table-condensed text-center">
-                <thead>
-                    <tr>
-                        <th class="text-center">Step</th>
-                        <th class="text-center">Time</th>
-                        <th class="text-center">Reset</th>
-                        <th class="text-center">Pause</th>
-                        <th class="text-center">Clear</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($steps as $key => $step)
-                        {{-- Timer beep source --}}
-                        <audio id="buzzer{{ $key + 1 }}" src="/assets/sounds/timerSound.mp3" type="audio/mp3"></audio>    
-                        <tr class="stepTimer{{ $key + 1 }} hidden">
-                            <td class="stepStyling">{{ $key + 1 }}</td>
-                            <td>
-                                <div class="timer{{ $key + 1 }} timerStyling">
-                                    <span class="hour{{ $key + 1 }}">00</span>:<span class="minute{{ $key + 1 }}">00</span>:<span class="second{{ $key + 1 }}">00</span>
-                                </div>
-                            </td>
-                            <div class="control{{ $key + 1 }}">
-                                <td><button onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }})" class="btn-success"><i class="fa fa-refresh" aria-hidden="true"></i></button></td>
-                                <td><button class="btn-primary" onClick="timer{{ $key + 1 }}.stop()"><i class="fa fa-pause" aria-hidden="true"></i></button></td>
-                                <td><button id="timerStop{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }}); timer{{ $key + 1 }}.stop()" class="btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-                            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4 text-center">
+                <h3 class="timerHeader">Active Timers</h3>
+                <table class="table table-inverse table-condensed text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Step</th>
+                            <th class="text-center">Time</th>
+                            <th class="text-center">Reset</th>
+                            <th class="text-center">Pause</th>
+                            <th class="text-center">Clear</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {{-- Timer beep source --}}
+                        <audio id="buzzer">
+                            <source src="/assets/sounds/timerSound.mp3" type="audio/mp3">
+                        </audio>    
+                        @foreach ($steps as $key => $step)
+                            <tr class="stepTimer{{ $key + 1 }} hidden">
+                                <td class="stepStyling">{{ $key + 1 }}</td>
+                                <td>
+                                    <div class="timer{{ $key + 1 }} timerStyling">
+                                        <span class="hour{{ $key + 1 }}">00</span>:<span class="minute{{ $key + 1 }}">00</span>:<span class="second{{ $key + 1 }}">00</span>
+                                    </div>
+                                </td>
+                                <div class="control{{ $key + 1 }}">
+                                    <td><button onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }})" class="btn-success"><i class="fa fa-refresh" aria-hidden="true"></i></button></td>
+                                    <td><button class="btn-primary" onClick="timer{{ $key + 1 }}.stop(); document.getElementById('buzzer').pause()"><i class="fa fa-pause" aria-hidden="true"></i></button></td>
+                                    <td><button id="timerStop{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.reset({{ $step->time * 60 }}); timer{{ $key + 1 }}.stop()" class="btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                </div>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-        </div>
-
-        <div class="col-xs-4">
-
-            <div class="pull-right">
-                <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Details</button>
             </div>
 
-            <div class="text-center">
-                {{-- @if($recipe->video_url != null) --}}
-                    <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
-                {{-- @endif --}}
-            </div>
-        </div>
-    </div>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4">
 
-    {{-- CAROUSEL --}}
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="row">
-            <div class="col-xs-12">
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    @foreach ($steps as $key => $step)
-                        <div @if ($key === 0) class="item active" @else class="item"  @endif>
-                            <div class="carouselWrapper recipe-card">
-                                <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
-                                {{-- Voice --}}
-                                <p class="vca-step text-center">{{ $step->step }} Take a cup and pour into the bowl for five minutes, stiring occasionally.</p> 
-                                @if($step->image_url != null)
-                                    <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
-                                @endif
-                            </div>
-                                <div class="row">
-                                    @if($step->video_url != null)
-                                        <div class="col-xs-6">
-                                            <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary pull-left customButtonStyle" target="_blank">View Step</a>
-                                        </div>
-                                    @endif
+                <div class="pull-right">
+                    <button id="details" type="button" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }}>View Details</button>
+                </div>
 
-                                    @if($step->time != null)
-                                        <div class="col-xs-6">
-                                            <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer pull-right customButtonStyle">Start Timer</button>
-                                        </div>
-                                    @endif
-                                </div> 
-                            </div>
-                    @endforeach
+                <div class="text-center">
+                    @if($recipe->video_url != null)
+                        <a id="tutorial" href="{{--{{ $recipe->video_url }}--}}" class="btn btn-primary btn-primary btn-view-recipe customButtonStyle" data-recipe={{ $recipe->id }} target="_blank">View Tutorial</a>
+                    @endif
                 </div>
             </div>
         </div>
 
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" id="prev">
-            <span class="glyphicon glyphicon-chevron-left" style="position: absolute; left:0" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" id="next">
-            <span class="glyphicon glyphicon-chevron-right" style="position: absolute; right:0"  aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        {{-- CAROUSEL --}}
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @foreach ($steps as $key => $step)
+                            <div @if ($key === 0) class="item active" @else class="item"  @endif>
+                                <div class="carouselWrapper recipe-card">
+                                    <h1 class="vca-step-header">Step {{ $key + 1 }}</h1>
+                                    {{-- Voice --}}
+                                    <p class="vca-step text-center">{{ $step->step }}</p> 
+                                    @if($step->image_url != null)
+                                        <img id="carouselImg" src="{{ $step->image_url }}" alt="...">
+                                    @endif
+                                </div>
+                                    <div class="row">
+                                            <div class="col-xs-6">
+                                        @if($step->video_url != null)
+                                                <a href="{{ $step->video_url }}" id="viewStep{{ $key + 1 }}" class="btn btn-primary pull-left customButtonStyle" target="_blank">View Step</a>
+                                        @endif
+                                            </div>
 
-    </div>
-    <div>
-        <div class="row">
-            <!-- Indicators -->
-            <hr>
-            <div class="col-xs-12 carouselPagination">
-                <ol class="carousel-linked-nav pagination">
-                    @foreach ($steps as $key => $step)
-                        <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a class="stepPageButton" id="step{{ $key + 1 }}" href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
-                    @endforeach
-                </ol>
+                                            <div class="col-xs-6">
+                                        @if($step->time != null)
+                                                <button id="startTimer{{ $key + 1 }}" onClick="timer{{ $key + 1 }}.start(1000)" id="timerStartStep{{ $key + 1 }}" class="btn btn-primary timer pull-right customButtonStyle">Start Timer</button>
+                                        @endif
+                                            </div>
+                                    </div> 
+                                </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" id="prev">
+                <span class="glyphicon glyphicon-chevron-left" style="position: absolute; left:0" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" id="next">
+                <span class="glyphicon glyphicon-chevron-right" style="position: absolute; right:0"  aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+        <div>
+            <div class="row">
+                <!-- Indicators -->
+                <hr>
+                <div class="col-xs-12 carouselPagination">
+                    <ol class="carousel-linked-nav pagination">
+                        @foreach ($steps as $key => $step)
+                            <li class="" data-target="#carousel-example-generic" data-slide-to="{{ $key }}"><a class="stepPageButton" id="step{{ $key + 1 }}" href="#{{  $key + 1 }}">{{ $key + 1 }}</a></li>
+                        @endforeach
+                    </ol>
+                </div>
             </div>
         </div>
+
+        <br>
+        
+        
     </div>
 
-    <br>
 
 @stop
 
@@ -168,10 +164,10 @@
     {{-- Annayang JS for voice control --}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
     
+    {{-- Timer logic adapted from http://codepen.io/anodpixels/pen/dxJmi --}}
     <script>
 
         @foreach ($steps as $key => $step)
-            // Timer logic from http://codepen.io/anodpixels/pen/dxJmi
             function _timer{{ $key + 1 }}(callback) {
                 var time{{ $key + 1 }} = {{ $step->time * 60 }};     //  The default time of the timer
                 var mode{{ $key + 1 }} = 1;     //    Mode: count up or count down
@@ -266,9 +262,8 @@
                     function(time{{ $key + 1 }}) {
                         if (time{{ $key + 1 }} == 0) {
                             timer{{ $key + 1 }}.stop();
-                            $('#start{{ $key + 1 }}').on('click', function() {
-                                $('#buzzer{{ $key + 1 }}').play();
-                            });
+                            document.getElementById('buzzer').play();
+                            
                         }
                     }
                 );
@@ -279,7 +274,7 @@
             // Clear timer from timer table
             $('#timerStop{{ $key + 1 }}').click(function() {
                 $('.stepTimer{{ $key + 1 }}').addClass('hidden');
-                $('#buzzer{{ $key + 1 }}').stop();
+                document.getElementById('buzzer').pause();
 
             });
 
@@ -310,11 +305,12 @@
             var step = 1;
             
             // Filters step number to cycle up and down through total steps
-            function calculateStep(stepperValue) {
-                if (stepperValue == 0) {
+            function calculateStep(step) {
+                if (step > totalSteps) {
+                    step = 1;
+                }
+                if (step == 0) {
                     step = totalSteps;
-                } else {
-                    step = stepperValue % totalSteps;
                 }
                 return step;
             }
@@ -336,6 +332,7 @@
             // Click event for left carousel button click
             $('#prev').click(function() {
                 silence();
+                step = Number(step);
                 step -= 1;
                 step = calculateStep(step);
                 // Say step number
@@ -347,6 +344,7 @@
             // Click event for right carousel button click
             $('#next').click(function() {
                 silence();
+                step = Number(step);
                 step += 1;
                 step = calculateStep(step);
                  // Say step number
@@ -400,11 +398,16 @@
                         'Next': function() {
                             $("#next").click();
                         },
-                        'Back': function() {
+                        'Previous': function() {
                             $("#prev").click();
                         },
+                        {{-- @foreach ($steps as $key => $step) --}}
+                            // 'Start timer {{ $key + 1 }}': function() {
+                            //     $('#startTimer{{ $key + 1}}').click();
+                            // },
+                        {{-- @endforeach --}}
                         @foreach ($steps as $key => $step)
-                            'Step {{ $key + 1 }}': function() {
+                            'Start step {{ $key + 1 }}': function() {
                                 $('#step{{ $key + 1}}').click();
                             },
                         @endforeach
@@ -451,7 +454,7 @@
         {{-- modal functionality --}}
         $('.btn-view-recipe').on('click', function(e){
             var recipeId = e.target.getAttribute("data-recipe");
-            $.get("/recipes/" + recipeId + "?continue=true", function(data){
+            $.get("/recipes/" + recipeId + "?vca=true", function(data){
             $(".recipe-modal").html(data);
             });
             $('#myModal').modal('show');

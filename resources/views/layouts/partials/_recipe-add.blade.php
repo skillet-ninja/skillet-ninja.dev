@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-xs-8 col-xs-offset-2">
         
         <h2>Start A New Recipe</h2>
 
@@ -86,7 +86,9 @@
         
             {{-- Buttons --}}
             <div class="modal-footer">
+
                     <button class="btn btn-success customButtonStyle" id="recipe-submit">Save</button>
+
                     <button type="button" class="btn btn-default customButtonStyle" data-dismiss="modal">Cancel</button>
                 </div>
                 <br>
