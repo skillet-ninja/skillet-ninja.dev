@@ -45,12 +45,7 @@
                     <img class="bioPics" src="/assets/img/DanielRoss.jpg" alt="...">
                     <div class="caption">
                         <h3>Daniel Ross</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands.  He’s a former teacher making his way into the tech industry.  His specialty is the back end while his passion is databases.  That’s where he spent most of his time working during this project.  He hopes to improve his coding skills and be a valuable asset to a reputable company.  In his spare time, he loves playing Dungeons and Dragons and watching Star Trek.</p>
                         
                     </div>
                 </div>
