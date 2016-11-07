@@ -15,7 +15,7 @@
 
                 <div class="buttonBackground" >
                     {{-- New Mic Button --}}
-                    <section title=".roundedOne" >
+                    <section title="roundedOne" >
                         <!-- .roundedOne -->
                         <div class="roundedOne" style="left: 90px">
                             <input type="checkbox" value="None" id="mic" name="mic" checked />
@@ -27,7 +27,7 @@
 
                 <div class="buttonBackground">
                     {{-- New Mic Button --}}
-                    <section title=".roundedOne">
+                    <section title="roundedOne">
                         <!-- .roundedOne -->
                         <div class="roundedOne" style="left: 90px">
                             <input type="checkbox" value="None" id="narration" name="narration" checked />
@@ -391,53 +391,58 @@
 
 
             {{-- Voice command functionality --}}
-            if (document.getElementById('mic').checked) {
-                if (annyang) {
-                    // Let's define our first command. First the text we expect, and then the function it should call
-                    var commands = {
-                        'Next': function() {
-                            $("#next").click();
+            if (annyang) {
+                // Let's define our first command. First thMe text we expect, and then the function it should call
+                var commands = {
+                    'Next': function() {
+                        $("#next").click();
+                    },
+                    'Previous': function() {
+                        $("#prev").click();
+                    },
+                    @foreach ($steps as $key => $step)
+                        'Start timer {{ $key + 1 }}': function() {
+                            $('#startTimer{{ $key + 1}}').click();
                         },
-                        'Previous': function() {
-                            $("#prev").click();
+                    @endforeach
+                    @foreach ($steps as $key => $step)
+                        'Go step {{ $key + 1 }}': function() {
+                            $('#step{{ $key + 1}}').click();
                         },
-                        @foreach ($steps as $key => $step)
-                            'Start timer {{ $key + 1 }}': function() {
-                                $('#startTimer{{ $key + 1}}').click();
-                            },
-                        @endforeach
-                        @foreach ($steps as $key => $step)
-                            'Go step {{ $key + 1 }}': function() {
-                                $('#step{{ $key + 1}}').click();
-                            },
-                        @endforeach
-                        'Details': function() {
-                            $('#details').click();
+                    @endforeach
+                    'Details': function() {
+                        $('#details').click();
+                    },
+                    'Close': function() {
+                        $('.close').click();
+                    },
+                    @foreach ($steps as $key => $step)
+                        'View Step {{ $key + 1 }}': function() {
+                            $('#viewStep{{ $key + 1}}').click();
                         },
-                        'Close': function() {
-                            $('.close').click();
-                        },
-                        @foreach ($steps as $key => $step)
-                            'View Step {{ $key + 1 }}': function() {
-                                $('#viewStep{{ $key + 1}}').click();
-                            },
-                        @endforeach
-                        'Stop': function() {
-                        },
-                        'Repeat Step': function() {
-                            $("#step" + step).click();
-                        }
-                    };
+                    @endforeach
+                    'Stop': function() {
+                    },
+                    'Repeat Step': function() {
+                        $("#step" + step).click();
+                    }
+                };
 
-                    // Add our commands to annyang
-                    annyang.addCommands(commands);
+                // Add our commands to annyang
+                annyang.addCommands(commands);
 
-                    // Start listening. You can call this here, or attach this call to an event, button, etc.
-                    annyang.start();
-                }
-
+                // Start listening. You can call this here, or attach this call to an event, button, etc.
+                annyang.start();
             }
-    
+
+            $('#mic').on('click', function() {
+                if(($('#mic').is(':checked'))) {
+                    annyang.resume();
+                } else {
+                    annyang.pause();
+                }
+            });
+
         });
     </script>
     <script>
