@@ -24,7 +24,7 @@
             <ul class="dropdown-menu pull-right">
                 <li><a href="{{ URL::route('sortRecipes') }}?sort=top_rated&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Top Rated</a></li>
                 <li><a href="{{ URL::route('sortRecipes') }}?sort=most_recent&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Most Recent</a></li>
-                <li><a href="{{ URL::route('sortRecipes') }}?sort=difficulty&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Difficulty</a></li>
+                <li><a href="{{ URL::route('sortRecipes') }}?sort=difficulty&searchTerm={{ $searchTerm }}&search_tag={{ $search_tag }}">Easy to Hard</a></li>
             </ul>
         </div>
         <br>
