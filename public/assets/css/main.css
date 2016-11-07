@@ -607,6 +607,10 @@ ol {
     height: auto;
 }
 
+.aboutContent {
+    font-size: 1.5em;
+}
+
 /* ================ Logout ================ */
 
 .logout-header {
