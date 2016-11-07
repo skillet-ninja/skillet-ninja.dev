@@ -45,7 +45,10 @@
                     <img class="bioPics" src="/assets/img/DanielRoss.jpg" alt="...">
                     <div class="caption">
                         <h3>Daniel Ross</h3>
-                        <p>Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands.  He’s a former teacher making his way into the tech industry.  His specialty is the back end while his passion is databases.  That’s where he spent most of his time working during this project.  He hopes to improve his coding skills and be a valuable asset to a reputable company.  In his spare time, he loves playing Dungeons and Dragons and watching Star Trek.</p>
+                        <p>Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands. His three strongest technologies are JS, PHP, and SQL.</p>
+                        <h4>Favorite Quote</h4>
+                        <p>"It’s never too late to be who you might have been.” – George Eliot</p>
+
                         
                     </div>
                 </div>
