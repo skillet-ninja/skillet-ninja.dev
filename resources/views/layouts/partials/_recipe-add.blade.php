@@ -1,11 +1,11 @@
 <div class="bs-callout bs-callout-warning hidden">
-  <h4>Oh snap!</h4>
-  <p>This form seems to be invalid :(</p>
+  <h4>Error</h4>
+  <p>Required fields don't have input.</p>
 </div>
 
 <div class="bs-callout bs-callout-info hidden">
-  <h4>Yay!</h4>
-  <p>Everything seems to be ok :)</p>
+  <h4>Success</h4>
+  <p>Form has been submitted successfully.</p>
 </div>
 
 <div class="row">
