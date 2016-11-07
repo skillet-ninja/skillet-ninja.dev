@@ -25,8 +25,10 @@
                     <img class="bioPics" src="/assets/img/DanielCarroll.jpg" alt="...">
                     <div class="caption">
                         <h3>Dan Carroll</h3>
-                        <p class="aboutContent">Dan is <strong>not</strong> a bad cook...check out that belly!  After a stint in the Air Force as a Space Operations Officer he almost became a chef (not kidding) but instead became civil engineer. After 15 years of highway engineering design he is transitioning to coding and the immense opportunities in that field. He hopes to use his experience as an engineering designer and manager to attack the most challenging parts of web apps from the back end to the front end.
-                        </p>                   
+                        <p class="aboutContent">Dan is <strong>not</strong> a bad cook...check out that belly! He hopes to use his <strong>PHP, SQL</strong>, and <strong>JavaScript</strong> skills building challenging web apps as he transitions from 15 years of engineering design work.
+                        </p>
+                        <p class="text-center aboutContent"><em>I launched Gene Rodenberry into space</em><small>...sort of...I was there with the Spaniards. It's OK if you're confused.</small></p>
+
                     </div>
                 </div>
             </div>
@@ -35,7 +37,7 @@
                     <img class="bioPics" src="/assets/img/JustinReich.jpg" alt="...">
                     <div class="caption">
                         <h3>Justin Reich</h3>
-                        <p class="aboutContent">Justin is a bad cook and loves developing front-end solutions for the web using HTML, CSS, and JavaScript. Before attending Codeup, Justin taught piano performance full-time for five years in San Antonio.</p>
+                        <p class="aboutContent">Justin is a bad cook and loves developing front-end solutions for the web using <strong>HTML, CSS,</strong> and <strong>JavaScript</strong>. Before attending Codeup, Justin taught piano performance full-time for five years in San Antonio.</p>
                         <p class="text-center aboutContent"><em>“Process is the music of code.”</em></p>
                     </div>
                 </div>
@@ -45,8 +47,7 @@
                     <img class="bioPics" src="/assets/img/DanielRoss.jpg" alt="...">
                     <div class="caption">
                         <h3>Daniel Ross</h3>
-                        <p class="aboutContent">Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands. His three strongest technologies are JS, PHP, and SQL.</p>
-                        <h4>Favorite Quote</h4>
+                        <p class="aboutContent">Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands. His three strongest technologies are <strong>JS, PHP</strong>, and <strong>SQL</strong>.</p>
                         <p class="aboutContent text-center">"It’s never too late to be who you might have been.” – George Eliot</p>  
                     </div>
                 </div>
