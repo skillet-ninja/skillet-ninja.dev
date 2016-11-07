@@ -22,14 +22,14 @@
 
 @section ('image-input')
 
-    <input class="form-control" id="image_url" type="text" name="image_url" placeholder="Time (min)"
+    <input class="form-control" id="image_url" type="text" name="image_url" placeholder="Image Link"
             value="{{ (old('image_url') == null) ? $step->image_url : old('image_url') }}">
 @stop
 
 
 @section ('video-input')
                 
-    <input class="form-control" id="video_url" type="text" name="video_url" placeholder="Time (min)"
+    <input class="form-control" id="video_url" type="text" name="video_url" placeholder="Video Link"
             value="{{ (old('video_url') == null) ? $step->video_url : old('video_url') }}">
 @stop
 
