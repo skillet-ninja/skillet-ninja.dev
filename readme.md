@@ -1,28 +1,24 @@
-## Laravel PHP Framework
+##Skillet Ninja
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Skillet Ninja is a virtual cooking assistant web application developed as a capstone project over the course of two weeks as part of a sixteen week intensive coding experience at Codeup in San Antonio, Texas. The team of three developers created a web app users can speak to and have their recipes read back to them. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+#How to use
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Uses can look through the community recipes but must login in to create, edit or use the Virtual Cooking Assistant (VCA). Registered users can get to the VCA by clicking on the Start button on any recipe card. Recipe narration and/or voice commands can be turned off. Recipes are displayed and read to the cook step by step. Users can also click the timer button if a step has an associated timed cooking event.
 
-## Official Documentation
+##Technologies
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Skillet Ninja's front end functionality was built using HTML5, CSS3, Twitter Bootstrap, JavaScript, jQuery, and the microlibraries of annyang.js, and bootstrap-tagsinput. 
 
-## Contributing
+The back end was built using a Laravel framework for our PHP which powered our SQL database.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+##Contributors
 
-## Security Vulnerabilities
+#Dan Carroll
+[LinkedIn Profile](https://www.linkedin.com/in/danjcarroll), [DjCarroll.me](http://djcarroll.me), [GitHub](https://github.com/danjcarroll)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+#Justin Reich
 
-### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
-# skillet-ninja.dev
+#Dan Ross
+
