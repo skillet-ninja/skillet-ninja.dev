@@ -27,7 +27,7 @@
                         <h3>Dan Carroll</h3>
                         <p class="aboutContent">Dan is <strong>not</strong> a bad cook...check out that belly! He hopes to use his <strong>PHP, SQL</strong>, and <strong>JavaScript</strong> skills building challenging web apps as he transitions from 15 years of engineering design work.
                         </p>
-                        <p class="text-center aboutContent"><em>I launched Gene Rodenberry into space</em><small>...sort of...I was there with the Spaniards. It's OK if you're confused.</small></p>
+                        <p class="text-center aboutContent"><em>I launched Gene Rodenberry into space.</em></p>
 
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     <div class="caption">
                         <h3>Daniel Ross</h3>
                         <p class="aboutContent">Other Dan is a great cook…but he still needs help when he’s trying to follow a recipe with food all over his hands. His three strongest technologies are <strong>JS, PHP</strong>, and <strong>SQL</strong>.</p>
-                        <p class="aboutContent text-center">"It’s never too late to be who you might have been.” – George Eliot</p>  
+                        <p class="aboutContent text-center"><em>"It’s never too late to be who you might have been.” – George Eliot</em></p>  
                     </div>
                 </div>
             </div>
